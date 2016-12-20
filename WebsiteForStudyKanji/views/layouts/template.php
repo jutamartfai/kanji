@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -24,7 +25,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<div class="brand">Business Casual</div>
+	<div class="brand">Business Casual</div>
     <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
 
     <!-- Navigation -->
@@ -45,13 +46,13 @@ AppAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
                     </li>
                     <li>
-                        <a href="about.html">About</a>
+                        <a href="<?= Url::to(['practice/index']) ?>">practice</a>
                     </li>
                     <li>
-                        <a href="blog.html">Blog</a>
+                        <a href="<?= Url::to(['member/index']) ?>">member</a>
                     </li>
                 </ul>
             </div>
@@ -66,6 +67,16 @@ AppAsset::register($this);
         ]) ?>
         <?= $content ?>
     </div>
+
+	<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 <!-- Script to Activate the Carousel -->
     <script>
