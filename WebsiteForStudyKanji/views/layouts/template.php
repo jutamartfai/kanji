@@ -62,10 +62,18 @@ AppAsset::register($this);
     </nav>
 
     <div class="container">
+     	<div class="row">
+            <div class="box">
+                <div class="col-lg-12">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?= $content ?>
+        <section class="content">
+        	<?= $content ?>
+        </section>
+    			</div>
+    		</div>
+    	</div>
     </div>
 
 	<footer>

@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\KanjiSearch */
+/* @var $searchModel app\models\PracticetransactionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kanjis';
+$this->title = 'Practicetransactions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="kanji-index">
+<div class="practicetransaction-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Kanji', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Practicetransaction', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,15 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'kanji_ch',
-            'kanji_no',
-            'kanji',
-            'meaning',
-            'jp_pron',
-            'cn_pron',
-            'line_num',
-            'ex_vocab:ntext',
-            'how_to',
+            'id',
+            'email:email',
+            'practice_ch',
+            'do_date',
+            'score',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
