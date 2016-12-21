@@ -25,13 +25,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jp_pron') ?>
 
-    <?php // echo $form->field($model, 'cn_pron') ?>
+    <?= $form->field($model, 'cn_pron') ?>
 
-    <?php // echo $form->field($model, 'line_num') ?>
+    <?= $form->field($model, 'line_num') ?>
 
-    <?php // echo $form->field($model, 'ex_vocab') ?>
+    <?= $form->field($model, 'ex_vocab') ?>
 
-    <?php // echo $form->field($model, 'how_to') ?>
+    <?= $form->field($model, 'how_to') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
