@@ -65,12 +65,12 @@ AppAsset::register($this);
      	<div class="row">
             <div class="box">
                 <div class="col-lg-12">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <section class="content">
-        	<?= $content ?>
-        </section>
+			        <?= Breadcrumbs::widget([
+			            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+			        ]) ?>
+			        <section class="content">
+			        	<?= $content ?>
+			        </section>
     			</div>
     		</div>
     	</div>
