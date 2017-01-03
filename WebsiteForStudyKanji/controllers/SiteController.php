@@ -125,7 +125,13 @@ class SiteController extends Controller
 
     public function actionTemplate()
     {
-        $this->layout = 'template';
+        //$this->layout = 'template';
         return $this->render('template');
+    }
+
+    public function actionMaintemp()
+    {
+        $this->layout = 'maintemp';
+        return $this->render('maintemp');
     }
 }
