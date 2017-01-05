@@ -6,9 +6,11 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Practice */
 
-$this->title = $model->practice_ch;
+$title = $model->practice_ch;
+$title2 = $model->practice_no;
 $this->params['breadcrumbs'][] = ['label' => 'Practices', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $title;
+$this->params['breadcrumbs'][] = $title2;
 ?>
 <div class="practice-view">
 

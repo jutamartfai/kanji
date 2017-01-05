@@ -125,7 +125,7 @@ class SiteController extends Controller
 
     public function actionTemplate()
     {
-        //$this->layout = 'template';
+        $this->layout = 'template';
         return $this->render('template');
     }
 

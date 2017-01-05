@@ -6,9 +6,11 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kanji */
 
-$this->title = $model->kanji_ch;
+$title = $model->kanji_ch;
+$title2 = $model->kanji_no;
 $this->params['breadcrumbs'][] = ['label' => 'Kanjis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $title;
+$this->params['breadcrumbs'][] = $title2;
 ?>
 <div class="kanji-view">
 

@@ -18,23 +18,38 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Kanji', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        //'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
+            <div class="panel-body">
+                <?= GridView::widget([
+                    'dataProvider' => $dataProvider,
+                    //'filterModel' => $searchModel,
+                    'columns' => [
+                        ['class' => 'yii\grid\SerialColumn'],
 
-            'kanji_ch',
-            'kanji_no',
-            'kanji',
-            'meaning',
-            'jp_pron',
-            'cn_pron',
-            'line_num',
-            'ex_vocab:ntext',
-            'how_to',
+                        'kanji_ch',
+                        'kanji_no',
+                        'kanji',
+                        //'meaning',
+                        //'jp_pron',
+                        //'cn_pron',
+                        //'line_num',
+                        //'ex_vocab:ntext',
+                        //'how_to',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+                        [
+                            'class' => 'yii\grid\ActionColumn',
+                            'buttonOptions'=>['class'=>'btn btn-default'],
+                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>',
+                            //'options'=> ['style'=>'width:100px;'],
+                            'contentOptions'=>[
+                                'noWrap' => true
+                            ],
+                        ],
+                    ],
+                ]); ?>
+            </div>
+        </div>
+    </div>
 </div>
