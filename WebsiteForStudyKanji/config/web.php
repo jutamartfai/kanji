@@ -7,16 +7,16 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     //'layout' => 'template',
-    //'layout' => 'maintemp',
+    'layout' => 'maintemp',
     'components' => [
-        'view' => [
-            'theme' => [
-                'pathMap' => [
+        //'view' => [
+        //    'theme' => [
+        //        'pathMap' => [
                     //'@app/views' => ['@webroot/themes/admin']
-                    '@app/views' => ['@webroot/themes/userth']
-                ]
-            ]
-        ],
+                    //'@app/views' => ['@webroot/themes/userth']
+        //       ]
+        //    ]
+        //],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '9ID8Wq9n-kQzgQAt4rmkuYpyhy3L2Wi5',
