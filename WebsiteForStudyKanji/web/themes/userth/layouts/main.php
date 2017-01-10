@@ -52,6 +52,9 @@ AppAsset::register($this);
                         <a href="<?= Url::to(['/site/contact']) ?>">practice chapter</a>
                     </li>
                     <li>
+                        <a href="<?= Url::to(['/site/template']) ?>">admin</a>
+                    </li>
+                    <li>
                     <?php
                         //Yii::$app->user->isGuest ? ( ?>
                         <a href="<?= Url::to(['/site/login']) ?>">login</a>

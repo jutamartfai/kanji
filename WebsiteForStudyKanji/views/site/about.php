@@ -3,6 +3,9 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+
+namespace yii\bootstrap;
 
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,3 +19,4 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <code><?= __FILE__ ?></code>
 </div>
+<a href="#" class="btn btn-info" role="button">Link Button</a>

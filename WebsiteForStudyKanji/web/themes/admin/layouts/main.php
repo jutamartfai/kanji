@@ -25,7 +25,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-	<div class="brand">kanji</div>
+	<div class="brand">manage kanji website</div>
     <div class="address-bar">by knightmare feiya</div>
 
     <!-- Navigation -->
@@ -40,33 +40,22 @@ AppAsset::register($this);
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">kanji</a>
+                <a class="navbar-brand" href="<?= Url::to(['admin/index']) ?>">manage</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href= "<?= Url::to(['/site/about']) ?>">kanji chapter</a>
+                        <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['/site/contact']) ?>">practice chapter</a>
+                        <a href="<?= Url::to(['practice/index']) ?>">practice</a>
                     </li>
                     <li>
-                    <?php
-                        //Yii::$app->user->isGuest ? ( ?>
-                        <a href="<?= Url::to(['/site/login']) ?>">login</a>
-                        <?php
-                        // ) : (
-                        //     '<li>'
-                        //     . Html::beginForm(['/site/logout'], 'post')
-                        //     . Html::submitButton(
-                        //         'Logout (' . Yii::$app->user->identity->username . ')',
-                        //         ['class' => 'btn btn-link logout']
-                        //     )
-                        //     . Html::endForm()
-                        //     . '</li>'
-                        // )
-                    ?>
+                        <a href="<?= Url::to(['member/index']) ?>">member</a>
+                    </li>
+                    <li>
+                        <a href="<?= Url::to(['#']) ?>">logout</a>
                     </li>
                 </ul>
             </div>

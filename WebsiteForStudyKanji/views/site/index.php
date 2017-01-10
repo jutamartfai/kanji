@@ -7,7 +7,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="body-content">
-    <center>
+    <center>test test test
         <!-- chap.1-3 -->
         <div class="row">
             <div class="col-xs-6 col-md-4">
