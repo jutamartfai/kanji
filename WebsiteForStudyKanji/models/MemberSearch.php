@@ -18,7 +18,7 @@ class MemberSearch extends Member
     public function rules()
     {
         return [
-            [['email', 'password', 'first_name', 'last_name'], 'safe'],
+            [['email', 'password', 'first_name', 'last_name', 'active_date'], 'safe'],
         ];
     }
 
@@ -57,6 +57,10 @@ class MemberSearch extends Member
         }
 
         // grid filtering conditions
+        $query->andFilterWhere([
+            'active_date' => $this->active_date,
+        ]);
+
         $query->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'password', $this->password])
             ->andFilterWhere(['like', 'first_name', $this->first_name])

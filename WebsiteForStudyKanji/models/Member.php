@@ -11,6 +11,7 @@ use Yii;
  * @property string $password
  * @property string $first_name
  * @property string $last_name
+ * @property string $active_date
  */
 class Member extends \yii\db\ActiveRecord
 {
@@ -28,7 +29,8 @@ class Member extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'first_name', 'last_name'], 'required'],
+            [['email', 'password', 'first_name', 'last_name', 'active_date'], 'required'],
+            [['active_date'], 'safe'],
             [['email', 'first_name', 'last_name'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 255],
         ];
@@ -44,6 +46,7 @@ class Member extends \yii\db\ActiveRecord
             'password' => 'รหัสผ่าน',
             'first_name' => 'ชื่อ',
             'last_name' => 'นามสกุล',
+            'active_date' => 'วันที่เข้าใช้งานล่าสุด',
         ];
     }
 }
