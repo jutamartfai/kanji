@@ -13,7 +13,22 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="practice-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          search practice
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+
+      </div>
+    </div>
+  </div>
 
     <p>
         <?= Html::a('Create Practice', ['create'], ['class' => 'btn btn-success']) ?>

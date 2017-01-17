@@ -35,6 +35,8 @@ class PracticeController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'template';
+
         $searchModel = new PracticeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +54,8 @@ class PracticeController extends Controller
      */
     public function actionView($practice_ch, $practice_no)
     {
+        $this->layout = 'template';
+
         return $this->render('view', [
             'model' => $this->findModel($practice_ch, $practice_no),
         ]);
@@ -64,6 +68,8 @@ class PracticeController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'template';
+
         $model = new Practice();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +90,8 @@ class PracticeController extends Controller
      */
     public function actionUpdate($practice_ch, $practice_no)
     {
+        $this->layout = 'template';
+
         $model = $this->findModel($practice_ch, $practice_no);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -104,6 +112,8 @@ class PracticeController extends Controller
      */
     public function actionDelete($practice_ch, $practice_no)
     {
+        $this->layout = 'template';
+
         $this->findModel($practice_ch, $practice_no)->delete();
 
         return $this->redirect(['index']);
@@ -119,6 +129,8 @@ class PracticeController extends Controller
      */
     protected function findModel($practice_ch, $practice_no)
     {
+        $this->layout = 'template';
+
         if (($model = Practice::findOne(['practice_ch' => $practice_ch, 'practice_no' => $practice_no])) !== null) {
             return $model;
         } else {

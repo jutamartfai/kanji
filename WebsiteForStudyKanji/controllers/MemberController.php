@@ -35,6 +35,8 @@ class MemberController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'template';
+
         $searchModel = new MemberSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +53,8 @@ class MemberController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = 'template';
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +67,8 @@ class MemberController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'template';
+
         $model = new Member();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +88,8 @@ class MemberController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout = 'template';
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +109,8 @@ class MemberController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->layout = 'template';
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +125,8 @@ class MemberController extends Controller
      */
     protected function findModel($id)
     {
+        $this->layout = 'template';
+
         if (($model = Member::findOne($id)) !== null) {
             return $model;
         } else {

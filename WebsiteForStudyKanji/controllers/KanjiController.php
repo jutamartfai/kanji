@@ -35,6 +35,8 @@ class KanjiController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'template';
+
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +54,8 @@ class KanjiController extends Controller
      */
     public function actionView($kanji_ch, $kanji_no)
     {
+        $this->layout = 'template';
+
         return $this->render('view', [
             'model' => $this->findModel($kanji_ch, $kanji_no),
         ]);
@@ -64,6 +68,8 @@ class KanjiController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'template';
+
         $model = new Kanji();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +90,8 @@ class KanjiController extends Controller
      */
     public function actionUpdate($kanji_ch, $kanji_no)
     {
+        $this->layout = 'template';
+
         $model = $this->findModel($kanji_ch, $kanji_no);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -104,6 +112,8 @@ class KanjiController extends Controller
      */
     public function actionDelete($kanji_ch, $kanji_no)
     {
+        $this->layout = 'template';
+
         $this->findModel($kanji_ch, $kanji_no)->delete();
 
         return $this->redirect(['index']);
@@ -119,6 +129,8 @@ class KanjiController extends Controller
      */
     protected function findModel($kanji_ch, $kanji_no)
     {
+        $this->layout = 'template';
+
         if (($model = Kanji::findOne(['kanji_ch' => $kanji_ch, 'kanji_no' => $kanji_no])) !== null) {
             return $model;
         } else {

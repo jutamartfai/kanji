@@ -25,7 +25,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-	<div class="brand">kanji</div>
+	<div class="brand">kanji website</div>
     <div class="address-bar">by knightmare feiya</div>
 
     <!-- Navigation -->
