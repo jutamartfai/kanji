@@ -72,11 +72,14 @@ class KanjiController extends Controller
 
         $model = new Kanji();
 
+        $ch_kanji = kanji::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'ch_kanji'=>$ch_kanji,
             ]);
         }
     }
