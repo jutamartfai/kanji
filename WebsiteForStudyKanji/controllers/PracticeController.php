@@ -72,11 +72,14 @@ class PracticeController extends Controller
 
         $model = new Practice();
 
+        $ch_practice = practice::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'ch_practice' => $ch_practice,
             ]);
         }
     }
@@ -94,11 +97,14 @@ class PracticeController extends Controller
 
         $model = $this->findModel($practice_ch, $practice_no);
 
+        $ch_practice = practice::find()->all();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'ch_practice' => $ch_practice,
             ]);
         }
     }
