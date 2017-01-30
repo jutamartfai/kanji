@@ -55,7 +55,21 @@ AppAsset::register($this);
                         <a href="<?= Url::to(['member/index']) ?>">member</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['#']) ?>">logout</a>
+                    <?php
+                        // if(Yii::$app->user->isGuest) {?>
+                        <a href="<?= Url::to(['/site/template']) ?>">login</a>
+                        <?php
+                        // } else {
+                        //     '<li>'
+                        //     . Html::beginForm(['/site/logout'], 'post')
+                        //     . Html::submitButton(
+                        //         'Logout (' . Yii::$app->user->identity->username . ')',
+                        //         ['class' => 'btn btn-link logout']
+                        //     )
+                        //     . Html::endForm()
+                        //     . '</li>'
+                        // }
+                    ?>
                     </li>
                 </ul>
             </div>
@@ -83,7 +97,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; KNightmare Feiya 2017</p>
                 </div>
             </div>
         </div>

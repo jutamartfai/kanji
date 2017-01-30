@@ -15,23 +15,29 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'kanji_ch') ?>
+    <div class="row">
+        <div class="col-xs-8 col-sm-4 col-md-4">
+           <?= $form->field($model, 'kanji_ch') ?>
+        </div>
+        <div class="col-xs-8 col-sm-4 col-md-4">
+           <?= $form->field($model, 'kanji_no') ?>
+        </div>
+        <div class="col-xs-8 col-sm-4 col-md-4">
+            <?= $form->field($model, 'kanji') ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'kanji_no') ?>
+    <!-- = $form->field($model, 'meaning')
 
-    <?= $form->field($model, 'kanji') ?>
+    = $form->field($model, 'jp_pron')
 
-    <?= $form->field($model, 'meaning') ?>
+    = $form->field($model, 'cn_pron')
 
-    <?= $form->field($model, 'jp_pron') ?>
+    = $form->field($model, 'line_num')
 
-    <?= $form->field($model, 'cn_pron') ?>
+    = $form->field($model, 'ex_vocab')
 
-    <?= $form->field($model, 'line_num') ?>
-
-    <?= $form->field($model, 'ex_vocab') ?>
-
-    <?= $form->field($model, 'how_to') ?>
+    = $form->field($model, 'how_to') -->
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

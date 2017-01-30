@@ -8,13 +8,13 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Members';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -23,15 +23,19 @@ $this->params['breadcrumbs'][] = $this->title;
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
+      <div class="panel-body"> -->
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
+            <div class="panel-body">
             <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-      </div>
+        </div>
     </div>
   </div>
 
-    <p>
-        <?= Html::a('Create Member', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!-- <p>
+        = Html::a('Create Member', ['create'], ['class' => 'btn btn-success'])
+    </p> -->
     <div class="panel-group">
         <div class="panel panel-default">
             <!-- <div class="panel-heading">Panel with panel-default class</div> -->
@@ -42,11 +46,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'email:email',
-                        'password',
                         'first_name',
                         'last_name',
-                        'active_date',
+                        'email:email',
+                        'password',
+                        //'active_date',
 
                         [
                             'class' => 'yii\grid\ActionColumn',

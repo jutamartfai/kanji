@@ -29,12 +29,43 @@ class AdminController extends Controller
         ];
     }
 
+    public function actionLogin()
+    {
+        $this->layout = 'template';
+
+        if (!Yii::$app->user->isGuest) {
+            return $this->render('template');
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return string
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
+    }
+
     /**
      * Lists all Admin models.
      * @return mixed
      */
     public function actionIndex()
     {
+        $this->layout = 'template';
+
         $searchModel = new AdminSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +82,8 @@ class AdminController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = 'template';
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +96,8 @@ class AdminController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = 'template';
+
         $model = new Admin();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +117,8 @@ class AdminController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->layout = 'template';
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +138,8 @@ class AdminController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->layout = 'template';
+
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -115,6 +154,8 @@ class AdminController extends Controller
      */
     protected function findModel($id)
     {
+        $this->layout = 'template';
+
         if (($model = Admin::findOne($id)) !== null) {
             return $model;
         } else {

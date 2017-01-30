@@ -132,7 +132,7 @@ class SiteController extends Controller
         $this->layout = 'template';
 
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->render('template');
         }
 
         $model = new LoginForm();
@@ -143,7 +143,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
 
-        return $this->render('template');
+        //return $this->render('template');
     }
 
     public function actionMaintemp()

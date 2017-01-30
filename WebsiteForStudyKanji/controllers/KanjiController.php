@@ -40,9 +40,21 @@ class KanjiController extends Controller
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $model_kanji = kanji::find()->all();
+        $model_ch1 = kanji::find()->where("kanji_ch = '01'")->all();
+        $model_ch2 = kanji::find()->where("kanji_ch = '02'")->all();
+        $model_ch3 = kanji::find()->where("kanji_ch = '03'")->all();
+        $model_ch4 = kanji::find()->where("kanji_ch = '04'")->all();
+        $model_ch5 = kanji::find()->where("kanji_ch = '05'")->all();
+        $model_ch6 = kanji::find()->where("kanji_ch = '06'")->all();
+        $model_ch7 = kanji::find()->where("kanji_ch = '07'")->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model_kanji' => $model_kanji,
+            'model_ch1' => $model_ch1,
+            'model_ch2' => $model_ch2,
         ]);
     }
 

@@ -94,7 +94,7 @@ AppAsset::register($this);
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; KNightmare Feiya 2017</p>
                 </div>
             </div>
         </div>

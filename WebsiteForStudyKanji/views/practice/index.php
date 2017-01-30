@@ -8,13 +8,13 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Practices';
-$this->params['breadcrumbs'][] = $this->title;
+//$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="practice-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -23,9 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
+      <div class="panel-body"> -->
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <!-- <div class="panel-heading">search practice</div> -->
+            <div class="panel-body">
             <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-
       </div>
     </div>
   </div>
