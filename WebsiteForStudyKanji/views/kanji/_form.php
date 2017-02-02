@@ -18,22 +18,29 @@ use yii\widgets\ActiveForm;
 
     if($model->kanji_ch == null && $model->kanji_no == null) //create case
     {
-        $string_ch = $value->kanji_ch;
-        $string_no = $value->kanji_no;
-
-        $number = intval($string_no); //convert to integer
-        $number = $number + 1; // number++
-
-        if($number <= 99){
-            if($number < 10){
-                $new_number = '0'.$number;
-            }else{
-                $new_number = $number;
-            }
+        if (!isset($value->kanji_ch)) {
+            $model->kanji_ch=$chapter;
+            $model->kanji_no='01';
         }
+        else
+        {
+            $string_ch = $value->kanji_ch;
+            $string_no = $value->kanji_no;
 
-        $model->kanji_ch = $string_ch;
-        $model->kanji_no = $new_number;
+            $number = intval($string_no); //convert to integer
+            $number = $number + 1; // number++
+
+            if($number <= 99){
+                if($number < 10){
+                    $new_number = '0'.$number;
+                }else{
+                    $new_number = $number;
+                }
+            }
+
+            $model->kanji_ch = $string_ch;
+            $model->kanji_no = $new_number;
+        }
     }
 ?>
 
@@ -41,9 +48,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'kanji_ch')->textInput(['maxlength' => true]) ?><!--  ,'readonly'=>true -->
+    <?= $form->field($model, 'kanji_ch')->textInput(['maxlength' => true,'readonly'=>true]) ?><!--  ,'readonly'=>true -->
 
-    <?= $form->field($model, 'kanji_no')->textInput(['maxlength' => true]) ?><!--  , 'readonly'=>true -->
+    <?= $form->field($model, 'kanji_no')->textInput(['maxlength' => true,'readonly'=>true]) ?><!--  , 'readonly'=>true -->
 
     <?= $form->field($model, 'kanji')->textInput(['maxlength' => true]) ?>
 

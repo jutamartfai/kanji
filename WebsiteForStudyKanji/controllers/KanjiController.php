@@ -40,7 +40,7 @@ class KanjiController extends Controller
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $model_kanji = kanji::find()->all();
+        $model_kanji = kanji::find()->groupBy(['kanji_ch'])->all();
         $model_ch1 = kanji::find()->where("kanji_ch = '01'")->all();
         $model_ch2 = kanji::find()->where("kanji_ch = '02'")->all();
         $model_ch3 = kanji::find()->where("kanji_ch = '03'")->all();
@@ -48,6 +48,13 @@ class KanjiController extends Controller
         $model_ch5 = kanji::find()->where("kanji_ch = '05'")->all();
         $model_ch6 = kanji::find()->where("kanji_ch = '06'")->all();
         $model_ch7 = kanji::find()->where("kanji_ch = '07'")->all();
+        $model_ch8 = kanji::find()->where("kanji_ch = '08'")->all();
+        $model_ch9 = kanji::find()->where("kanji_ch = '09'")->all();
+        $model_ch10 = kanji::find()->where("kanji_ch = '10'")->all();
+        $model_ch11 = kanji::find()->where("kanji_ch = '11'")->all();
+        $model_ch12 = kanji::find()->where("kanji_ch = '12'")->all();
+        $model_ch13 = kanji::find()->where("kanji_ch = '13'")->all();
+        $model_ch14 = kanji::find()->where("kanji_ch = '14'")->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -55,6 +62,18 @@ class KanjiController extends Controller
             'model_kanji' => $model_kanji,
             'model_ch1' => $model_ch1,
             'model_ch2' => $model_ch2,
+            'model_ch3' => $model_ch3,
+            'model_ch4' => $model_ch4,
+            'model_ch5' => $model_ch5,
+            'model_ch6' => $model_ch6,
+            'model_ch7' => $model_ch7,
+            'model_ch8' => $model_ch8,
+            'model_ch9' => $model_ch9,
+            'model_ch10' => $model_ch10,
+            'model_ch11' => $model_ch11,
+            'model_ch12' => $model_ch12,
+            'model_ch13' => $model_ch13,
+            'model_ch14' => $model_ch14,
         ]);
     }
 
@@ -78,13 +97,13 @@ class KanjiController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($chapter)
     {
         $this->layout = 'template';
 
         $model = new Kanji();
 
-        $ch_kanji = kanji::find()->all();
+        $ch_kanji = kanji::find()->where("kanji_ch = $chapter")->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]);
@@ -92,6 +111,7 @@ class KanjiController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'ch_kanji'=>$ch_kanji,
+                'chapter'=>$chapter,
             ]);
         }
     }

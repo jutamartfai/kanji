@@ -18,22 +18,29 @@ use yii\widgets\ActiveForm;
 
     if($model->practice_ch == null && $model->practice_no == null) //create case
     {
-        $string_ch = $value->practice_ch;
-        $string_no = $value->practice_no;
-
-        $number = intval($string_no); //convert to integer
-        $number = $number + 1; // number++
-
-        if($number <= 99){
-            if($number < 10){
-                $new_number = '0'.$number;
-            }else{
-                $new_number = $number;
-            }
+        if (!isset($value->practice_ch)) {
+            $model->practice_ch=$chapter;
+            $model->practice_no='01';
         }
+        else
+        {
+            $string_ch = $value->practice_ch;
+            $string_no = $value->practice_no;
 
-        $model->practice_ch = $string_ch;
-        $model->practice_no = $new_number;
+            $number = intval($string_no); //convert to integer
+            $number = $number + 1; // number++
+
+            if($number <= 99){
+                if($number < 10){
+                    $new_number = '0'.$number;
+                }else{
+                    $new_number = $number;
+                }
+            }
+
+            $model->practice_ch = $string_ch;
+            $model->practice_no = $new_number;
+        }
     }
 ?>
 
@@ -41,9 +48,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'practice_ch')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'practice_ch')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
-    <?= $form->field($model, 'practice_no')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'practice_no')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
     <?= $form->field($model, 'question')->textInput(['maxlength' => true]) ?>
 

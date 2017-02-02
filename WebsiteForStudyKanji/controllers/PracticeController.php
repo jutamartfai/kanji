@@ -40,9 +40,40 @@ class PracticeController extends Controller
         $searchModel = new PracticeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $model_practice = practice::find()->groupBy(['practice_ch'])->all();
+        $model_ch1 = practice::find()->where("practice_ch = '01'")->all();
+        $model_ch2 = practice::find()->where("practice_ch = '02'")->all();
+        $model_ch3 = practice::find()->where("practice_ch = '03'")->all();
+        $model_ch4 = practice::find()->where("practice_ch = '04'")->all();
+        $model_ch5 = practice::find()->where("practice_ch = '05'")->all();
+        $model_ch6 = practice::find()->where("practice_ch = '06'")->all();
+        $model_ch7 = practice::find()->where("practice_ch = '07'")->all();
+        $model_ch8 = practice::find()->where("practice_ch = '08'")->all();
+        $model_ch9 = practice::find()->where("practice_ch = '09'")->all();
+        $model_ch10 = practice::find()->where("practice_ch = '10'")->all();
+        $model_ch11 = practice::find()->where("practice_ch = '11'")->all();
+        $model_ch12 = practice::find()->where("practice_ch = '12'")->all();
+        $model_ch13 = practice::find()->where("practice_ch = '13'")->all();
+        $model_ch14 = practice::find()->where("practice_ch = '14'")->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model_practice' => $model_practice,
+            'model_ch1' => $model_ch1,
+            'model_ch2' => $model_ch2,
+            'model_ch3' => $model_ch3,
+            'model_ch4' => $model_ch4,
+            'model_ch5' => $model_ch5,
+            'model_ch6' => $model_ch6,
+            'model_ch7' => $model_ch7,
+            'model_ch8' => $model_ch8,
+            'model_ch9' => $model_ch9,
+            'model_ch10' => $model_ch10,
+            'model_ch11' => $model_ch11,
+            'model_ch12' => $model_ch12,
+            'model_ch13' => $model_ch13,
+            'model_ch14' => $model_ch14,
         ]);
     }
 
@@ -66,13 +97,13 @@ class PracticeController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($chapter)
     {
         $this->layout = 'template';
 
         $model = new Practice();
 
-        $ch_practice = practice::find()->all();
+        $ch_practice = practice::find()->where("practice_ch = $chapter")->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
@@ -80,6 +111,7 @@ class PracticeController extends Controller
             return $this->render('create', [
                 'model' => $model,
                 'ch_practice' => $ch_practice,
+                'chapter'=>$chapter,
             ]);
         }
     }
