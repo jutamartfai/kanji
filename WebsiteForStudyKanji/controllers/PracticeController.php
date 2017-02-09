@@ -9,6 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\UploadForm;
+use yii\web\UploadedFile;
+
 /**
  * PracticeController implements the CRUD actions for Practice model.
  */
@@ -87,8 +90,23 @@ class PracticeController extends Controller
     {
         $this->layout = 'template';
 
+        $model_upload = new UploadForm();
+
+        if(Yii::$app->request->isPost){
+            // $model->load(Yii::$app->request->post());
+            // if ($model->save()) {
+                $model_upload->file = UploadedFile::getInstance($model_upload, 'file');
+                if ($model_upload->validate()) {
+                    $model_upload->file->saveAs('uploads/' . "Q" . $model_upload->file->baseName . '.' . $model_upload->file->extension);
+                    // $model->p_image = $model_upload->file->baseName . '.' . $model_upload->file->extension;
+                }
+                // $model->save();
+                  // return $this->redirect('index');
+            // }
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($practice_ch, $practice_no),
+            'model' => $this->findModel($practice_ch, $practice_no), 'model_upload' => $model_upload,
         ]);
     }
 
@@ -105,6 +123,33 @@ class PracticeController extends Controller
 
         $ch_practice = practice::find()->where("practice_ch = $chapter")->all();
 
+        $model_upload = new UploadForm();
+
+        if(Yii::$app->request->isPost){
+            // $model->load(Yii::$app->request->post());
+            // if ($model->save()) {
+                $model_upload->file = UploadedFile::getInstance($model_upload, 'file');
+                if ($model_upload->validate()) {
+                    $model_upload->file->saveAs('uploads/' . "Q" . $model_upload->file->baseName . '.' . $model_upload->file->extension);
+                    // $model->p_image = $model_upload->file->baseName . '.' . $model_upload->file->extension;
+                }
+                // $model->save();
+                  // return $this->redirect('index');
+            // }
+
+                $model_upload->file2 = UploadedFile::getInstance($model_upload, 'file2');
+                if ($model_upload->validate()) {
+                    $model_upload->file2->saveAs('uploads/' . "M" . $model_upload->file2->baseName . '.' . $model_upload->file2->extension);
+                    // $model->p_image = $model_upload->file2->baseName . '.' . $model_upload->file2->extension;
+                }
+
+                $model_upload->file3 = UploadedFile::getInstance($model_upload, 'file3');
+                if ($model_upload->validate()) {
+                    $model_upload->file3->saveAs('uploads/' . "P" . $model_upload->file3->baseName . '.' . $model_upload->file3->extension);
+                    // $model->p_image = $model_upload->file3->baseName . '.' . $model_upload->file3->extension;
+                }
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
         } else {
@@ -112,6 +157,7 @@ class PracticeController extends Controller
                 'model' => $model,
                 'ch_practice' => $ch_practice,
                 'chapter'=>$chapter,
+                'model_upload' => $model_upload,
             ]);
         }
     }
@@ -174,5 +220,21 @@ class PracticeController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionUpload()
+    {
+        $this->layout = 'template';
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+
+            if ($model->validate()) {
+                $model->file->saveAs('uploads/' . $model->file->baseName . '.' . $model->file->extension);
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
     }
 }

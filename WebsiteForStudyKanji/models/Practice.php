@@ -15,6 +15,7 @@ use Yii;
  */
 class Practice extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
