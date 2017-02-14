@@ -3,6 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+use app\models\UploadForm;
+use yii\web\UploadedFile;
+
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Practice */
 /* @var $form yii\widgets\ActiveForm */
@@ -40,6 +44,7 @@ use yii\widgets\ActiveForm;
 
             $model->practice_ch = $string_ch;
             $model->practice_no = $new_number;
+            //$model_upload->newname = $string_ch.$new_number;
         }
     }
 ?>
@@ -48,15 +53,73 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
+    <fieldset disabled>
+
     <?= $form->field($model, 'practice_ch')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
     <?= $form->field($model, 'practice_no')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
-    <?= $form->field($model_upload, 'file')->fileInput() ?>
+    </fieldset>
 
-    <?= $form->field($model_upload, 'file2')->fileInput() ?>
+    <!-- input file -> question image -->
 
-    <?= $form->field($model_upload, 'file3')->fileInput() ?>
+    <div class="row">
+        <!-- <div class="col-md-2">
+            <div class="well text-center">
+                <?= Html::img($model->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?>
+            </div>
+        </div> -->
+        <div class="col-md-10">
+            <?= $form->field($model, 'question')->fileInput(['onchange' => 'loadFile(event)']); ?>
+        </div>
+    </div>
+
+       <!--  <?php
+        $myImage = $model->question;
+        $image = '@web/uploads/'.$myImage;
+    ?>
+
+    <?= Html::img($image, $option=['id'=>'output', 'width'=>300]); ?> -->
+
+    <!-- input file -> meaning image -->
+
+    <div class="row">
+        <!-- <div class="col-md-2">
+            <div class="well text-center">
+                <?= Html::img($model->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?>
+            </div>
+        </div> -->
+        <div class="col-md-10">
+            <?= $form->field($model, 'meaning')->fileInput(['onchange' => 'loadFile(event)']); ?>
+        </div>
+    </div>
+
+       <!--  <?php
+        $myImage2 = $model->meaning;
+        $image2 = '@web/uploads/'.$myImage2;
+    ?>
+
+    <?= Html::img($image2, $option=['id'=>'output', 'width'=>300]); ?> -->
+
+    <!-- input file -> pron image -->
+
+    <div class="row">
+        <!-- <div class="col-md-2">
+            <div class="well text-center">
+                <?= Html::img($model->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?>
+            </div>
+        </div> -->
+        <div class="col-md-10">
+            <?= $form->field($model, 'pron')->fileInput(['onchange' => 'loadFile(event)']); ?>
+        </div>
+    </div>
+
+ <!--        <?php
+        $myImage3 = $model->pron;
+        $image3 = '@web/uploads/'.$myImage3;
+    ?>
+
+    <?= Html::img($image3, $option=['id'=>'output', 'width'=>300]); ?> -->
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -65,3 +128,10 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    var loadFile = function(event){
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

@@ -48,9 +48,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <fieldset disabled>
+
     <?= $form->field($model, 'kanji_ch')->textInput(['maxlength' => true,'readonly'=>true]) ?><!--  ,'readonly'=>true -->
 
     <?= $form->field($model, 'kanji_no')->textInput(['maxlength' => true,'readonly'=>true]) ?><!--  , 'readonly'=>true -->
+
+    </fieldset>
 
     <?= $form->field($model, 'kanji')->textInput(['maxlength' => true]) ?>
 

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PracticeSearch */
@@ -49,6 +50,7 @@ $this->title = 'Practices';
                 ]); ?>
 
                 <br><br>
+                <?php $form = ActiveForm::begin(); ?>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <!-- chapter 1 -->
                 <div class="panel panel-default">
@@ -76,12 +78,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch1 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -126,12 +128,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch2 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -176,12 +178,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch3 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -226,12 +228,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch4 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -276,12 +278,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch5 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -326,12 +328,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch6 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -376,12 +378,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch7 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -426,12 +428,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch8 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -476,12 +478,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch9 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -526,12 +528,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch10 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -576,12 +578,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch11 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -626,12 +628,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch12 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -676,12 +678,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch13 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -726,12 +728,12 @@ $this->title = 'Practices';
                                 <?php foreach ($model_ch14 as $key => $value) : ?>
                                 <tbody>
                                     <tr>
-                                        <td><?= $value->question; ?></td>
-                                        <td><?= $value->meaning; ?></td>
-                                        <td><?= $value->pron; ?></td>
+                                        <td><?= $value->question; ?><br><br><?= Html::img($value->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->meaning; ?><br><br><?= Html::img($value->getPhotoViewer2(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
+                                        <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                         <td>
                                             <div class="btn-group btn-group-sm text-center" role="group">
-                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                 <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                     'class' => 'btn btn-danger',
@@ -751,6 +753,7 @@ $this->title = 'Practices';
                 </div>
                 <!-- end chapter 14 -->
                 </div>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>

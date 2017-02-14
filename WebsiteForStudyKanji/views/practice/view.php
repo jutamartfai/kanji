@@ -32,22 +32,26 @@ $this->params['breadcrumbs'][] = $title2;
         'attributes' => [
             'practice_ch',
             'practice_no',
-            'question',
-            'meaning',
-            'pron',
+            //'question',
+            //'meaning',
+            //'pron',
+            [
+                'format'=>'raw',
+                'attribute'=>'question',
+                'value'=>Html::img($model->photoViewer,['class'=>'img-thumbnail','style'=>'width:200px;'])
+            ],
+            [
+                'format'=>'raw',
+                'attribute'=>'meaning',
+                'value'=>Html::img($model->photoViewer2,['class'=>'img-thumbnail','style'=>'width:200px;'])
+            ],
+            [
+                'format'=>'raw',
+                'attribute'=>'pron',
+                'value'=>Html::img($model->photoViewer3,['class'=>'img-thumbnail','style'=>'width:200px;'])
+            ],
         ],
     ]) ?>
 
 </div>
 
-<?php
-use yii\widgets\ActiveForm;
-?>
-
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
-
-    <?= $form->field($model_upload, 'file')->fileInput() ?>
-
-    <button>Submit</button>
-
-<?php ActiveForm::end() ?>
