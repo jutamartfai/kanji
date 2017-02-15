@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\KanjiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'KANJI CHAPTER';
+$this->title = 'PRACTICE CHAPTER';
 
 ?>
 
@@ -24,9 +24,11 @@ $this->title = 'KANJI CHAPTER';
                         <?php foreach ($model_ch as $key => $chapter) : ?>
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
-                                <h4 class="panel-title">
-                                    <?= Html::a($chapter->name, ['kanji_content', 'chapter' => $chapter->no, 'ch_name' => $chapter->name ], ['class' => 'collapsed']) ?>
-                                </h4>
+                              <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#" aria-expanded="false" aria-controls="collapseThree">
+                                    <?= $chapter->name; ?>
+                                </a>
+                              </h4>
                             </div>
                         </div>
                         <br>

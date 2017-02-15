@@ -46,10 +46,10 @@ AppAsset::register($this);
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href= "<?= Url::to(['/site/about']) ?>">kanji chapter</a>
+                        <a href= "<?= Url::to(['/site/index']) ?>">kanji chapter</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['/site/contact']) ?>">practice chapter</a>
+                        <a href="<?= Url::to(['/site/sel_practice']) ?>">practice chapter</a>
                     </li>
                     <li>
                     <?php

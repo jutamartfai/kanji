@@ -18,41 +18,7 @@ $this->title = 'Kanjis';
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-body">
-            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-      </div>
-    </div>
-  </div>
-
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-
-                        'kanji_ch',
-                        'kanji_no',
-                        'kanji',
-                        //'meaning',
-                        //'jp_pron',
-                        //'cn_pron',
-                        //'line_num',
-                        //'ex_vocab:ntext',
-                        //'how_to',
-
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>',
-                            'contentOptions'=>[
-                                'noWrap' => true
-                            ],
-                        ],
-                    ],
-                ]); ?>
-
-                <br><br>
+            <br>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <!-- chapter -->
                 <?php foreach ($model_ch as $key => $chapter) : ?>
@@ -67,7 +33,7 @@ $this->title = 'Kanjis';
                     <div id="<?= $chapter->no; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                         <p>
-                            <?= Html::a('Create Kanji', ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create Kanji ch.'.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
                         </p>
                             <table class="table table-hover table-bordered">
                                 <thead>

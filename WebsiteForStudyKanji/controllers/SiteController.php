@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Chapter;
+use app\models\Kanji;
+use app\models\Practice;
 
 class SiteController extends Controller
 {
@@ -61,7 +64,12 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'maintemp';
-        return $this->render('index');
+
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('index', [
+            'model_ch' => $model_ch,
+        ]);
     }
 
     /**
@@ -124,8 +132,32 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $this->layout = 'maintemp';
-        return $this->render('about');
+        return $this->render('index');
     }
+
+    public function actionSel_practice()
+    {
+        $this->layout = 'maintemp';
+
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('sel_practice', [
+            'model_ch' => $model_ch,
+        ]);
+    }
+
+    public function actionKanji_content($chapter,$ch_name)
+    {
+        $this->layout = 'maintemp';
+
+        $model = Kanji::find()->where("kanji_ch=$chapter")->all();
+
+        return $this->render('kanji_content', [
+            'model' => $model,
+            'ch_name' => $ch_name,
+        ]);
+    }
+
 
     public function actionTemplate()
     {

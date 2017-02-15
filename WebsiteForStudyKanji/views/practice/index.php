@@ -17,39 +17,7 @@ $this->title = 'Practices';
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-body">
-            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-      </div>
-    </div>
-  </div>
-
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel,
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-
-                        //'practice_ch',
-                        //'practice_no',
-                        'question',
-                        'meaning',
-                        'pron',
-
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>',
-                            //'options'=> ['style'=>'width:100px;'],
-                            'contentOptions'=>[
-                                'noWrap' => true
-                            ],
-                        ],
-                    ],
-                ]); ?>
-
-                <br><br>
+            <br>
                 <?php $form = ActiveForm::begin(); ?>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <!-- chapter -->
@@ -65,7 +33,7 @@ $this->title = 'Practices';
                     <div id="<?= $chapter->no; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                         <p>
-                            <?= Html::a('Create Practice', ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('Create Practice ch.'.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
                         </p>
                             <table class="table table-hover table-bordered">
                                 <thead>

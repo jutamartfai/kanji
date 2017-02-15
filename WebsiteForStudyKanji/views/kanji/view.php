@@ -41,6 +41,11 @@ $this->params['breadcrumbs'][] = $title2;
             'line_num',
             'ex_vocab:ntext',
             'how_to',
+            [
+                'format' => 'raw',
+                'attribute'=>'how_to',
+                'value' => !empty($model->how_to) ? '<iframe class="embed-responsive-item" src="'.$model->how_to.'" frameborder="0" allowfullscreen></iframe>' : null,
+            ],
         ],
     ]) ?>
 
