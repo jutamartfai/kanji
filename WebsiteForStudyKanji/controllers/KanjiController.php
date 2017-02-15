@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Kanji;
+use app\models\Chapter;
 use app\models\KanjiSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -40,40 +41,14 @@ class KanjiController extends Controller
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $model_kanji = kanji::find()->groupBy(['kanji_ch'])->all();
-        $model_ch1 = kanji::find()->where("kanji_ch = '01'")->all();
-        $model_ch2 = kanji::find()->where("kanji_ch = '02'")->all();
-        $model_ch3 = kanji::find()->where("kanji_ch = '03'")->all();
-        $model_ch4 = kanji::find()->where("kanji_ch = '04'")->all();
-        $model_ch5 = kanji::find()->where("kanji_ch = '05'")->all();
-        $model_ch6 = kanji::find()->where("kanji_ch = '06'")->all();
-        $model_ch7 = kanji::find()->where("kanji_ch = '07'")->all();
-        $model_ch8 = kanji::find()->where("kanji_ch = '08'")->all();
-        $model_ch9 = kanji::find()->where("kanji_ch = '09'")->all();
-        $model_ch10 = kanji::find()->where("kanji_ch = '10'")->all();
-        $model_ch11 = kanji::find()->where("kanji_ch = '11'")->all();
-        $model_ch12 = kanji::find()->where("kanji_ch = '12'")->all();
-        $model_ch13 = kanji::find()->where("kanji_ch = '13'")->all();
-        $model_ch14 = kanji::find()->where("kanji_ch = '14'")->all();
+        $model = Kanji::find()->all();
+        $model_ch = Chapter::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'model_kanji' => $model_kanji,
-            'model_ch1' => $model_ch1,
-            'model_ch2' => $model_ch2,
-            'model_ch3' => $model_ch3,
-            'model_ch4' => $model_ch4,
-            'model_ch5' => $model_ch5,
-            'model_ch6' => $model_ch6,
-            'model_ch7' => $model_ch7,
-            'model_ch8' => $model_ch8,
-            'model_ch9' => $model_ch9,
-            'model_ch10' => $model_ch10,
-            'model_ch11' => $model_ch11,
-            'model_ch12' => $model_ch12,
-            'model_ch13' => $model_ch13,
-            'model_ch14' => $model_ch14,
+            'model' => $model,
+            'model_ch' => $model_ch,
         ]);
     }
 
