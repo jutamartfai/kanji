@@ -20,7 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'mytemp/css/bootstrap.min.css',
-        'mytemp/css/business-casual.css'
+        'mytemp/css/business-casual.css',
     ];
     public $js = [
         'mytemp/js/jquery.js',

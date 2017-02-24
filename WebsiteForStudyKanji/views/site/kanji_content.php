@@ -18,9 +18,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel panel-default">
         <div class="panel-body">
         <br>
+        <h1><div class="btn-group" role="group">
+            <?php foreach ($model as $key => $value) : ?>
+            <a href="#<?= $value->kanji_no; ?>" class="btn btn-default"><?= $value->kanji; ?></a>
+            <?php endforeach ; ?>
+        </div></h1>
+        <br>
             <table class="table table-hover table-bordered">
                 <?php foreach ($model as $key => $value) : ?>
-                    <thead>
+                    <!-- <div id="<?= $value->kanji_no; ?>"> -->
+                    <thead id="<?= $value->kanji_no; ?>">
                         <tr>
                             <th>ตัวอักษรคันจิ</th>
                             <th>ความหมาย</th>
@@ -53,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </td>
                         </tr>
                     </tbody>
+                    <!-- </div> -->
                 <?php endforeach ; ?>
             </table>
         </div>

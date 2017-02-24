@@ -158,6 +158,17 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionPractice_content($chapter,$ch_name)
+    {
+        $this->layout = 'maintemp';
+
+        $model = Practice::find()->where("practice_ch=$chapter")->all();
+
+        return $this->render('practice_content', [
+            'model' => $model,
+            'ch_name' => $ch_name,
+        ]);
+    }
 
     public function actionTemplate()
     {

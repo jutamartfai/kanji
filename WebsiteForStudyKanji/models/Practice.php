@@ -97,4 +97,17 @@ class Practice extends \yii\db\ActiveRecord
 	public function getPhotoViewer3(){
 	  return empty($this->pron) ? Yii::getAlias('@web').'/img/none.png' : $this->getUploadUrl().$this->pron;
 	}
+
+	public function deleteImage($attribute){
+		if($attribute=="question")
+	    	{
+	    		unlink($this->upload_foler.'/'.$this->question);
+	    	}
+	    	elseif ($attribute=="meaning") {
+	    		unlink($this->upload_foler.'/'.$this->meaning);
+	    	}
+	    	elseif ($attribute=="pron") {
+	    		unlink($this->upload_foler.'/'.$this->pron);
+	    	}
+	}
 }

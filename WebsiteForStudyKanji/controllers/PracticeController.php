@@ -145,7 +145,7 @@ class PracticeController extends Controller
 
         $ch_practice = practice::find()->all();
 
-        $model_upload = new UploadForm();
+        //$model_upload = new UploadForm();
 
         /* if(Yii::$app->request->isPost){
             $model->load(Yii::$app->request->post());
@@ -204,7 +204,7 @@ class PracticeController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'ch_practice' => $ch_practice,
-                'model_upload' => $model_upload,
+                //'model_upload' => $model_upload,
             ]);
         }
     }
@@ -220,7 +220,13 @@ class PracticeController extends Controller
     {
         $this->layout = 'template';
 
-        $this->findModel($practice_ch, $practice_no)->delete();
+        $model = $this->findModel($practice_ch, $practice_no);
+
+        $model->deleteImage('question');
+        $model->deleteImage('meaning');
+        $model->deleteImage('pron');
+
+        $model->delete();
 
         return $this->redirect(['index']);
     }

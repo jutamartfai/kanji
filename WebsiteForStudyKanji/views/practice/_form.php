@@ -53,13 +53,9 @@ use yii\web\UploadedFile;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <fieldset disabled>
-
     <?= $form->field($model, 'practice_ch')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
     <?= $form->field($model, 'practice_no')->textInput(['maxlength' => true,'readonly'=>true]) ?>
-
-    </fieldset>
 
     <!-- input file -> question image -->
 

@@ -9,6 +9,7 @@ yii.confirm = function (message, $e) {
        callback: function (result) {
            if (result) {
               yii.handleAction($e);
+              return true;
            }
        }
    });

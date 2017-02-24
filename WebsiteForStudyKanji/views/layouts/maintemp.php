@@ -24,12 +24,12 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
+<div class="wrapper">
 	<div class="brand">kanji website</div>
     <div class="address-bar">by knightmare feiya</div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -89,7 +89,7 @@ AppAsset::register($this);
     		</div>
     	</div>
     </div>
-
+</div>
 	<footer>
         <div class="container">
             <div class="row">
@@ -100,12 +100,10 @@ AppAsset::register($this);
         </div>
     </footer>
 
-<!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+<!-- Script to Top button -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://arrow.scrolltotop.com/arrow78.js"></script>
+<noscript>Not seeing a <a href="http://www.scrolltotop.com/">Scroll to Top Button</a>? Go to our FAQ page for more info.</noscript>
 
 
 <?php $this->endBody() ?>
