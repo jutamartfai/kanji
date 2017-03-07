@@ -5,12 +5,14 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\session;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Chapter;
 use app\models\Kanji;
 use app\models\Practice;
+use app\models\Member;
 
 class SiteController extends Controller
 {
@@ -64,6 +66,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
 
         $model_ch = Chapter::find()->all();
 
@@ -80,13 +84,17 @@ class SiteController extends Controller
     public function actionLogin()
     {
         $this->layout = 'maintemp';
-        if (!Yii::$app->user->isGuest) {
+        $session = new Session;
+        $session->open();
+
+        if (isset($session['member_name'])) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $session['member_name'] = $model->getName();
+            return $this->goHome();
         }
         return $this->render('login', [
             'model' => $model,
@@ -105,6 +113,18 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
+    public function actionGologout()
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        unset($session['member_name']);
+        $session->close();
+
+        return $this->goHome();
+    }
+
     /**
      * Displays contact page.
      *
@@ -113,6 +133,8 @@ class SiteController extends Controller
     public function actionContact()
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -132,12 +154,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
         return $this->render('index');
     }
 
     public function actionSel_practice()
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
 
         $model_ch = Chapter::find()->all();
 
@@ -149,6 +175,8 @@ class SiteController extends Controller
     public function actionKanji_content($chapter,$ch_name)
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
 
         $model = Kanji::find()->where("kanji_ch=$chapter")->all();
 
@@ -161,6 +189,8 @@ class SiteController extends Controller
     public function actionPractice_content($chapter,$ch_name)
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
 
         $model = Practice::find()->where("practice_ch=$chapter")->all();
 
@@ -192,6 +222,8 @@ class SiteController extends Controller
     public function actionMaintemp()
     {
         $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
         return $this->render('maintemp');
     }
 }

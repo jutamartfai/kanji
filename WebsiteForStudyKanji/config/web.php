@@ -6,6 +6,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'timeZone' => 'Asia/Bangkok',
     //'layout' => 'template',
     //'layout' => 'maintemp',
     'components' => [

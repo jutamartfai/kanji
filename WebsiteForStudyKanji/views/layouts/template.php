@@ -9,8 +9,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+use yii\web\session;
 
 AppAsset::register($this);
+
+$session = new Session;
+$session->open();
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -45,32 +50,24 @@ AppAsset::register($this);
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <?php if(isset($session['member_name'])) { ?>
+                        <li>
+                            <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['practice/index']) ?>">practice</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['member/index']) ?>">member</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/site/gologout']) ?>">logout</a>
+                        </li>
+                    <?php }else{ ?>
                     <li>
-                        <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
+                        <a href="<?= Url::to(['/site/login']) ?>">login</a>
                     </li>
-                    <li>
-                        <a href="<?= Url::to(['practice/index']) ?>">practice</a>
-                    </li>
-                    <li>
-                        <a href="<?= Url::to(['member/index']) ?>">member</a>
-                    </li>
-                    <li>
-                    <?php
-                        // if(Yii::$app->user->isGuest) {?>
-                        <a href="<?= Url::to(['/site/template']) ?>">login</a>
-                        <?php
-                        // } else {
-                        //     '<li>'
-                        //     . Html::beginForm(['/site/logout'], 'post')
-                        //     . Html::submitButton(
-                        //         'Logout (' . Yii::$app->user->identity->username . ')',
-                        //         ['class' => 'btn btn-link logout']
-                        //     )
-                        //     . Html::endForm()
-                        //     . '</li>'
-                        // }
-                    ?>
-                    </li>
+                    <?php } ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

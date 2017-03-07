@@ -24,6 +24,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'mytemp/js/jquery.js',
+        'mytemp/js/jquery-3.1.1.js',
+        'mytemp/jquery_ui/jquery-ui.min.js',
         'mytemp/js/bootstrap.min.js',
         // 'mytemp/js/bootbox.min.js',
         // 'mytemp/js/main.js'

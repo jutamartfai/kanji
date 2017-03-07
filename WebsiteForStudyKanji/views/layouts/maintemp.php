@@ -9,8 +9,13 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use yii\helpers\Url;
+use yii\web\session;
 
 AppAsset::register($this);
+
+$session = new Session;
+$session->open();
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -51,23 +56,20 @@ AppAsset::register($this);
                     <li>
                         <a href="<?= Url::to(['/site/sel_practice']) ?>">practice chapter</a>
                     </li>
+                    <?php if(isset($session['member_name'])) { ?>
+                        <li class="dropdown">
+                            <a href= "#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $session['member_name']; ?><span class="glyphicon glyphicon-chevron-down"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="<?= Url::to(['/site/sel_practice']) ?>">โปรไฟล์</a></li>
+                                <li><a href="<?= Url::to(['/site/sel_practice']) ?>">สถิติ</a></li>
+                                <li><a href="<?= Url::to(['/site/gologout']) ?>">logout</a></li>
+                            </ul>
+                        </li>
+                    <?php }else{ ?>
                     <li>
-                    <?php
-                        //Yii::$app->user->isGuest ? ( ?>
                         <a href="<?= Url::to(['/site/login']) ?>">login</a>
-                        <?php
-                        // ) : (
-                        //     '<li>'
-                        //     . Html::beginForm(['/site/logout'], 'post')
-                        //     . Html::submitButton(
-                        //         'Logout (' . Yii::$app->user->identity->username . ')',
-                        //         ['class' => 'btn btn-link logout']
-                        //     )
-                        //     . Html::endForm()
-                        //     . '</li>'
-                        // )
-                    ?>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

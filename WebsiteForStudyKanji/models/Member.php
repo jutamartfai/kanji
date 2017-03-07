@@ -49,4 +49,45 @@ class Member extends \yii\db\ActiveRecord
             'active_date' => 'วันที่เข้าใช้งานล่าสุด',
         ];
     }
+
+    public static function findByEmail($username)
+    {
+        $myuser = Member::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['email'], $username) === 0) {
+                return new static($value);
+            }
+        }
+
+        return null;
+    }
+
+    public static function getEmail($username)
+    {
+        $myuser = Member::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['email'], $username) === 0) {
+                return $value['email'];
+            }
+        }
+
+        return null;
+    }
+
+    public static function getName($username)
+    {
+        $myuser = Member::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['email'], $username) === 0) {
+                return $value['first_name'];
+            }
+        }
+
+        return null;
+    }
+
+    public function validatePassword($password)
+    {
+        return $this->password === $password;
+    }
 }
