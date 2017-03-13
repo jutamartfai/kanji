@@ -54,20 +54,20 @@ $session->open();
                         <a href= "<?= Url::to(['/site/index']) ?>">kanji chapter</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['/site/sel_practice']) ?>">practice chapter</a>
+                        <a href="<?= Url::to(['/practice/sel_practice']) ?>">practice chapter</a>
                     </li>
                     <?php if(isset($session['member_name'])) { ?>
                         <li class="dropdown">
                             <a href= "#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $session['member_name']; ?><span class="glyphicon glyphicon-chevron-down"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="<?= Url::to(['/site/sel_practice']) ?>">โปรไฟล์</a></li>
-                                <li><a href="<?= Url::to(['/site/sel_practice']) ?>">สถิติ</a></li>
-                                <li><a href="<?= Url::to(['/site/gologout']) ?>">logout</a></li>
+                                <li><a href="<?= Url::to(['/member/profile', 'id' => $session['member_name'] ]) ?>">โปรไฟล์</a></li>
+                                <li><a href="<?= Url::to(['/site/static']) ?>">สถิติ</a></li>
+                                <li><a href="<?= Url::to(['/member/gologout']) ?>">logout</a></li>
                             </ul>
                         </li>
                     <?php }else{ ?>
                     <li>
-                        <a href="<?= Url::to(['/site/login']) ?>">login</a>
+                        <a href="<?= Url::to(['/member/login']) ?>">login</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -96,7 +96,8 @@ $session->open();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; KNightmare Feiya 2017</p>
+                    <p>Copyright &copy; KNightmare Feiya 2017
+                    <?= Html::a('for admin', ['admin/wellcome']) ?></p>
                 </div>
             </div>
         </div>

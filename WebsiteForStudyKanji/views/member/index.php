@@ -28,10 +28,10 @@ $this->title = 'Members';
         <div class="panel panel-default">
             <!-- <div class="panel-heading">Panel with panel-default class</div> -->
             <div class="panel-body">
-            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+                <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+            </div>
         </div>
     </div>
-  </div>
 
     <!-- <p>
         = Html::a('Create Member', ['create'], ['class' => 'btn btn-success'])

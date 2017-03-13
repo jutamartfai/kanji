@@ -76,54 +76,54 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Login action.
-     *
-     * @return string
-     */
-    public function actionLogin()
-    {
-        $this->layout = 'maintemp';
-        $session = new Session;
-        $session->open();
+    // /**
+    //  * Login action.
+    //  *
+    //  * @return string
+    //  */
+    // public function actionLogin()
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
 
-        if (isset($session['member_name'])) {
-            return $this->goHome();
-        }
+    //     if (isset($session['member_name'])) {
+    //         return $this->goHome();
+    //     }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            $session['member_name'] = $model->getName();
-            return $this->goHome();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
+    //     $model = new LoginForm();
+    //     if ($model->load(Yii::$app->request->post()) && $model->login()) {
+    //         $session['member_name'] = $model->getName();
+    //         return $this->goHome();
+    //     }
+    //     return $this->render('login', [
+    //         'model' => $model,
+    //     ]);
+    // }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
+    // /**
+    //  * Logout action.
+    //  *
+    //  * @return string
+    //  */
+    // public function actionLogout()
+    // {
+    //     Yii::$app->user->logout();
 
-        return $this->goHome();
-    }
+    //     return $this->goHome();
+    // }
 
-    public function actionGologout()
-    {
-        $this->layout = 'maintemp';
-        $session = new Session;
-        $session->open();
+    // public function actionGologout()
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
 
-        unset($session['member_name']);
-        $session->close();
+    //     unset($session['member_name']);
+    //     $session->close();
 
-        return $this->goHome();
-    }
+    //     return $this->goHome();
+    // }
 
     /**
      * Displays contact page.
@@ -159,18 +159,18 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    public function actionSel_practice()
-    {
-        $this->layout = 'maintemp';
-        $session = new Session;
-        $session->open();
+    // public function actionSel_practice()
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
 
-        $model_ch = Chapter::find()->all();
+    //     $model_ch = Chapter::find()->all();
 
-        return $this->render('sel_practice', [
-            'model_ch' => $model_ch,
-        ]);
-    }
+    //     return $this->render('sel_practice', [
+    //         'model_ch' => $model_ch,
+    //     ]);
+    // }
 
     public function actionKanji_content($chapter,$ch_name)
     {
@@ -186,37 +186,51 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionPractice_content($chapter,$ch_name)
+    // public function actionPractice_content($chapter,$ch_name)
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
+
+    //     $model = Practice::find()->where("practice_ch=$chapter")->all();
+
+    //     return $this->render('practice_content', [
+    //         'model' => $model,
+    //         'ch_name' => $ch_name,
+    //     ]);
+    // }
+
+    // public function actionProflie()
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
+    //     return $this->render('proflie');
+    // }
+
+    // public function actionRegister()
+    // {
+    //     $this->layout = 'maintemp';
+    //     $session = new Session;
+    //     $session->open();
+    //     return $this->render('register');
+    // }
+
+    public function actionStatic()
     {
         $this->layout = 'maintemp';
         $session = new Session;
         $session->open();
-
-        $model = Practice::find()->where("practice_ch=$chapter")->all();
-
-        return $this->render('practice_content', [
-            'model' => $model,
-            'ch_name' => $ch_name,
-        ]);
+        return $this->render('static');
     }
 
     public function actionTemplate()
     {
         $this->layout = 'template';
 
-        if (!Yii::$app->user->isGuest) {
-            return $this->render('template');
-        }
+        //return $this->render('admin');
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-
-        //return $this->render('template');
+        return $this->render('template');
     }
 
     public function actionMaintemp()

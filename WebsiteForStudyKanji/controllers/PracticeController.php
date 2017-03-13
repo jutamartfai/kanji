@@ -13,6 +13,8 @@ use yii\filters\VerbFilter;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
 
+use yii\web\session;
+
 /**
  * PracticeController implements the CRUD actions for Practice model.
  */
@@ -40,6 +42,8 @@ class PracticeController extends Controller
     public function actionIndex()
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $searchModel = new PracticeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -64,6 +68,8 @@ class PracticeController extends Controller
     public function actionView($practice_ch, $practice_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         return $this->render('view', [
             'model' => $this->findModel($practice_ch, $practice_no),
@@ -78,6 +84,8 @@ class PracticeController extends Controller
     public function actionCreate($chapter)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = new Practice();
 
@@ -140,6 +148,8 @@ class PracticeController extends Controller
     public function actionUpdate($practice_ch, $practice_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = Practice::findOne(['practice_ch' => $practice_ch, 'practice_no' => $practice_no]);
 
@@ -219,6 +229,8 @@ class PracticeController extends Controller
     public function actionDelete($practice_ch, $practice_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = $this->findModel($practice_ch, $practice_no);
 
@@ -242,11 +254,40 @@ class PracticeController extends Controller
     protected function findModel($practice_ch, $practice_no)
     {
         //$this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         if (($model = Practice::findOne(['practice_ch' => $practice_ch, 'practice_no' => $practice_no])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionSel_practice()
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('sel_practice', [
+            'model_ch' => $model_ch,
+        ]);
+    }
+
+    public function actionPractice_content($chapter,$ch_name)
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        $model = Practice::find()->where("practice_ch=$chapter")->all();
+
+        return $this->render('practice_content', [
+            'model' => $model,
+            'ch_name' => $ch_name,
+        ]);
     }
 }

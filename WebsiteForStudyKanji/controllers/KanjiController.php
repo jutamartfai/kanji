@@ -10,6 +10,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use yii\web\session;
+
 /**
  * KanjiController implements the CRUD actions for Kanji model.
  */
@@ -37,6 +39,8 @@ class KanjiController extends Controller
     public function actionIndex()
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -61,6 +65,8 @@ class KanjiController extends Controller
     public function actionView($kanji_ch, $kanji_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         return $this->render('view', [
             'model' => $this->findModel($kanji_ch, $kanji_no),
@@ -75,6 +81,8 @@ class KanjiController extends Controller
     public function actionCreate($chapter)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = new Kanji();
 
@@ -101,6 +109,8 @@ class KanjiController extends Controller
     public function actionUpdate($kanji_ch, $kanji_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = $this->findModel($kanji_ch, $kanji_no);
 
@@ -126,6 +136,8 @@ class KanjiController extends Controller
     public function actionDelete($kanji_ch, $kanji_no)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $this->findModel($kanji_ch, $kanji_no)->delete();
 

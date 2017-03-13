@@ -181,8 +181,8 @@ h1, h2, h3, h4 {
  
 #cardSlots div, #cardPile div {
   float: left;
-  width: 58px;
-  height: 78px;
+  width: 100px;
+  height: 35px;
   padding: 10px;
   padding-top: 40px;
   padding-bottom: 0;
@@ -249,8 +249,8 @@ h1, h2, h3, h4 {
  
 #cardSlots div, #cardPile div {
   float: left;
-  width: 58px;
-  height: 78px;
+  width: 100px;
+  height: 35px;
   padding: 10px;
   padding-top: 40px;
   padding-bottom: 0;
@@ -317,8 +317,8 @@ h1, h2, h3, h4 {
  
 #cardSlots2 div, #cardPile2 div {
   float: left;
-  width: 58px;
-  height: 78px;
+  width: 100px;
+  height: 35px;
   padding: 10px;
   padding-top: 40px;
   padding-bottom: 0;
@@ -391,15 +391,25 @@ h1, h2, h3, h4 {
 <?php foreach ($model as $key => $value) : ?>
  #card1 {
   background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
-  background-size: 78px 118px !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #card2 {
+  background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #card3 {
+  background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
+  background-size: 100px 40px !important;
   position: relative !important;
 }
 <?php endforeach ; ?>
- #card2 {
+/* #card2 {
   background-image: url("http://www.bytemining.com/wp-content/uploads/2012/01/200px-Playing_card_diamond_2.svg_.png") !important;
   background-size: 78px 118px !important;
   position: relative !important;
-}
+}*/
 
 </style>
 </head>
@@ -443,11 +453,11 @@ function init() {
  $('#cardPile2').html( '' );
   $('#cardSlots2').html( '' );
   // Create the pile of shuffled cards
-  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+  var numbers = [ 1, 2, 3 ]; /*, 4, 5, 6, 7, 8, 9, 10*/
   numbers.sort( function() { return Math.random() - .5 } );
  
-  for ( var i=0; i<10; i++ ) {
-    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+  for ( var i=0; i<3/*10*/; i++ ) {
+    $('<div>' + /*เอาเลขออก*/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
       containment: '#content',
       stack: '#cardPile div',
       cursor: 'move',
@@ -456,8 +466,8 @@ function init() {
   }
  
   // Create the card slots
-  var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' ];
-  for ( var i=1; i<=10; i++ ) {
+  var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' */];
+  for ( var i=1; i<=3/*10*/; i++ ) {
     $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
       accept: '#cardPile div',
       hoverClass: 'hovered',
@@ -467,10 +477,10 @@ function init() {
  
 
 // Create the pile of shuffled cards
-  var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+  var numbers = [ 1, 2, 3/*, 4, 5, 6, 7, 8, 9, 10*/ ];
   numbers.sort( function() { return Math.random() - .5 } );
  
-  for ( var i=0; i<10; i++ ) {
+  for ( var i=0; i<3/*10*/; i++ ) {
     $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
       containment: '#content',
       stack: '#cardPile2 div',
@@ -480,8 +490,8 @@ function init() {
   }
  
   // Create the card slots
-  var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' ];
-  for ( var i=1; i<=10; i++ ) {
+  var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'*/ ];
+  for ( var i=1; i<=3/*10*/; i++ ) {
     $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots2' ).droppable( {
       accept: '#cardPile2 div',
       hoverClass: 'hovered',
@@ -513,7 +523,7 @@ function handleCardDrop( event, ui ) {
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
  
-  if ( correctCards == 10 ) {
+  if ( correctCards == 6/*10*/ ) {
     $('#successMessage').show();
     $('#successMessage').animate( {
       left: '380px',

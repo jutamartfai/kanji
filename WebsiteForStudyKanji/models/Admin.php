@@ -10,111 +10,76 @@ use Yii;
  * @property string $username
  * @property string $password
  */
-class User extends \yii\db\ActiveRecord  implements IdentityInterface
+
+class Admin extends \yii\db\ActiveRecord
 {
-    class Admin extends \yii\db\ActiveRecord
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
     {
-        /**
-         * @inheritdoc
-         */
-        public static function tableName()
-        {
-            return 'admin';
-        }
-
-        /**
-         * @inheritdoc
-         */
-        public function rules()
-        {
-            return [
-                [['username', 'password'], 'required'],
-                [['username'], 'string', 'max' => 20],
-                [['password'], 'string', 'max' => 255],
-            ];
-        }
-
-        /**
-         * @inheritdoc
-         */
-        public function attributeLabels()
-        {
-            return [
-                'username' => 'ชื่อผู้ใช้',
-                'password' => 'รหัสผ่าน',
-            ];
-        }
+        return 'admin';
     }
 
     /**
      * @inheritdoc
      */
-    public static function findIdentity($id)
+    public function rules()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return [
+            [['username', 'password'], 'required'],
+            [['username'], 'string', 'max' => 20],
+            [['password'], 'string', 'max' => 255],
+        ];
     }
 
     /**
      * @inheritdoc
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public function attributeLabels()
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
+        return [
+            'username' => 'ชื่อผู้ใช้',
+            'password' => 'รหัสผ่าน',
+        ];
+    }
+
+        public static function findByUsername($username)
+    {
+        $myuser = Admin::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['username'], $username) === 0) {
+                return new static($value);
             }
         }
 
         return null;
     }
 
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
+    // public static function getEmail($username)
+    // {
+    //     $myuser = Admin::find()->all();
+    //     foreach ($myuser as $key => $value) {
+    //         if (strcasecmp($value['email'], $username) === 0) {
+    //             return $value['email'];
+    //         }
+    //     }
+
+    //     return null;
+    // }
+
+    public static function getUName($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
+        $myuser = Admin::find()->all();
+        foreach ($myuser as $key => $value) {
+            if (strcasecmp($value['username'], $username) === 0) {
+                return $value['username'];
             }
         }
 
         return null;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
     public function validatePassword($password)
     {
         return $this->password === $password;

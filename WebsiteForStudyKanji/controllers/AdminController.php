@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Admin;
 use app\models\AdminSearch;
+use app\models\AdminLoginForm;
+use yii\web\session;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -29,17 +31,38 @@ class AdminController extends Controller
         ];
     }
 
+    /**
+     * wellcome action.
+     *
+     * @return string
+     */
+    public function actionWellcome()
+    {
+        $this->layout = 'template';
+        $session = new Session;
+        $session->open();
+
+        return $this->render('wellcome');
+    }
+    /**
+     * Login action.
+     *
+     * @return string
+     */
     public function actionLogin()
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
-        if (!Yii::$app->user->isGuest) {
-            return $this->render('template');
+        if (isset($session['admin_name'])) {
+            return $this->render('wellcome');
         }
 
-        $model = new LoginForm();
+        $model = new AdminLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            $session['admin_name'] = $model->getUName();
+            return $this->render('wellcome');
         }
         return $this->render('login', [
             'model' => $model,
@@ -51,12 +74,25 @@ class AdminController extends Controller
      *
      * @return string
      */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
+    // public function actionLogout()
+    // {
+    //     Yii::$app->user->logout();
 
-        return $this->goHome();
+    //     return $this->goHome();
+    // }
+
+    public function actionGologout()
+    {
+        $this->layout = 'template';
+        $session = new Session;
+        $session->open();
+
+        unset($session['admin_name']);
+        $session->close();
+
+        return $this->render('wellcome');
     }
+
 
     /**
      * Lists all Admin models.
@@ -65,6 +101,8 @@ class AdminController extends Controller
     public function actionIndex()
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $searchModel = new AdminSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -83,6 +121,8 @@ class AdminController extends Controller
     public function actionView($id)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         return $this->render('view', [
             'model' => $this->findModel($id),
@@ -97,6 +137,8 @@ class AdminController extends Controller
     public function actionCreate()
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = new Admin();
 
@@ -118,6 +160,8 @@ class AdminController extends Controller
     public function actionUpdate($id)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $model = $this->findModel($id);
 
@@ -139,6 +183,8 @@ class AdminController extends Controller
     public function actionDelete($id)
     {
         $this->layout = 'template';
+        $session = new Session;
+        $session->open();
 
         $this->findModel($id)->delete();
 

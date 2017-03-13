@@ -50,7 +50,7 @@ $session->open();
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <?php if(isset($session['member_name'])) { ?>
+                    <?php if(isset($session['admin_name'])) { ?>
                         <li>
                             <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
                         </li>
@@ -61,11 +61,14 @@ $session->open();
                             <a href="<?= Url::to(['member/index']) ?>">member</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/site/gologout']) ?>">logout</a>
+                            <a href="<?= Url::to(['admin/index']) ?>">admin</a>
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['/admin/gologout']) ?>">logout(<?= $session['admin_name']; ?>)</a>
                         </li>
                     <?php }else{ ?>
                     <li>
-                        <a href="<?= Url::to(['/site/login']) ?>">login</a>
+                        <a href="<?= Url::to(['/admin/login']) ?>">login</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -94,7 +97,7 @@ $session->open();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; KNightmare Feiya 2017</p>
+                    <p>Copyright &copy; KNightmare Feiya 2017 <?= Html::a('go to website', ['site/index']) ?></p>
                 </div>
             </div>
         </div>

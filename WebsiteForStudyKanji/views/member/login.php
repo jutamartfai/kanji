@@ -28,11 +28,19 @@ $this->title = 'Login';
 
         <?= $form->field($model, 'password')->passwordInput() ?>
 
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+        <div class="row">
+            <div class="col-xs-6 col-sm-1"></div>
+            <div class="col-xs-6 col-sm-1">
                 <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
+            <div class="col-xs-6 col-sm-1">
+                <?= Html::a('register', ['register'], ['class' => 'btn btn-info']) ?>
+            </div>
+            <!-- <div class="col-xs-6 col-sm-1">
+                <?= Html::a('for admin', ['admin/wellcome'], ['class' => 'btn btn-info']) ?>
+            </div> -->
         </div>
+
     <?php ActiveForm::end(); ?>
 
 <!--     <div class="col-lg-offset-1" style="color:#999;">
