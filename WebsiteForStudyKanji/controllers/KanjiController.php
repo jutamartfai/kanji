@@ -12,6 +12,7 @@ use yii\filters\VerbFilter;
 
 use yii\web\session;
 
+
 /**
  * KanjiController implements the CRUD actions for Kanji model.
  */
@@ -42,6 +43,10 @@ class KanjiController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $searchModel = new KanjiSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -68,6 +73,10 @@ class KanjiController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($kanji_ch, $kanji_no),
         ]);
@@ -83,6 +92,10 @@ class KanjiController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
 
         $model = new Kanji();
 
@@ -112,6 +125,10 @@ class KanjiController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $model = $this->findModel($kanji_ch, $kanji_no);
 
         $ch_kanji = kanji::find()->all();
@@ -139,6 +156,10 @@ class KanjiController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $this->findModel($kanji_ch, $kanji_no)->delete();
 
         return $this->redirect(['index']);
@@ -154,7 +175,7 @@ class KanjiController extends Controller
      */
     protected function findModel($kanji_ch, $kanji_no)
     {
-        $this->layout = 'template';
+        //$this->layout = 'template';
 
         if (($model = Kanji::findOne(['kanji_ch' => $kanji_ch, 'kanji_no' => $kanji_no])) !== null) {
             return $model;

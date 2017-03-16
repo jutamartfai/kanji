@@ -10,10 +10,11 @@ $this->title = $model->email;
 ?>
 <div class="member-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>My Profile : <?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Edit Profile', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Edit Password', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= DetailView::widget([
@@ -23,7 +24,7 @@ $this->title = $model->email;
             'password',
             'first_name',
             'last_name',
-            'active_date',
+            // 'active_date',
         ],
     ]) ?>
 

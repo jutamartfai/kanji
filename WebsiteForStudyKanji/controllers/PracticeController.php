@@ -14,6 +14,7 @@ use app\models\UploadForm;
 use yii\web\UploadedFile;
 
 use yii\web\session;
+use app\models\LoginForm;
 
 /**
  * PracticeController implements the CRUD actions for Practice model.
@@ -45,6 +46,10 @@ class PracticeController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $searchModel = new PracticeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -71,6 +76,10 @@ class PracticeController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($practice_ch, $practice_no),
         ]);
@@ -86,6 +95,10 @@ class PracticeController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
 
         $model = new Practice();
 
@@ -150,6 +163,10 @@ class PracticeController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
 
         $model = Practice::findOne(['practice_ch' => $practice_ch, 'practice_no' => $practice_no]);
 
@@ -232,6 +249,10 @@ class PracticeController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $model = $this->findModel($practice_ch, $practice_no);
 
         $model->deleteImage('question');
@@ -270,6 +291,13 @@ class PracticeController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('../member/login', [
+                'model' => $model,
+            ]);
+        }
+
         $model_ch = Chapter::find()->all();
 
         return $this->render('sel_practice', [
@@ -282,6 +310,13 @@ class PracticeController extends Controller
         $this->layout = 'maintemp';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('../member/login', [
+                'model' => $model,
+            ]);
+        }
 
         $model = Practice::find()->where("practice_ch=$chapter")->all();
 

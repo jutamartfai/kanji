@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Member;
 use app\models\MemberSearch;
+use app\models\Admin;
 use app\models\LoginForm;
 use yii\web\session;
 use yii\web\Controller;
@@ -41,6 +42,10 @@ class MemberController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $searchModel = new MemberSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -61,6 +66,10 @@ class MemberController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -76,6 +85,10 @@ class MemberController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
 
         $model = new Member();
 
@@ -100,6 +113,10 @@ class MemberController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -122,6 +139,10 @@ class MemberController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('../admin/wellcome');
+        }
 
         $this->findModel($id)->delete();
 
@@ -189,6 +210,13 @@ class MemberController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
         unset($session['member_name']);
         $session->close();
 
@@ -203,6 +231,13 @@ class MemberController extends Controller
         $this->layout = 'maintemp';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
 
         return $this->render('Profile', [
             'model' => $this->findModel($id),
@@ -221,16 +256,56 @@ class MemberController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['Profile', 'id' => $model->email]);
+            return $this->render(['Profile', 'id' => $model->email]);
         } else {
             return $this->render('edit_profile', [
                 'model' => $model,
             ]);
         }
     }
+
+    /**
+     * Password action.
+     */
+    public function actionPassword()
+    {
+        $this->layout = 'maintemp';
+        $session = new Session();
+        $session->open();
+
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
+        $model = Member::findone($session['member_name']);
+        $current = new Admin();
+
+        $currentPassword = $model->password;
+        if(Yii::$app->request->isPost){
+            $model->load(Yii::$app->request->post());
+            $current->load(Yii::$app->request->post());
+            if(md5($current->password) == $currentPassword) {
+                $model->password = md5($model->password);
+                $model->save();
+                return $this->redirect('profile');
+            }
+        }
+        return $this->render('password', ['model' => $model, 'current' => $current]);
+    }
+
 
     /**
      * Register action.
@@ -246,9 +321,17 @@ class MemberController extends Controller
         }
 
         $model = new Member();
+        $session_model = new LoginForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['Profile', 'id' => $model->email]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->password = md5($model->password);
+            $model->active_date = date("Y-m-d H:i:s");
+            $model->save();
+            $session_model->username = $model->email;
+            $session_model->password = $model->password;
+
+            $session['member_name'] = $session_model->getName();
+            return $this->goHome();
         } else {
             return $this->render('register', [
                 'model' => $model,

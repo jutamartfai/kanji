@@ -13,6 +13,12 @@ $this->title = 'kanji website';
 	<div class="well col-md-6">
 		<?php $form = ActiveForm::begin(); ?>
 
+		<?= $form->field($model, 'email')->textInput(['maxlength' => true,'readonly'=>true]) ?>
+
+		<?= $form->field($model, 'first_name')->textInput(['maxlength' => true,'readonly'=>true]) ?>
+
+		<?= $form->field($model, 'last_name')->textInput(['maxlength' => true,'readonly'=>true]) ?>
+
 		<?= $form->field($current, 'password')->passwordInput(['value'=>false, 'autofocus' => true])->label('current password'); ?>
 
         <?= $form->field($model, 'password')->passwordInput(['value'=>false])->label('new password'); ?>

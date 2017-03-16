@@ -29,8 +29,8 @@ class Member extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'first_name', 'last_name', 'active_date'], 'required'],
-            [['active_date'], 'safe'],
+            [['email', 'password', 'first_name', 'last_name'], 'required'],
+            // [['active_date'], 'safe'],
             [['email', 'first_name', 'last_name'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 255],
         ];

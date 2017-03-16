@@ -104,6 +104,10 @@ class AdminController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('wellcome');
+        }
+
         $searchModel = new AdminSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -124,6 +128,10 @@ class AdminController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('wellcome');
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -139,6 +147,10 @@ class AdminController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('wellcome');
+        }
 
         $model = new Admin();
 
@@ -163,6 +175,10 @@ class AdminController extends Controller
         $session = new Session;
         $session->open();
 
+        if (!isset($session['admin_name'])) {
+            return $this->render('wellcome');
+        }
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -185,6 +201,10 @@ class AdminController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        if (!isset($session['admin_name'])) {
+            return $this->render('wellcome');
+        }
 
         $this->findModel($id)->delete();
 
