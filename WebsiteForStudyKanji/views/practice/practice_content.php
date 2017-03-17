@@ -476,6 +476,10 @@ h1, h2, h3, h4 {
       </div>
   </div>
 
+      correctScore: <div id="correctScore"></div>
+      failScore: <div id="failScore"></div>
+
+
   <!-- <div id="successMessage">
     <h2>You did it!</h2>
     <button onclick="init()">Play Again</button>
@@ -597,10 +601,8 @@ function handleCardDrop( event, ui ) {
     //   opacity: 1
     // } );
 
-    <?php
-    $correctScore = "<script language='javascript'> document.write(correctCards);</script>";
-    $failScore = "<script language='javascript'> document.write(failCards);</script>";
-    ?>
+    document.getElementById("correctScore").innerHTML = correctCards;
+    document.getElementById("failScore").innerHTML = failCards;
   }
  
 }
