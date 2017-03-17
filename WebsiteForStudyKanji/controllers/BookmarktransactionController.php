@@ -121,4 +121,18 @@ class BookmarktransactionController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionKanji_content($chapter,$ch_name)
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        $model = Kanji::find()->where("kanji_ch=$chapter")->all();
+
+        return $this->render('kanji_content', [
+            'model' => $model,
+            'ch_name' => $ch_name,
+        ]);
+    }
 }

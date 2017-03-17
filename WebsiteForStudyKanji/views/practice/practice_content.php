@@ -229,7 +229,7 @@ h1, h2, h3, h4 {
  
 #cardPile {
   margin: 0 auto;
-  background: #ffd;
+  background: #ddf;
 }
  
 #cardSlots, #cardPile {
@@ -290,7 +290,7 @@ h1, h2, h3, h4 {
 /*klkkk*/
 #cardSlots2 {
   margin: 50px auto 0 auto;
-  background: #ddf;
+  background: #ffd;
 }
  
 /* The initial pile of unsorted cards */
@@ -388,23 +388,62 @@ h1, h2, h3, h4 {
   box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
   padding: 20px;
 }
+<?php $i=0; ?>
 <?php foreach ($model as $key => $value) : ?>
- #card1 {
-  background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
-  background-size: 100px 40px !important;
-  position: relative !important;
-}
- #card2 {
-  background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
-  background-size: 100px 40px !important;
-  position: relative !important;
-}
- #card3 {
-  background-image: url("<?= $value->getPhotoViewer3(); ?>") !important;
-  background-size: 100px 40px !important;
-  position: relative !important;
-}
+<?php $question[$i] = $value->getPhotoViewer(); ?>
+<?php $meaning[$i] = $value->getPhotoViewer2(); ?>
+<?php $pron[$i] = $value->getPhotoViewer3(); ?>
+<?php $i++; ?>
 <?php endforeach ; ?>
+
+ #cardQ1 {
+  background-image: url("<?= $question[0]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardQ2 {
+  background-image: url("<?= $question[1]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardQ3 {
+  background-image: url("<?= $question[2]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardM1 {
+  background-image: url("<?= $meaning[0]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardM2 {
+  background-image: url("<?= $meaning[1]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardM3 {
+  background-image: url("<?= $meaning[2]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardP1 {
+  background-image: url("<?= $pron[0]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardP2 {
+  background-image: url("<?= $pron[1]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+ #cardP3 {
+  background-image: url("<?= $pron[2]; ?>") !important;
+  background-size: 100px 40px !important;
+  position: relative !important;
+}
+
+
+
 /* #card2 {
   background-image: url("http://www.bytemining.com/wp-content/uploads/2012/01/200px-Playing_card_diamond_2.svg_.png") !important;
   background-size: 78px 118px !important;
@@ -416,16 +455,31 @@ h1, h2, h3, h4 {
 <body>
  
 <div id="content">
- 
-  <div id="cardPile"> </div>
+
+  <div id="cardPile"> </div> <br><br>
   <div id="cardPile2"> </div>
   <div id="cardSlots"> </div>
   <div id="cardSlots2"> </div>
- 
-  <div id="successMessage">
+
+    <?php
+    $correctScore = "<script language='javascript'> document.write(correctCards);</script>";
+    $failScore = "<script language='javascript'> document.write(failCards);</script>";
+    ?>
+
+  <br><br>
+  <div class="row">
+      <div id="scoreBtn" class="col-xs-6 col-sm-3">
+          <?= Html::a('get score', ['score','correctScore'=> $correctScore ,'failScore'=>$failScore], ['class' => 'btn btn-info']) ?>
+      </div>
+      <div class="col-xs-6 col-sm-3">
+          <p><button class="btn btn-info" onclick="init()">restart</button></p>
+      </div>
+  </div>
+
+  <!-- <div id="successMessage">
     <h2>You did it!</h2>
     <button onclick="init()">Play Again</button>
-  </div>
+  </div> -->
  
 </div>
  
@@ -433,21 +487,24 @@ h1, h2, h3, h4 {
 </html>
 <script>
 	var correctCards = 0;
+  var failCards = 0;
 $( init );
  
 function init() {
  
   // Hide the success message
-  $('#successMessage').hide();
-  $('#successMessage').css( {
-    left: '580px',
-    top: '250px',
-    width: 0,
-    height: 0
-  } );
+  // $('#successMessage').hide();
+  $('#scoreBtn').hide();
+  // $('#successMessage').css( {
+  //   left: '580px',
+  //   top: '250px',
+  //   width: 0,
+  //   height: 0
+  // } );
  
   // Reset the game
   correctCards = 0;
+  failCards = 0;
   $('#cardPile').html( '' );
   $('#cardSlots').html( '' );
  $('#cardPile2').html( '' );
@@ -457,7 +514,7 @@ function init() {
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<3/*10*/; i++ ) {
-    $('<div>' + /*เอาเลขออก*/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+    $('<div>' + /*เอาเลขออก*/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
       containment: '#content',
       stack: '#cardPile div',
       cursor: 'move',
@@ -468,7 +525,7 @@ function init() {
   // Create the card slots
   var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten' */];
   for ( var i=1; i<=3/*10*/; i++ ) {
-    $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+    $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots' ).droppable( {
       accept: '#cardPile div',
       hoverClass: 'hovered',
       drop: handleCardDrop
@@ -477,11 +534,11 @@ function init() {
  
 
 // Create the pile of shuffled cards
-  var numbers = [ 1, 2, 3/*, 4, 5, 6, 7, 8, 9, 10*/ ];
+  var numbers = [  1, 2, 3/*, 4, 5, 6, 7, 8, 9, 10*/ ];
   numbers.sort( function() { return Math.random() - .5 } );
  
   for ( var i=0; i<3/*10*/; i++ ) {
-    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
+    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
       containment: '#content',
       stack: '#cardPile2 div',
       cursor: 'move',
@@ -492,7 +549,7 @@ function init() {
   // Create the card slots
   var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'*/ ];
   for ( var i=1; i<=3/*10*/; i++ ) {
-    $('<div>' + words[i-1] + '</div>').data( 'number', i ).appendTo( '#cardSlots2' ).droppable( {
+    $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots2' ).droppable( {
       accept: '#cardPile2 div',
       hoverClass: 'hovered',
       drop: handleCardDrop
@@ -511,28 +568,41 @@ function handleCardDrop( event, ui ) {
   // on top of the slot, and prevent it being dragged
   // again
  
-  if ( slotNumber == cardNumber ) {
     ui.draggable.addClass( 'correct' );
     ui.draggable.draggable( 'disable' );
     $(this).droppable( 'disable' );
     ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
     ui.draggable.draggable( 'option', 'revert', false );
+  
+  if ( slotNumber == cardNumber ) {
+
     correctCards++;
-  } 
-   
+  }
+  else
+  {
+    failCards++;
+  }
+
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
  
-  if ( correctCards == 6/*10*/ ) {
-    $('#successMessage').show();
-    $('#successMessage').animate( {
-      left: '380px',
-      top: '200px',
-      width: '400px',
-      height: '100px',
-      opacity: 1
-    } );
+  if ( failCards+correctCards == 6/*10*/ ) {
+    // $('#successMessage').show();
+    $('#scoreBtn').show();
+    // $('#successMessage').animate( {
+    //   left: '380px',
+    //   top: '200px',
+    //   width: '400px',
+    //   height: '100px',
+    //   opacity: 1
+    // } );
+
+    <?php
+    $correctScore = "<script language='javascript'> document.write(correctCards);</script>";
+    $failScore = "<script language='javascript'> document.write(failCards);</script>";
+    ?>
   }
  
 }
+
 </script>

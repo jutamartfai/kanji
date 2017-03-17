@@ -86,4 +86,11 @@ class LoginForm extends Model
 
         return $user;
     }
+
+    public function getEmail()
+    {
+        $user = Member::getEmail($this->username);
+
+        return $user;
+    }
 }

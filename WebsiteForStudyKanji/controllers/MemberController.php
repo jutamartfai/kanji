@@ -185,6 +185,9 @@ class MemberController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $session['member_name'] = $model->getName();
+            $member = Member::findone($model->getEmail());
+            $member->active_date = date("Y-m-d H:i:s");
+            $member->save();
             return $this->goHome();
         }
         return $this->render('login', [
@@ -266,7 +269,9 @@ class MemberController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render(['Profile', 'id' => $model->email]);
+            return $this->render('Profile', [
+                'model' => $this->findModel($id),
+            ]);
         } else {
             return $this->render('edit_profile', [
                 'model' => $model,
@@ -300,7 +305,9 @@ class MemberController extends Controller
             if(md5($current->password) == $currentPassword) {
                 $model->password = md5($model->password);
                 $model->save();
-                return $this->redirect('profile');
+                return $this->render('Profile', [
+                    'model' => $model,
+                ]);
             }
         }
         return $this->render('password', ['model' => $model, 'current' => $current]);

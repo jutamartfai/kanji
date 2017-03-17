@@ -325,4 +325,23 @@ class PracticeController extends Controller
             'ch_name' => $ch_name,
         ]);
     }
+
+    public function actionScore($correctScore,$failScore)
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('../member/login', [
+                'model' => $model,
+            ]);
+        }
+
+        return $this->render('score', [
+            'correctScore' => $correctScore,
+            'failScore' => $failScore,
+        ]);
+    }
 }

@@ -13,6 +13,7 @@ use app\models\Chapter;
 use app\models\Kanji;
 use app\models\Practice;
 use app\models\Member;
+use app\models\Bookmarktransaction;
 
 class SiteController extends Controller
 {
@@ -70,6 +71,10 @@ class SiteController extends Controller
         $session->open();
 
         $model_ch = Chapter::find()->all();
+
+        // return $this->render('index', [
+        //     'model_ch' => $model_ch,
+        // ]);
 
         return $this->render('index', [
             'model_ch' => $model_ch,

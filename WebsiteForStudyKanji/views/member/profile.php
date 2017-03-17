@@ -10,22 +10,28 @@ $this->title = $model->email;
 ?>
 <div class="member-view">
 
-    <h1>My Profile : <?= Html::encode($this->title) ?></h1>
+    <center><h1>My Profile : <?= Html::encode($this->title) ?></h1></center>
+    <br>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <center><p>
+                <?= Html::a('Edit Profile', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('Edit Password', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+            </p></center><br>
 
-    <p>
-        <?= Html::a('Edit Profile', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Edit Password', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
-    </p>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'email:email',
-            'password',
-            'first_name',
-            'last_name',
-            // 'active_date',
-        ],
-    ]) ?>
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'email:email',
+                    // 'password',
+                    'first_name',
+                    'last_name',
+                    // 'active_date',
+                ],
+            ]) ?>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
 
 </div>

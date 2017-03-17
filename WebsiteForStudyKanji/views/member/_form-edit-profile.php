@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true,'readonly'=>true]) ?>
+<!--     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true,'readonly'=>true]) ?> -->
 
     <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
 
@@ -22,9 +22,12 @@ use yii\widgets\ActiveForm;
 
 <!--     <?= $form->field($model, 'active_date')->textInput(['maxlength' => true]) ?> -->
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+    <center>
+	    <div class="form-group">
+	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	    	<?= Html::a('back', ['profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+	    </div>
+    </center>
 
     <?php ActiveForm::end(); ?>
 

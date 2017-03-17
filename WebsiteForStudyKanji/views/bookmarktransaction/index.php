@@ -1,35 +1,40 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\BookmarktransactionSearch */
+/* @var $searchModel app\models\KanjiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bookmarktransactions';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'KANJI CHAPTER';
+
 ?>
-<div class="bookmarktransaction-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a('Create Bookmarktransaction', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'email:email',
-            'kanji_ch',
-            'view_date',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+<center><h1><?= Html::encode($this->title) ?></h1></center>
+folder
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <br>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <!-- chapter -->
+                        <?php foreach ($model_ch as $key => $chapter) : ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <?= Html::a($chapter->name, ['kanji_content', 'chapter' => $chapter->no, 'ch_name' => $chapter->name ], ['class' => 'collapsed']) ?>
+                                </h4>
+                            </div>
+                        </div>
+                        <br>
+                        <?php endforeach ; ?>
+                        <!-- end chapter -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
