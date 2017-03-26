@@ -13,7 +13,7 @@ use Yii;
  * @property string $do_date
  * @property integer $score
  */
-class Practicetransaction extends \yii\db\ActiveRecord
+class PracticeTransaction extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -29,8 +29,8 @@ class Practicetransaction extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'practice_ch', 'do_date', 'score'], 'required'],
-            [['do_date'], 'safe'],
+            [['email', 'practice_ch', 'do_date'/*, 'score'*/, 'expired_date'], 'required'],
+            // [['do_date', 'expired_date'], 'safe'],
             [['score'], 'integer'],
             [['email'], 'string', 'max' => 50],
             [['practice_ch'], 'string', 'max' => 2],
@@ -48,6 +48,7 @@ class Practicetransaction extends \yii\db\ActiveRecord
             'practice_ch' => 'หมายเลขของแบบทดสอบ',
             'do_date' => 'วันที่และเวลาเข้าทำแบบทดสอบ',
             'score' => 'ผลคะแนน',
+            'expired_date' => 'วันเวลาหมดอายุ',
         ];
     }
 }

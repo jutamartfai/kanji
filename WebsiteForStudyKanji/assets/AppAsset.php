@@ -21,6 +21,7 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'mytemp/css/bootstrap.min.css',
         'mytemp/css/business-casual.css',
+        'mytemp/css/practice.css',
     ];
     public $js = [
         'mytemp/js/jquery.js',

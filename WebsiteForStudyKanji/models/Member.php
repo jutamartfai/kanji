@@ -12,6 +12,7 @@ use Yii;
  * @property string $first_name
  * @property string $last_name
  * @property string $active_date
+ * @property string $expired_date
  */
 class Member extends \yii\db\ActiveRecord
 {
@@ -30,7 +31,7 @@ class Member extends \yii\db\ActiveRecord
     {
         return [
             [['email', 'password', 'first_name', 'last_name'], 'required'],
-            // [['active_date'], 'safe'],
+            //[['active_date', 'expired_date'], 'safe'],
             [['email', 'first_name', 'last_name'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 255],
         ];
@@ -47,6 +48,7 @@ class Member extends \yii\db\ActiveRecord
             'first_name' => 'ชื่อ',
             'last_name' => 'นามสกุล',
             'active_date' => 'วันที่เข้าใช้งานล่าสุด',
+            'expired_date' => 'วันหมดอายุการเข้าใช้งาน',
         ];
     }
 

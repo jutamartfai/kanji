@@ -14,7 +14,9 @@ use app\models\UploadForm;
 use yii\web\UploadedFile;
 
 use yii\web\session;
+use app\models\Member;
 use app\models\LoginForm;
+use app\models\Practicetransaction;
 
 /**
  * PracticeController implements the CRUD actions for Practice model.
@@ -293,9 +295,14 @@ class PracticeController extends Controller
 
         if (!isset($session['member_name'])) {
             $model = new LoginForm();
-            return $this->render('../member/login', [
-                'model' => $model,
-            ]);
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                $session['member_name'] = $model->getName();
+                $member = Member::findone($model->getEmail());
+                $member->active_date = date("Y-m-d H:i:s");
+                $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
+                $member->save();
+                return $this->goHome();
+            }
         }
 
         $model_ch = Chapter::find()->all();
@@ -313,20 +320,40 @@ class PracticeController extends Controller
 
         if (!isset($session['member_name'])) {
             $model = new LoginForm();
-            return $this->render('../member/login', [
-                'model' => $model,
-            ]);
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                $session['member_name'] = $model->getName();
+                $member = Member::findone($model->getEmail());
+                $member->active_date = date("Y-m-d H:i:s");
+                $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
+                $member->save();
+                return $this->goHome();
+            }
         }
+
+        // if (Practicetransaction::find()->where(['email' => $session['member_name'], 'practice_ch' => $chapter])->one()) {
+        //     $bookmark = Practicetransaction::find()->where(['email' => $session['member_name'], 'practice_ch' => $chapter])->one();
+        //     $bookmark->do_date = date("Y-m-d H:i:s");
+        //     $bookmark->save();
+        // }
+        // else
+        // {
+        //     $bookmark = new Practicetransaction();
+        //     $bookmark->email = $session['member_name'];
+        //     $bookmark->practice_ch = $chapter;
+        //     $bookmark->do_date = date("Y-m-d H:i:s");
+        //     $bookmark->save();
+        // }
 
         $model = Practice::find()->where("practice_ch=$chapter")->all();
 
         return $this->render('practice_content', [
             'model' => $model,
             'ch_name' => $ch_name,
+            'chapter' => $chapter,
         ]);
     }
 
-    public function actionScore($correctScore,$failScore)
+    public function actionScore($correctScore,$failScore,$chapter)
     {
         $this->layout = 'maintemp';
         $session = new Session;
@@ -334,14 +361,28 @@ class PracticeController extends Controller
 
         if (!isset($session['member_name'])) {
             $model = new LoginForm();
-            return $this->render('../member/login', [
-                'model' => $model,
-            ]);
+            if ($model->load(Yii::$app->request->post()) && $model->login()) {
+                $session['member_name'] = $model->getName();
+                $member = Member::findone($model->getEmail());
+                $member->active_date = date("Y-m-d H:i:s");
+                $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
+                $member->save();
+                return $this->goHome();
+            }
         }
 
-        return $this->render('score', [
-            'correctScore' => $correctScore,
-            'failScore' => $failScore,
+        $bookmark = new Practicetransaction();
+        $bookmark->email = $session['member_name'];
+        $bookmark->practice_ch = $chapter;
+        $bookmark->do_date = date("Y-m-d H:i:s");
+        $bookmark->expired_date = date('Y-m-d H:i:s', strtotime('+30 days'));
+        $bookmark->score = $correctScore;
+        $bookmark->save();
+
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('sel_practice', [
+            'model_ch' => $model_ch,
         ]);
     }
 }

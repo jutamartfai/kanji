@@ -55,13 +55,31 @@ $this->title = 'Practices';
                                                     <div class="btn-group btn-group-sm text-center" role="group">
                                                         <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
-                                                        <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
+<!--                                                         <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
                                                             'class' => 'btn btn-danger',
                                                             'data' => [
                                                                 'confirm' => 'Are you sure you want to delete this item?',
                                                                 'method' => 'post',
                                                             ],
-                                                        ]) ?>
+                                                        ]) ?> -->
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                  <h4 class="modal-title" id="exampleModalLabel">ลบรายการ</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                  <p>ต้องการลบรายการนี้หรือไม่?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                  <?= Html::a('ลบ', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-danger']) ?>
+                                                                  <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

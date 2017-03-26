@@ -71,6 +71,11 @@ class SiteController extends Controller
         $session->open();
 
         $model_ch = Chapter::find()->all();
+        $bookmark = new Bookmarktransaction();
+        $email = $session['member_name'];
+        if (isset($session['member_name'])) {
+            $bookmark = Bookmarktransaction::find()->where("email='$email'")->all();
+        }
 
         // return $this->render('index', [
         //     'model_ch' => $model_ch,
@@ -78,6 +83,7 @@ class SiteController extends Controller
 
         return $this->render('index', [
             'model_ch' => $model_ch,
+            'bookmark' => $bookmark,
         ]);
     }
 
@@ -156,12 +162,12 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionError()
     {
         $this->layout = 'maintemp';
         $session = new Session;
         $session->open();
-        return $this->render('index');
+        return $this->render('error');
     }
 
     // public function actionSel_practice()
@@ -182,6 +188,23 @@ class SiteController extends Controller
         $this->layout = 'maintemp';
         $session = new Session;
         $session->open();
+
+        if (isset($session['member_name'])) {
+
+            if (Bookmarktransaction::find()->where(['email' => $session['member_name'], 'kanji_ch' => $chapter])->one()) {
+                $bookmark = Bookmarktransaction::find()->where(['email' => $session['member_name'], 'kanji_ch' => $chapter])->one();
+                $bookmark->view_date = date("Y-m-d H:i:s");
+                $bookmark->save();
+            }
+            else
+            {
+                $bookmark = new Bookmarktransaction();
+                $bookmark->email = $session['member_name'];
+                $bookmark->kanji_ch = $chapter;
+                $bookmark->view_date = date("Y-m-d H:i:s");
+                $bookmark->save();
+            }
+        }
 
         $model = Kanji::find()->where("kanji_ch=$chapter")->all();
 

@@ -59,10 +59,10 @@ $session->open();
                     <?php if(isset($session['member_name'])) { ?>
                         <li class="dropdown">
                             <a href= "#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $session['member_name']; ?><span class="glyphicon glyphicon-chevron-down"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="<?= Url::to(['/member/profile', 'id' => $session['member_name'] ]) ?>">โปรไฟล์</a></li>
-                                <li><a href="<?= Url::to(['/site/static']) ?>">สถิติ</a></li>
-                                <li><a href="<?= Url::to(['/member/gologout']) ?>">logout</a></li>
+                            <ul class="nav  dropdown-menu">
+                                <li><a href="<?= Url::to(['/member/profile', 'id' => $session['member_name'] ]) ?>"><p><span class="glyphicon glyphicon-user"></span>&nbsp;โปรไฟล์ของฉัน</p></a></li>
+<!--                                 <li><a href="<?= Url::to(['/site/static']) ?>">สถิติ</a></li> -->
+                                <li><a href="<?= Url::to(['/member/gologout']) ?>"><p><span class="glyphicon glyphicon-off"></span>&nbsp;logout</p></a></li>
                             </ul>
                         </li>
                     <?php }else{ ?>

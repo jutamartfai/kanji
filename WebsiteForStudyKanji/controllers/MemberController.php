@@ -7,6 +7,8 @@ use app\models\Member;
 use app\models\MemberSearch;
 use app\models\Admin;
 use app\models\LoginForm;
+use app\models\Practicetransaction;
+use app\models\Bookmarktransaction;
 use yii\web\session;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -187,6 +189,7 @@ class MemberController extends Controller
             $session['member_name'] = $model->getName();
             $member = Member::findone($model->getEmail());
             $member->active_date = date("Y-m-d H:i:s");
+            $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
             $member->save();
             return $this->goHome();
         }
@@ -242,9 +245,39 @@ class MemberController extends Controller
             ]);
         }
 
+        $email = $session['member_name'];
+
+        $pracTran = Practicetransaction::find()->where("email='$email'")->all();
+        $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->all();
+
         return $this->render('Profile', [
             'model' => $this->findModel($id),
+            'pracTran' => $pracTran,
+            'bookmarkTran' => $bookmarkTran,
         ]);
+    }
+
+    public function actionDeletePT($id,$no)
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        if (!isset($session['member_name'])) {
+            $model = new LoginForm();
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
+        $PT = Practicetransaction::findone($no);
+
+        $PT->delete();
+
+        return $this->render('Profile', [
+                'model' => $this->findModel($id),
+                'id' => $id,
+            ]);
     }
 
     /**
@@ -333,6 +366,7 @@ class MemberController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $model->password = md5($model->password);
             $model->active_date = date("Y-m-d H:i:s");
+            $model->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
             $model->save();
             $session_model->username = $model->email;
             $session_model->password = $model->password;
