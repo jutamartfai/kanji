@@ -7,7 +7,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\KanjiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'PRACTICE CHAPTER';
+$this->title = 'แบบทดสอบตัวอักษรคันจิ';
 
 ?>
 

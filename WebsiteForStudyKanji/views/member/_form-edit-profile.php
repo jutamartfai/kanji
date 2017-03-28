@@ -24,8 +24,8 @@ use yii\widgets\ActiveForm;
 
     <center>
 	    <div class="form-group">
-	        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	    	<?= Html::a('back', ['profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+	        <?= Html::submitButton($model->isNewRecord ? 'เพิ่ม' : 'แก้ไข', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	    	<?= Html::a('ยกเลิก', ['profile', 'id' => $model->email], ['class' => 'btn btn-warning']) ?>
 	    </div>
     </center>
 

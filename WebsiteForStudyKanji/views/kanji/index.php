@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\KanjiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kanjis';
+$this->title = 'การจัดการตัวอักษรคันจิ';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kanji-index">
@@ -33,7 +33,7 @@ $this->title = 'Kanjis';
                     <div id="<?= $chapter->no; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                         <p>
-                            <?= Html::a('Create Kanji ch.'.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มตัวอักษรคันจิ บทที่ '.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
                         </p>
                             <table class="table table-hover table-bordered">
                                 <thead>
@@ -53,13 +53,24 @@ $this->title = 'Kanjis';
                                                     <div class="btn-group btn-group-sm text-center" role="group">
                                                         <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], ['class' => 'btn btn-default']) ?>
                                                         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], ['class' => 'btn btn-info']) ?>
-                                                        <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], [
-                                                            'class' => 'btn btn-danger',
-                                                            'data' => [
-                                                                'confirm' => 'Are you sure you want to delete this item?',
-                                                                'method' => 'post',
-                                                            ],
-                                                        ]) ?>
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->kanji_ch.$value->kanji_no; ?>"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <div class="modal fade" id="<?= $value->kanji_ch.$value->kanji_no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="exampleModalLabel">ต้องการลบรายการนี้หรือไม่?</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <h1><?= $value->kanji; ?></h1>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                                    <?= Html::a('ลบ', ['deletes', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], ['class' => 'btn btn-danger']) ?>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

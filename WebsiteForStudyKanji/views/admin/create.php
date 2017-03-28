@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Admin */
 
-$this->title = 'Create Admin';
-$this->params['breadcrumbs'][] = ['label' => 'Admins', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'เพิ่มผู้ดูและระบบ';
+// $this->params['breadcrumbs'][] = ['label' => 'Admins', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-create">
 

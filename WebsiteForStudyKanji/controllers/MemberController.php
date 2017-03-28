@@ -7,6 +7,7 @@ use app\models\Member;
 use app\models\MemberSearch;
 use app\models\Admin;
 use app\models\LoginForm;
+use app\models\Chapter;
 use app\models\Practicetransaction;
 use app\models\Bookmarktransaction;
 use yii\web\session;
@@ -136,7 +137,7 @@ class MemberController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDeletebyadmin($id)
     {
         $this->layout = 'template';
         $session = new Session;
@@ -146,7 +147,15 @@ class MemberController extends Controller
             return $this->render('../admin/wellcome');
         }
 
-        $this->findModel($id)->delete();
+        $model = Member::find()->all();
+        foreach ($model as $key => $value) {
+            if(($id==$value->email))
+            {
+                $model = $this->findModel($id);
+
+                $model->delete();
+            }
+        }
 
         return $this->redirect(['index']);
     }
@@ -250,14 +259,17 @@ class MemberController extends Controller
         $pracTran = Practicetransaction::find()->where("email='$email'")->all();
         $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->all();
 
+        $model_ch = Chapter::find()->all();
+
         return $this->render('Profile', [
             'model' => $this->findModel($id),
             'pracTran' => $pracTran,
             'bookmarkTran' => $bookmarkTran,
+            'model_ch' => $model_ch,
         ]);
     }
 
-    public function actionDeletePT($id,$no)
+    public function actionDeletes($id,$no)
     {
         $this->layout = 'maintemp';
         $session = new Session;
@@ -270,14 +282,30 @@ class MemberController extends Controller
             ]);
         }
 
-        $PT = Practicetransaction::findone($no);
+        $model_PracTran = Practicetransaction::find()->all();
+        foreach ($model_PracTran as $key => $value) {
+            if($no==$value->id)
+            {
+                $model_PracTran = Practicetransaction::findOne($no);
+                $model_PracTran->delete();
+            }
+        }
 
-        $PT->delete();
+        $email = $session['member_name'];
+        $pracTran = Practicetransaction::find()->where("email='$email'")->all();
+        $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->all();
+
+        $model_ch = Chapter::find()->all();
 
         return $this->render('Profile', [
-                'model' => $this->findModel($id),
-                'id' => $id,
-            ]);
+            'model' => $this->findModel($id),
+            'id' => $id,
+            'pracTran' => $pracTran,
+            'bookmarkTran' => $bookmarkTran,
+            'model_ch' => $model_ch,
+        ]);
+
+        // return $this->refresh();
     }
 
     /**

@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kanji */
 
-$this->title = 'Create Kanji';
-$this->params['breadcrumbs'][] = ['label' => 'Kanjis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'เพิ่มตัวอักษรคันจิ';
+// $this->params['breadcrumbs'][] = ['label' => 'Kanjis', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="kanji-create">
 

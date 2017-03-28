@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kanji */
 
-$this->title = 'Update Kanji: ' . ' ch. '. $model->kanji_ch . ' no. '. $model->kanji_no;
-$this->params['breadcrumbs'][] = ['label' => 'Kanjis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' =>  ' ch. '. $model->kanji_ch . ' no. '. $model->kanji_no, 'url' => ['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'แก้ไขข้อมูลตัวอักษรคันจิ';
+// $this->params['breadcrumbs'][] = ['label' => 'Kanjis', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = ['label' =>  ' ch. '. $model->kanji_ch . ' no. '. $model->kanji_no, 'url' => ['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]];
+// $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="kanji-update">
 

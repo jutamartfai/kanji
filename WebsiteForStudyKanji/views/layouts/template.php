@@ -30,8 +30,8 @@ $session->open();
 <body>
 <?php $this->beginBody() ?>
 
-	<div class="brand">manage kanji website</div>
-    <div class="address-bar">by knightmare feiya</div>
+	<div class="brand">การจัดการ</div>
+    <div class="address-bar">เว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -45,30 +45,30 @@ $session->open();
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="<?= Url::to(['admin/index']) ?>">manage</a>
+                <a class="navbar-brand" href="<?= Url::to(['admin/index']) ?>">การจัดการเว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <?php if(isset($session['admin_name'])) { ?>
                         <li>
-                            <a href= "<?= Url::to(['kanji/index']) ?>">kanji</a>
+                            <a href= "<?= Url::to(['kanji/index']) ?>">ตัวอักษรคันจิ</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['practice/index']) ?>">practice</a>
+                            <a href="<?= Url::to(['practice/index']) ?>">แบบทดสอบ</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['member/index']) ?>">member</a>
+                            <a href="<?= Url::to(['member/index']) ?>">สมาชิก</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['admin/index']) ?>">admin</a>
+                            <a href="<?= Url::to(['admin/index']) ?>">ผู้ดูแลระบบ</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['/admin/gologout']) ?>">logout(<?= $session['admin_name']; ?>)</a>
+                            <a href="<?= Url::to(['/admin/gologout']) ?>">ออกจากระบบ(<?= $session['admin_name']; ?>)</a>
                         </li>
                     <?php }else{ ?>
                     <li>
-                        <a href="<?= Url::to(['/admin/login']) ?>">login</a>
+                        <a href="<?= Url::to(['/admin/login']) ?>">เข้าสู่ระบบ</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -97,7 +97,7 @@ $session->open();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; KNightmare Feiya 2017 <?= Html::a('go to website', ['site/index']) ?></p>
+                    <p>Copyright &copy; 560510611 <?= Html::a('go to website', ['site/index']) ?></p>
                 </div>
             </div>
         </div>

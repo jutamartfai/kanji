@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MemberSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Members';
+$this->title = 'จัดการข้อมูลสมาชิก';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="member-index">
@@ -49,13 +49,13 @@ $this->title = 'Members';
                         'first_name',
                         'last_name',
                         'email:email',
-                        'password',
-                        //'active_date',
+                        // 'password',
+                        'active_date:dateTime',
 
                         [
                             'class' => 'yii\grid\ActionColumn',
                             'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>',
+                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view}  </div>', /*{update} {delete}*/
                             //'options'=> ['style'=>'width:100px;'],
                             'contentOptions'=>[
                                 'noWrap' => true

@@ -14,6 +14,7 @@ use app\models\Kanji;
 use app\models\Practice;
 use app\models\Member;
 use app\models\Bookmarktransaction;
+use app\models\Practicetransaction;
 
 class SiteController extends Controller
 {
@@ -80,6 +81,42 @@ class SiteController extends Controller
         // return $this->render('index', [
         //     'model_ch' => $model_ch,
         // ]);
+
+        $model_mem = Member::find()->all();
+        $model_PracTran = Practicetransaction::find()->all();
+        $model_bookmark = Bookmarktransaction::find()->all();
+
+        foreach ($model_mem as $key => $member) {
+            $date = date("Y-m-d H:i:s");
+            if($date >= $member->expired_date)
+            {
+                foreach ($model_bookmark as $key => $bookmark) {
+                    if($member->email==$bookmark->email)
+                    {
+                        $model_bookmark = Bookmarktransaction::findOne($bookmark->id);
+                        $model_bookmark->delete();
+                    }
+                }
+                foreach ($model_PracTran as $key => $PracTran) {
+                    if($member->email==$PracTran->email)
+                    {
+                        $model_PracTran = Practicetransaction::findOne($PracTran->id);
+                        $model_PracTran->delete();
+                    }
+                }
+                $model_mem = Member::findOne($member->email);
+                $model_mem->delete();
+            }
+        }
+
+        foreach ($model_PracTran as $key => $pracTran) {
+            $date = date("Y-m-d H:i:s");
+            if($date >= $pracTran->expired_date)
+            {
+                $model_PracTran = Practicetransaction::findOne($pracTran->id);
+                $model_PracTran->delete();
+            }
+        }
 
         return $this->render('index', [
             'model_ch' => $model_ch,

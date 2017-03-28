@@ -245,7 +245,7 @@ class PracticeController extends Controller
      * @param string $practice_no
      * @return mixed
      */
-    public function actionDelete($practice_ch, $practice_no)
+    public function actionDeletes($practice_ch, $practice_no)
     {
         $this->layout = 'template';
         $session = new Session;
@@ -255,13 +255,19 @@ class PracticeController extends Controller
             return $this->render('../admin/wellcome');
         }
 
-        $model = $this->findModel($practice_ch, $practice_no);
+        $model = Practice::find()->all();
+        foreach ($model as $key => $value) {
+            if(($practice_ch==$value->practice_ch)&&($practice_no==$value->practice_no))
+            {
+                $model = $this->findModel($practice_ch, $practice_no);
 
-        $model->deleteImage('question');
-        $model->deleteImage('meaning');
-        $model->deleteImage('pron');
+                $model->deleteImage('question');
+                $model->deleteImage('meaning');
+                $model->deleteImage('pron');
 
-        $model->delete();
+                $model->delete();
+            }
+        }
 
         return $this->redirect(['index']);
     }
@@ -303,6 +309,9 @@ class PracticeController extends Controller
                 $member->save();
                 return $this->goHome();
             }
+            return $this->render('../member/login', [
+            'model' => $model,
+        ]);
         }
 
         $model_ch = Chapter::find()->all();
@@ -328,6 +337,9 @@ class PracticeController extends Controller
                 $member->save();
                 return $this->goHome();
             }
+            return $this->render('../member/login', [
+                'model' => $model,
+            ]);
         }
 
         // if (Practicetransaction::find()->where(['email' => $session['member_name'], 'practice_ch' => $chapter])->one()) {
@@ -369,6 +381,9 @@ class PracticeController extends Controller
                 $member->save();
                 return $this->goHome();
             }
+            return $this->render('../member/login', [
+                'model' => $model,
+            ]);
         }
 
         $bookmark = new Practicetransaction();

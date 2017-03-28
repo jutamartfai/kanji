@@ -32,8 +32,8 @@ use yii\widgets\ActiveForm;
     = $form->field($model, 'active_date') -->
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('ค้นหา', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('รีเซ็ต', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Member */
 
-$this->title = 'Update Profile: ' . $model->email;
+$this->title = 'แก้ไขข้อมูลส่วนตัว: ' . $model->email;
 ?>
 <div class="member-update">
 

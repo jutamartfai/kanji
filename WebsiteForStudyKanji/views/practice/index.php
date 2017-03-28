@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $searchModel app\models\PracticeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Practices';
+$this->title = 'การจัดการแบบทดสอบ';
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="practice-index">
@@ -33,7 +33,7 @@ $this->title = 'Practices';
                     <div id="<?= $chapter->no; ?>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
                         <p>
-                            <?= Html::a('Create Practice ch.'.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มแบบทดสอบ บทที่ '.$chapter->no, ['create', 'chapter' => $chapter->no ], ['class' => 'btn btn-success']) ?>
                         </p>
                             <table class="table table-hover table-bordered">
                                 <thead>
@@ -55,27 +55,20 @@ $this->title = 'Practices';
                                                     <div class="btn-group btn-group-sm text-center" role="group">
                                                         <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
                                                         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
-<!--                                                         <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], [
-                                                            'class' => 'btn btn-danger',
-                                                            'data' => [
-                                                                'confirm' => 'Are you sure you want to delete this item?',
-                                                                'method' => 'post',
-                                                            ],
-                                                        ]) ?> -->
-                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
-                                                        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->practice_ch.$value->practice_no; ?>"><span class="glyphicon glyphicon-trash"></span></button>
+                                                        <div class="modal fade" id="<?= $value->practice_ch.$value->practice_no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                                                             <div class="modal-dialog" role="document">
                                                               <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                  <h4 class="modal-title" id="exampleModalLabel">ลบรายการ</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                    <h4 class="modal-title" id="exampleModalLabel">ต้องการลบรายการนี้หรือไม่?</h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                  <p>ต้องการลบรายการนี้หรือไม่?</p>
+                                                                    <p><?= $value->question; ?>, &nbsp; <?= $value->meaning; ?>, &nbsp; <?= $value->pron; ?></p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                  <?= Html::a('ลบ', ['delete', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-danger']) ?>
-                                                                  <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                                    <?= Html::a('ลบ', ['deletes', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-danger']) ?>
                                                                 </div>
                                                               </div>
                                                             </div>

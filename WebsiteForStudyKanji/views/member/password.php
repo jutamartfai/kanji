@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = 'Update Pasword: ' . $model->email;
+$this->title = 'แก้ไขรหัสผ่าน: ' . $model->email;
 ?>
 
   <center><h1><?= Html::encode($this->title) ?></h1></center>
@@ -21,13 +21,13 @@ $this->title = 'Update Pasword: ' . $model->email;
 
 		<?= $form->field($model, 'last_name')->textInput(['maxlength' => true,'readonly'=>true]) ?>
 
-		<?= $form->field($current, 'password')->passwordInput(['value'=>false, 'autofocus' => true])->label('current password'); ?>
+		<?= $form->field($current, 'password')->passwordInput(['value'=>false, 'autofocus' => true])->label('รหัสผ่านปัจจุบัน'); ?>
 
-        <?= $form->field($model, 'password')->passwordInput(['value'=>false])->label('new password'); ?>
+        <?= $form->field($model, 'password')->passwordInput(['value'=>false])->label('รหัสผ่านใหม่'); ?>
 
 		<center><p>
-            <?= Html::submitButton('update', ['class' => 'btn btn-primary']) ?>
-            <?= Html::a('back', ['profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('บันทึก', ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('ยกเลิก', ['profile', 'id' => $model->email], ['class' => 'btn btn-warning']) ?>
 		</p></center>
 
 		<?php ActiveForm::end(); ?>

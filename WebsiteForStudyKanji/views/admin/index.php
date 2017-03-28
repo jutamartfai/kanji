@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AdminSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Admins';
+$this->title = 'การจัดการผู้ดูแลระบบ';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-index">
@@ -25,7 +25,7 @@ $this->title = 'Admins';
     </div>
 
     <p>
-        <?= Html::a('Create Admin', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มผู้ดูแลระบบ', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <div class="panel-group">
         <div class="panel panel-default">
@@ -43,7 +43,7 @@ $this->title = 'Admins';
                         [
                             'class' => 'yii\grid\ActionColumn',
                             'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view} {update} {delete} </div>',
+                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {delete} </div>', /*{view} {update} */
                             //'options'=> ['style'=>'width:100px;'],
                             'contentOptions'=>[
                                 'noWrap' => true

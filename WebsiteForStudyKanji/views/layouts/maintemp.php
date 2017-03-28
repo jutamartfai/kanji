@@ -30,8 +30,8 @@ $session->open();
 <body>
 <?php $this->beginBody() ?>
 <div class="wrapper">
-	<div class="brand">kanji website</div>
-    <div class="address-bar">by knightmare feiya</div>
+	<div class="brand">เว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</div>
+    <div class="address-bar">Website for Study Kanji</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -45,29 +45,29 @@ $session->open();
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">kanji</a>
+                <a class="navbar-brand" href="index.html">เว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href= "<?= Url::to(['/site/index']) ?>">kanji chapter</a>
+                        <a href= "<?= Url::to(['/site/index']) ?>">บทเรียนตัวอักษรคันจิ</a>
                     </li>
                     <li>
-                        <a href="<?= Url::to(['/practice/sel_practice']) ?>">practice chapter</a>
+                        <a href="<?= Url::to(['/practice/sel_practice']) ?>">แบบทดสอบตัวอักษรคันจิ</a>
                     </li>
                     <?php if(isset($session['member_name'])) { ?>
                         <li class="dropdown">
                             <a href= "#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $session['member_name']; ?><span class="glyphicon glyphicon-chevron-down"></span></a>
-                            <ul class="nav  dropdown-menu">
+                            <ul class="dropdown-menu">
                                 <li><a href="<?= Url::to(['/member/profile', 'id' => $session['member_name'] ]) ?>"><p><span class="glyphicon glyphicon-user"></span>&nbsp;โปรไฟล์ของฉัน</p></a></li>
 <!--                                 <li><a href="<?= Url::to(['/site/static']) ?>">สถิติ</a></li> -->
-                                <li><a href="<?= Url::to(['/member/gologout']) ?>"><p><span class="glyphicon glyphicon-off"></span>&nbsp;logout</p></a></li>
+                                <li><a href="<?= Url::to(['/member/gologout']) ?>"><p><span class="glyphicon glyphicon-off"></span>&nbsp;ออกจากระบบ</p></a></li>
                             </ul>
                         </li>
                     <?php }else{ ?>
                     <li>
-                        <a href="<?= Url::to(['/member/login']) ?>">login</a>
+                        <a href="<?= Url::to(['/member/login']) ?>">เข้าสู่ระบบ</a>
                     </li>
                     <?php } ?>
                 </ul>
@@ -96,7 +96,7 @@ $session->open();
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; KNightmare Feiya 2017
+                    <p>Copyright &copy; 560510611
                     <?= Html::a('for admin', ['admin/wellcome']) ?></p>
                 </div>
             </div>

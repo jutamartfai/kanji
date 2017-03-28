@@ -43,6 +43,74 @@
 */
 /* Slots for final card positions */
 
+ 
+#cardSlots {
+  margin: 50px auto 0 auto;
+  background: #ddf;
+}
+ 
+/* The initial pile of unsorted cards */
+ 
+#cardPile {
+  margin: 0 auto;
+  background: #ffd;
+}
+ 
+#cardSlots, #cardPile {
+  width: 910px;
+  height: 240px;
+  padding: 20px;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+}
+ 
+/* Individual cards and slots */
+ 
+#cardSlots div, #cardPile div {
+  float: left;
+  width: 100px;
+  height: 35px;
+  padding: 10px;
+  padding-top: 40px;
+  padding-bottom: 0;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  margin: 0 0 0 10px;
+  background: #fff;
+}
+ 
+#cardSlots div:first-child, #cardPile div:first-child {
+  margin-left: 0;
+}
+ 
+#cardSlots div.hovered {
+  background: #aaa;
+}
+ 
+#cardSlots div {
+  border-style: dashed;
+}
+ 
+#cardPile div {
+  background: #666;
+  color: #fff;
+  font-size: 50px;
+  text-shadow: 0 0 3px #000;
+}
+ 
+#cardPile div.ui-draggable-dragging {
+  -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
+}
+
 #cardSlots {
   margin: 50px auto 0 auto;
   background: #ddf;
@@ -212,3 +280,156 @@
   padding: 20px;
 }*/
 
+/*     #cardQ11 {
+      background-image: url("<?= $question[10]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ12 {
+      background-image: url("<?= $question[11]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardQ13 {
+      background-image: url("<?= $question[12]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ14 {
+      background-image: url("<?= $question[13]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ15 {
+      background-image: url("<?= $question[14]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardQ16 {
+      background-image: url("<?= $question[15]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ17 {
+      background-image: url("<?= $question[16]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ18 {
+      background-image: url("<?= $question[17]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardQ19 {
+      background-image: url("<?= $question[18]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardQ20 {
+      background-image: url("<?= $question[19]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }*/
+
+
+    /*    #cardP11 {
+      background-image: url("<?= $pron[10]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP12 {
+      background-image: url("<?= $pron[11]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP13 {
+      background-image: url("<?= $pron[12]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP14 {
+      background-image: url("<?= $pron[13]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP15 {
+      background-image: url("<?= $pron[14]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP16 {
+      background-image: url("<?= $pron[15]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP17 {
+      background-image: url("<?= $pron[16]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP18 {
+      background-image: url("<?= $pron[17]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP19 {
+      background-image: url("<?= $pron[18]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardP20 {
+      background-image: url("<?= $pron[19]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }*/
+
+    /*     #cardM11 {
+      background-image: url("<?= $meaning[10]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM12 {
+      background-image: url("<?= $meaning[11]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardM13 {
+      background-image: url("<?= $meaning[12]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM14 {
+      background-image: url("<?= $meaning[13]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM15 {
+      background-image: url("<?= $meaning[14]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardM16 {
+      background-image: url("<?= $meaning[15]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM17 {
+      background-image: url("<?= $meaning[16]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM18 {
+      background-image: url("<?= $meaning[17]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+    #cardM19 {
+      background-image: url("<?= $meaning[18]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }
+     #cardM20 {
+      background-image: url("<?= $meaning[19]; ?>") !important;
+      background-size: 100px 40px !important;
+      position: relative !important;
+    }*/

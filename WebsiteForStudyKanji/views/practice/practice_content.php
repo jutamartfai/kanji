@@ -78,56 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
       background-size: 100px 40px !important;
       position: relative !important;
     }
-     #cardQ11 {
-      background-image: url("<?= $question[10]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ12 {
-      background-image: url("<?= $question[11]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardQ13 {
-      background-image: url("<?= $question[12]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ14 {
-      background-image: url("<?= $question[13]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ15 {
-      background-image: url("<?= $question[14]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardQ16 {
-      background-image: url("<?= $question[15]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ17 {
-      background-image: url("<?= $question[16]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ18 {
-      background-image: url("<?= $question[17]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardQ19 {
-      background-image: url("<?= $question[18]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardQ20 {
-      background-image: url("<?= $question[19]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
+
 
 /* CSS pron card */
     #cardP1 {
@@ -180,56 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
       background-size: 100px 40px !important;
       position: relative !important;
     }
-    #cardP11 {
-      background-image: url("<?= $pron[10]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP12 {
-      background-image: url("<?= $pron[11]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP13 {
-      background-image: url("<?= $pron[12]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP14 {
-      background-image: url("<?= $pron[13]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP15 {
-      background-image: url("<?= $pron[14]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP16 {
-      background-image: url("<?= $pron[15]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP17 {
-      background-image: url("<?= $pron[16]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP18 {
-      background-image: url("<?= $pron[17]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP19 {
-      background-image: url("<?= $pron[18]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardP20 {
-      background-image: url("<?= $pron[19]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
+
 
 /* CSS meaning card */
      #cardM1 {
@@ -282,56 +184,7 @@ $this->params['breadcrumbs'][] = $this->title;
       background-size: 100px 40px !important;
       position: relative !important;
     }
-     #cardM11 {
-      background-image: url("<?= $meaning[10]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM12 {
-      background-image: url("<?= $meaning[11]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardM13 {
-      background-image: url("<?= $meaning[12]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM14 {
-      background-image: url("<?= $meaning[13]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM15 {
-      background-image: url("<?= $meaning[14]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardM16 {
-      background-image: url("<?= $meaning[15]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM17 {
-      background-image: url("<?= $meaning[16]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM18 {
-      background-image: url("<?= $meaning[17]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-    #cardM19 {
-      background-image: url("<?= $meaning[18]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
-     #cardM20 {
-      background-image: url("<?= $meaning[19]; ?>") !important;
-      background-size: 100px 40px !important;
-      position: relative !important;
-    }
+
 
   </style>
 
@@ -382,8 +235,8 @@ $this->params['breadcrumbs'][] = $this->title;
                   <p>ต้องการเก็บผลคะแนนไว้หรือไม่?</p>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" onclick="getScore()">เก็บ</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal" onclick="init()">ไม่เก็บ</button>
+                  <button type="button" class="btn btn-primary" onclick="getScore()">เก็บ</button>
                 </div>
               </div>
             </div>
@@ -430,10 +283,10 @@ $this->params['breadcrumbs'][] = $this->title;
       $('#cardSlots2').html( '' );
 
       // Create the pile of shuffled cards
-      var numbers = [  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20/**/ ];
+      var numbers = [  1, 2, 3/*, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20*/ ];
       numbers.sort( function() { return Math.random() - .5 } );
 
-      for ( var i=0; i<20/*10*/; i++ )
+      for ( var i=0; i<3/*10*/; i++ )
       {
         $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
           containment: '#content',
@@ -444,8 +297,8 @@ $this->params['breadcrumbs'][] = $this->title;
       }
 
       // Create the card slots
-      var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20/**/ ];
-      for ( var i=1; i<=20/*10*/; i++ )
+      var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20*/ ];
+      for ( var i=1; i<=3/*10*/; i++ )
       {
         $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots2' ).droppable( {
           accept: '#cardPile2 div',
@@ -455,10 +308,10 @@ $this->params['breadcrumbs'][] = $this->title;
       }
 
       // Create the pile of shuffled cards
-      var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]; /**/
+      var numbers = [ 1, 2, 3 ]; /*, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20*/
       numbers.sort( function() { return Math.random() - .5 } );
 
-      for ( var i=0; i<20/*10*/; i++ )
+      for ( var i=0; i<3/*10*/; i++ )
       {
         $('<div>' + /*เอาเลขออก*/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
           containment: '#content',
@@ -470,8 +323,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
       // Create the card slots
-      var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20/* */];
-      for ( var i=1; i<=20/*10*/; i++ )
+      var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 */];
+      for ( var i=1; i<=3/*10*/; i++ )
       {
         $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots' ).droppable( {
           accept: '#cardPile div',
@@ -509,7 +362,7 @@ $this->params['breadcrumbs'][] = $this->title;
       // If all the cards have been placed correctly then display a message
       // and reset the cards for another go
 
-      if ( failCards+correctCards == 2/*10*/ )
+      if ( failCards+correctCards ==6/*10*/ )
       {
         // $('#successMessage').show();
         $('#scoreBtn').show();

@@ -150,7 +150,7 @@ class KanjiController extends Controller
      * @param string $kanji_no
      * @return mixed
      */
-    public function actionDelete($kanji_ch, $kanji_no)
+    public function actionDeletes($kanji_ch, $kanji_no)
     {
         $this->layout = 'template';
         $session = new Session;
@@ -160,7 +160,17 @@ class KanjiController extends Controller
             return $this->render('../admin/wellcome');
         }
 
-        $this->findModel($kanji_ch, $kanji_no)->delete();
+        $model = Kanji::find()->all();
+        foreach ($model as $key => $value) {
+            if(($kanji_ch==$value->kanji_ch)&&($kanji_no==$value->kanji_no))
+            {
+                $model = $this->findModel($kanji_ch, $kanji_no);
+
+                $model->delete();
+            }
+        }
+
+        // $this->findModel($kanji_ch, $kanji_no)->delete();
 
         return $this->redirect(['index']);
     }

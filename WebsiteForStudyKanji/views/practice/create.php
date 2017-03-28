@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Practice */
 
-$this->title = 'Create Practice';
-$this->params['breadcrumbs'][] = ['label' => 'Practices', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'เพิ่มแบบทดสอบ';
+// $this->params['breadcrumbs'][] = ['label' => 'Practices', 'url' => ['index']];
+// $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="practice-create">
 

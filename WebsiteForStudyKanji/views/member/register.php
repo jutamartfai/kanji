@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Member */
 
-$this->title = 'Create Member';
+$this->title = 'สมัครสมาชิกใหม่';
 ?>
 <div class="member-create">
 

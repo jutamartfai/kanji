@@ -11,6 +11,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+use app\models\Member;
+use app\models\Bookmarktransaction;
+use app\models\Practicetransaction;
+
 /**
  * AdminController implements the CRUD actions for Admin model.
  */
@@ -41,6 +45,42 @@ class AdminController extends Controller
         $this->layout = 'template';
         $session = new Session;
         $session->open();
+
+        $model_mem = Member::find()->all();
+        $model_PracTran = Practicetransaction::find()->all();
+        $model_bookmark = Bookmarktransaction::find()->all();
+
+        foreach ($model_mem as $key => $member) {
+            $date = date("Y-m-d H:i:s");
+            if($date >= $member->expired_date)
+            {
+                foreach ($model_bookmark as $key => $bookmark) {
+                    if($member->email==$bookmark->email)
+                    {
+                        $model_bookmark = Bookmarktransaction::findOne($bookmark->id);
+                        $model_bookmark->delete();
+                    }
+                }
+                foreach ($model_PracTran as $key => $PracTran) {
+                    if($member->email==$PracTran->email)
+                    {
+                        $model_PracTran = Practicetransaction::findOne($PracTran->id);
+                        $model_PracTran->delete();
+                    }
+                }
+                $model_mem = Member::findOne($member->email);
+                $model_mem->delete();
+            }
+        }
+
+        foreach ($model_PracTran as $key => $pracTran) {
+            $date = date("Y-m-d H:i:s");
+            if($date >= $pracTran->expired_date)
+            {
+                $model_PracTran = Practicetransaction::findOne($pracTran->id);
+                $model_PracTran->delete();
+            }
+        }
 
         return $this->render('wellcome');
     }
@@ -154,7 +194,9 @@ class AdminController extends Controller
 
         $model = new Admin();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->password = md5($model->password);
+            $model->save();
             return $this->redirect(['view', 'id' => $model->username]);
         } else {
             return $this->render('create', [
