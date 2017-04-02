@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'mytemp/js/jquery-3.1.1.js',
         'mytemp/jquery_ui/jquery-ui.min.js',
         'mytemp/js/bootstrap.min.js',
+        'mytemp/js/practice.js',
         // 'mytemp/js/bootbox.min.js',
         // 'mytemp/js/main.js'
     ];

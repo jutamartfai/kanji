@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title = $ch_name;
-$this->params['breadcrumbs'][] = ['label' => 'Kanji Chapter', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'บทเรียนตัวอักษรคันจิ', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

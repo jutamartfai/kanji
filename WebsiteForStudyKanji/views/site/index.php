@@ -22,14 +22,6 @@ $this->title = 'บทเรียนตัวอักษรคันจิ';
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                         <!-- chapter -->
                         <?php foreach ($model_ch as $key => $chapter) : ?>
-                            <?php foreach ($bookmark as $key => $tran) : ?>
-                                <?php if ($tran->kanji_ch==$chapter->no): ?>
-                                    <?php
-                                        $time = strtotime($tran->view_date);
-                                        $myFormatForView = date("m/d/y g:i A", $time); /*<span class="badge">14</span>*/
-                                    ?>
-                                <?php endif ?>
-                            <?php endforeach ; ?>
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title">

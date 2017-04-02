@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title = $ch_name;
-$this->params['breadcrumbs'][] = ['label' => 'Practice Chapter', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'แบบทดสอบตัวอักษรคันจิ', 'url' => ['sel_practice']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -262,6 +262,7 @@ $this->params['breadcrumbs'][] = $this->title;
   var chapter = "<?= $chapter; ?>";
   $( init );
 
+
   function init()
   {
       // Hide the success message
@@ -288,7 +289,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       for ( var i=0; i<3/*10*/; i++ )
       {
-        $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
+        $('<div>' + /**/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
           containment: '#content',
           stack: '#cardPile2 div',
           cursor: 'move',
@@ -300,7 +301,7 @@ $this->params['breadcrumbs'][] = $this->title;
       var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20*/ ];
       for ( var i=1; i<=3/*10*/; i++ )
       {
-        $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots2' ).droppable( {
+        $('<div>' + /**/words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#cardSlots2' ).droppable( {
           accept: '#cardPile2 div',
           hoverClass: 'hovered',
           drop: handleCardDrop
@@ -313,7 +314,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       for ( var i=0; i<3/*10*/; i++ )
       {
-        $('<div>' + /*เอาเลขออก*/numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+        $('<div>' + /**/เอาเลขออกnumbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
           containment: '#content',
           stack: '#cardPile div',
           cursor: 'move',
@@ -326,7 +327,7 @@ $this->params['breadcrumbs'][] = $this->title;
       var words = [ 'one', 'two', 'three'/*, 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 */];
       for ( var i=1; i<=3/*10*/; i++ )
       {
-        $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+numbers[i-1] ).appendTo( '#cardSlots' ).droppable( {
+        $('<div>' + /**/words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#cardSlots' ).droppable( {
           accept: '#cardPile div',
           hoverClass: 'hovered',
           drop: handleCardDrop

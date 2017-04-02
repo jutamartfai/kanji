@@ -342,20 +342,6 @@ class PracticeController extends Controller
             ]);
         }
 
-        // if (Practicetransaction::find()->where(['email' => $session['member_name'], 'practice_ch' => $chapter])->one()) {
-        //     $bookmark = Practicetransaction::find()->where(['email' => $session['member_name'], 'practice_ch' => $chapter])->one();
-        //     $bookmark->do_date = date("Y-m-d H:i:s");
-        //     $bookmark->save();
-        // }
-        // else
-        // {
-        //     $bookmark = new Practicetransaction();
-        //     $bookmark->email = $session['member_name'];
-        //     $bookmark->practice_ch = $chapter;
-        //     $bookmark->do_date = date("Y-m-d H:i:s");
-        //     $bookmark->save();
-        // }
-
         $model = Practice::find()->where("practice_ch=$chapter")->all();
 
         return $this->render('practice_content', [
@@ -398,6 +384,21 @@ class PracticeController extends Controller
 
         return $this->render('sel_practice', [
             'model_ch' => $model_ch,
+        ]);
+    }
+
+        public function actionTodlong($chapter,$ch_name)
+    {
+        $this->layout = 'maintemp';
+        $session = new Session;
+        $session->open();
+
+        $model = Practice::find()->where("practice_ch=$chapter")->all();
+
+        return $this->render('todlong', [
+            'model' => $model,
+            'ch_name' => $ch_name,
+            'chapter' => $chapter,
         ]);
     }
 }
