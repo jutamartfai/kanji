@@ -1,14 +1,8 @@
-/*
-* @Author: DELL
-* @Date:   2017-04-03 01:29:15
-* @Last Modified by:   DELL
-* @Last Modified time: 2017-04-03 04:16:53
-*/
-
-// 'use strict';
+'use strict';
 
 var correctCards = 0;
 var failCards = 0;
+var chapter = "<?= $chapter; ?>";
 $( init );
 
 function init() {
@@ -19,10 +13,10 @@ function init() {
 	// Reset the game
     correctCards = 0;
     failCards = 0;
-    $('#cardPile').html( '' );
-    $('#cardSlots').html( '' );
-    $('#cardPile2').html( '' );
-    $('#cardSlots2').html( '' );
+    $('#pronAnswer').html( '' );
+    $('#pronQuestion').html( '' );
+    $('#meaningAnswer').html( '' );
+    $('#meaningQuestion').html( '' );
 
 	// pron card area
 	// Create the pile of shuffled cards
@@ -30,9 +24,9 @@ function init() {
 	numbers.sort( function() { return Math.random() - .5 } );
 
 	for ( var i=0; i<20; i++ ) {
-		$('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
-		  		containment: '#content',
-		  		stack: '#cardPile div',
+		$('<div>' + /*numbers[i]*/ + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardP'+numbers[i] ).appendTo( '#pronAnswer' ).draggable( {
+		  		containment: '#pronContent',
+		  		stack: '#pronAnswer div',
 		  		cursor: 'move',
 		  		revert: true
 			} );
@@ -41,8 +35,8 @@ function init() {
 	// Create the card slots
 	var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty' ];
 	for ( var i=1; i<=20; i++ ) {
-		$('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#cardSlots' ).droppable( {
-		  	accept: '#cardPile div',
+		$('<div>' + /*words[i-1]*/ + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#pronQuestion' ).droppable( {
+		  	accept: '#pronAnswer div',
 		  	hoverClass: 'hovered',
 		  	drop: handleCardDrop
 		} );
@@ -56,9 +50,9 @@ function init() {
 	numbers.sort( function() { return Math.random() - .5 } );
 
 	for ( var i=0; i<20; i++ ) {
-	    $('<div>' + numbers[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#cardPile2' ).draggable( {
-		      	containment: '#content2',
-		      	stack: '#cardPile2 div',
+	    $('<div>' + /*numbers[i]*/ + '</div>').data( 'number', numbers[i] ).attr( 'id', 'cardM'+numbers[i] ).appendTo( '#meaningAnswer' ).draggable( {
+		      	containment: '#meaningContent',
+		      	stack: '#meaningAnswer div',
 		      	cursor: 'move',
 		      	revert: true
 		    } );
@@ -67,8 +61,8 @@ function init() {
 	// Create the card slots
 	var words = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty' ];
 	for ( var i=1; i<=20; i++ ) {
-	    $('<div>' + words[i-1] + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#cardSlots2' ).droppable( {
-	      	accept: '#cardPile2 div',
+	    $('<div>' + /*words[i-1]*/ + '</div>').data( 'number', i ).attr( 'id', 'cardQ'+i ).appendTo( '#meaningQuestion' ).droppable( {
+	      	accept: '#meaningAnswer div',
 	      	hoverClass: 'hovered',
 	      	drop: handleCardDrop
 	    } );
@@ -87,7 +81,7 @@ function handleCardDrop( event, ui ) {
   	// again
 
 
-	ui.draggable.addClass( 'correct' );
+	// ui.draggable.addClass( 'correct' );
 	ui.draggable.draggable( 'disable' );
 	$(this).droppable( 'disable' );
 	ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
@@ -95,10 +89,12 @@ function handleCardDrop( event, ui ) {
 
 	if ( slotNumber == cardNumber )
 	{
+		ui.draggable.addClass( 'correct' );
 		correctCards++;
 	}
 	else
 	{
+		ui.draggable.addClass( 'fail' );
 		failCards++;
 	}
   	// If all the cards have been placed correctly then display a message
@@ -114,3 +110,8 @@ function handleCardDrop( event, ui ) {
 
 }
 
+function getScore()
+{
+  	document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
+
+}

@@ -370,18 +370,11 @@
 	              	</div>
 	            </div>
 	          </div>
-
-<!-- 	              	correctScore: <div id="correctScore"></div>
-	              	failScore: <div id="failScore"></div> -->
-
         </div>
     </div>
 </div>
 
 <script>
-	function getScore()
-	{
-	  	document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
-	}
+
 </script>
 

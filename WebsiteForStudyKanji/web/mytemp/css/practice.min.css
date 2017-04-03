@@ -1,0 +1,28 @@
+#pronContent{margin:80px 70px;text-align:center;-moz-user-select:none;-webkit-user-select:none;user-select:none}#meaningContent{margin:80px 70px;text-align:center;-moz-user-select:none;-webkit-user-select:none;user-select:none}
+#pronQuestion{margin:50px auto 0 auto;background:#ffd}#pronAnswer{margin:50px auto 0 auto;background:#ffd}#pronQuestion,#pronAnswer{width:910px;height:240px;padding:20px;border:2px solid #333;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;-moz-box-shadow:0 0 .3em rgba(0,0,0,.8);-webkit-box-shadow:0 0 .3em rgba(0,0,0,.8);box-shadow:0 0 .3em rgba(0,0,0,.8)}
+#pronQuestion div,#pronAnswer div{float:left;width:100px;height:40px;padding:10px;padding-top:40px;padding-bottom:0;border:2px solid #333;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;margin:10px 10px 10px 10px;background:#fff}
+#pronQuestion div:first-child,#pronAnswer div:first-child{margin-left:10px}#pronQuestion div.hovered{background:#aaa}#pronQuestion div{border-style:dashed}
+#pronAnswer div{background:#666;color:#fff;font-size:50px;text-shadow:0 0 3px #000}#pronAnswer div.ui-draggable-dragging{-moz-box-shadow:0 0 .5em rgba(0,0,0,.8);-webkit-box-shadow:0 0 .5em rgba(0,0,0,.8);box-shadow:0 0 .5em rgba(0,0,0,.8)}
+#meaningQuestion{margin:50px auto 0 auto;background:#ddf}#meaningAnswer{margin:50px auto 0 auto;background:#ddf}#meaningQuestion,#meaningAnswer{width:910px;height:240px;padding:20px;border:2px solid #333;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;-moz-box-shadow:0 0 .3em rgba(0,0,0,.8);-webkit-box-shadow:0 0 .3em rgba(0,0,0,.8);box-shadow:0 0 .3em rgba(0,0,0,.8)}
+#meaningQuestion div,#meaningAnswer div{float:left;width:100px;height:40px;padding:10px;padding-top:40px;padding-bottom:0;border:2px solid #333;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;margin:10px 10px 10px 10px;background:#fff}
+#meaningQuestion div:first-child,#meaningAnswer div:first-child{margin-left:10px}#meaningQuestion div.hovered{background:#aaa}#meaningQuestion div{border-style:dashed}
+#meaningAnswer div{background:#666;color:#fff;font-size:50px;text-shadow:0 0 3px #000}#meaningAnswer div.ui-draggable-dragging{-moz-box-shadow:0 0 .5em rgba(0,0,0,.8);-webkit-box-shadow:0 0 .5em rgba(0,0,0,.8);box-shadow:0 0 .5em rgba(0,0,0,.8)}
+#cardP1.correct{border:2px solid #0f0}#cardP2.correct{border:2px solid #0f0}#cardP3.correct{border:2px solid #0f0}#cardP4.correct{border:2px solid #0f0}
+#cardP5.correct{border:2px solid #0f0}#cardP6.correct{border:2px solid #0f0}#cardP7.correct{border:2px solid #0f0}#cardP8.correct{border:2px solid #0f0}
+#cardP9.correct{border:2px solid #0f0}#cardP10.correct{border:2px solid #0f0}#cardP11.correct{border:2px solid #0f0}#cardP12.correct{border:2px solid #0f0}
+#cardP13.correct{border:2px solid #0f0}#cardP14.correct{border:2px solid #0f0}#cardP15.correct{border:2px solid #0f0}#cardP16.correct{border:2px solid #0f0}
+#cardP17.correct{border:2px solid #0f0}#cardP18.correct{border:2px solid #0f0}#cardP19.correct{border:2px solid #0f0}#cardP20.correct{border:2px solid #0f0}
+#cardP1.fail{border:2px solid #f00}#cardP2.fail{border:2px solid #f00}#cardP3.fail{border:2px solid #f00}#cardP4.fail{border:2px solid #f00}#cardP5.fail{border:2px solid #f00}
+#cardP6.fail{border:2px solid #f00}#cardP7.fail{border:2px solid #f00}#cardP8.fail{border:2px solid #f00}#cardP9.fail{border:2px solid #f00}#cardP10.fail{border:2px solid #f00}
+#cardP11.fail{border:2px solid #f00}#cardP12.fail{border:2px solid #f00}#cardP13.fail{border:2px solid #f00}#cardP14.fail{border:2px solid #f00}#cardP15.fail{border:2px solid #f00}
+#cardP16.fail{border:2px solid #f00}#cardP17.fail{border:2px solid #f00}#cardP18.fail{border:2px solid #f00}#cardP19.fail{border:2px solid #f00}#cardP20.fail{border:2px solid #f00}
+#cardM1.correct{border:2px solid #0f0}#cardM2.correct{border:2px solid #0f0}#cardM3.correct{border:2px solid #0f0}#cardM4.correct{border:2px solid #0f0}
+#cardM5.correct{border:2px solid #0f0}#cardM6.correct{border:2px solid #0f0}#cardM7.correct{border:2px solid #0f0}#cardM8.correct{border:2px solid #0f0}
+#cardM9.correct{border:2px solid #0f0}#cardM10.correct{border:2px solid #0f0}#cardM11.correct{border:2px solid #0f0}#cardM12.correct{border:2px solid #0f0}
+#cardM13.correct{border:2px solid #0f0}#cardM14.correct{border:2px solid #0f0}#cardM15.correct{border:2px solid #0f0}#cardM16.correct{border:2px solid #0f0}
+#cardM17.correct{border:2px solid #0f0}#cardM18.correct{border:2px solid #0f0}#cardM19.correct{border:2px solid #0f0}#cardM20.correct{border:2px solid #0f0}
+#cardM1.fail{border:2px solid #f00}#cardM2.fail{border:2px solid #f00}#cardM3.fail{border:2px solid #f00}#cardM4.fail{border:2px solid #f00}#cardM5.fail{border:2px solid #f00}
+#cardM6.fail{border:2px solid #f00}#cardM7.fail{border:2px solid #f00}#cardM8.fail{border:2px solid #f00}#cardM9.fail{border:2px solid #f00}#cardM10.fail{border:2px solid #f00}
+#cardM11.fail{border:2px solid #f00}#cardM12.fail{border:2px solid #f00}#cardM13.fail{border:2px solid #f00}#cardM14.fail{border:2px solid #f00}#cardM15.fail{border:2px solid #f00}
+#cardM16.fail{border:2px solid #f00}#cardM17.fail{border:2px solid #f00}#cardM18.fail{border:2px solid #f00}#cardM19.fail{border:2px solid #f00}#cardM20.fail{border:2px solid #f00}
+#successMessage{position:absolute;left:580px;top:250px;width:0;height:0;z-index:100;background:#dfd;border:2px solid #333;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;-moz-box-shadow:.3em .3em .5em rgba(0,0,0,.8);-webkit-box-shadow:.3em .3em .5em rgba(0,0,0,.8);box-shadow:.3em .3em .5em rgba(0,0,0,.8);padding:20px}

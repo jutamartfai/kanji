@@ -25,7 +25,6 @@ $this->title = 'แบบทดสอบตัวอักษรคันจิ'
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="headingThree">
                                 <h4 class="panel-title">
-<!--                                     <?= Html::a($chapter->name, ['practice_content', 'chapter' => $chapter->no, 'ch_name' => $chapter->name ], ['class' => 'collapsed']) ?> -->
                                     <?= Html::a($chapter->name, ['practice_content', 'chapter' => $chapter->no, 'ch_name' => $chapter->name ], ['class' => 'collapsed']) ?>
                                 </h4>
                             </div>
