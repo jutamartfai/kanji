@@ -493,10 +493,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h4 class="modal-title" id="exampleModalLabel">คะแนนที่ได้</h4>
                     </div>
                     <div class="modal-body">
-                        <h2>จำนวนข้อทั้งหมด : <div id="totalScore"></div>
+                        <center><h1>จำนวนข้อทั้งหมด : <div id="totalScore"></div>
                         จำนวนข้อที่ถูกต้อง : <div id="correctScore"></div>
-                        จำนวนข้อที่ผิด : <div id="failScore"></div></h2>
-                        <p>ต้องการเก็บผลคะแนนไว้หรือไม่?</p>
+                        จำนวนข้อที่ผิด : <div id="failScore"></div></h1>
+                        <p>ต้องการเก็บผลคะแนนไว้หรือไม่?</p></center>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" onclick="init()">ไม่เก็บ</button>
@@ -508,3 +508,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+
+<script>
+var chapter = "<?= $chapter; ?>";
+function getScore()
+{
+    document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
+}
+</script>

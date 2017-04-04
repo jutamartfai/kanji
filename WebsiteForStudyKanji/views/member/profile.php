@@ -30,7 +30,7 @@ $this->title = $model->email;
                         <?= DetailView::widget([
                             'model' => $model,
                             'attributes' => [
-                                'email:email',
+                                'email',
                                 // 'password',
                                 'first_name',
                                 'last_name',

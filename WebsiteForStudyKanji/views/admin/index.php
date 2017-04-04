@@ -15,42 +15,53 @@ $this->title = 'การจัดการผู้ดูแลระบบ';
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+
     <div class="panel-group">
         <div class="panel panel-default">
-            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
             <div class="panel-body">
-                <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-            </div>
-        </div>
-    </div>
-
-    <p>
-        <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มผู้ดูแลระบบ', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
-            <div class="panel-body">
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel,
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-
-                        'username',
-                        'password',
-
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {delete} </div>', /*{view} {update} */
-                            //'options'=> ['style'=>'width:100px;'],
-                            'contentOptions'=>[
-                                'noWrap' => true
-                            ],
-                        ],
-                    ],
-                ]); ?>
+            <br>
+                <p>
+                    <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มผู้ดูแลระบบ', ['create'], ['class' => 'btn btn-success']) ?>
+                </p>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ชื่อผู้ใช้</th>
+                            <th>รหัสผ่าน</th>
+                            <th>การจัดการ</th>
+                        </tr>
+                    </thead>
+                    <?php foreach ($model as $key => $value) : ?>
+                        <tbody>
+                            <tr>
+                                <td><?= $value->username; ?></td>
+                                <td><?= $value->password; ?></td>
+                                <td>
+                                    <div class="btn-group btn-group-sm text-center" role="group">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->username; ?>"><span class="glyphicon glyphicon-trash"></span></button>
+                                        <div class="modal fade" id="<?= $value->username; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="exampleModalLabel">ต้องการลบรายการนี้หรือไม่?</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h1><?= $value->username; ?></h1>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                    <?= Html::a('ลบ', ['deletes', 'id' => $value->username], ['class' => 'btn btn-danger']) ?>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <?php endforeach ; ?>
+                </table>
             </div>
         </div>
     </div>

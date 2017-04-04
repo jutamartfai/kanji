@@ -20,9 +20,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
+    <center><div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'สมัคร' : 'แก้ไข', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+    </div></center>
 
     <?php ActiveForm::end(); ?>
 

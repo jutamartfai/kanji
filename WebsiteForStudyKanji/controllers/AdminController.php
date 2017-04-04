@@ -151,9 +151,12 @@ class AdminController extends Controller
         $searchModel = new AdminSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $model = Admin::find()->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
@@ -197,7 +200,12 @@ class AdminController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->password = md5($model->password);
             $model->save();
-            return $this->redirect(['view', 'id' => $model->username]);
+
+            $model = Admin::find()->all();
+
+            return $this->render('index', [
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -233,22 +241,31 @@ class AdminController extends Controller
     }
 
     /**
-     * Deletes an existing Admin model.
+     * Deletes an existing Kanji model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param string $kanji_ch
+     * @param string $kanji_no
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDeletes($id)
     {
         $this->layout = 'template';
         $session = new Session;
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('../admin/wellcome');
         }
 
-        $this->findModel($id)->delete();
+        $model = Admin::find()->all();
+        foreach ($model as $key => $value) {
+            if($id==$value->username)
+            {
+                $model = $this->findModel($id);
+
+                $model->delete();
+            }
+        }
 
         return $this->redirect(['index']);
     }

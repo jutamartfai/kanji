@@ -11,16 +11,16 @@ $this->title = 'เข้าสู่ระบบ';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <center><h1><?= Html::encode($this->title) ?></h1>
 
-    <p>โปรดกรอกข้อมูลต่อไปนี้เพื่อเข้าสู่ระบบ:</p>
+    <p>โปรดกรอกข้อมูลต่อไปนี้เพื่อเข้าสู่ระบบ:</p></center>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-4\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label'],
         ],
     ]); ?>
 
@@ -29,7 +29,7 @@ $this->title = 'เข้าสู่ระบบ';
         <?= $form->field($model, 'password')->passwordInput() ?>
 
         <div class="row">
-            <div class="col-xs-6 col-sm-1"></div>
+            <div class="col-xs-6 col-sm-5"></div>
             <div class="col-xs-6 col-sm-1">
                 <?= Html::submitButton('เข้าสู่ระบบ', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>

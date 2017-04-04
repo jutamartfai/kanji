@@ -14,55 +14,59 @@ $this->title = 'จัดการข้อมูลสมาชิก';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <!-- <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          search member
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body"> -->
     <div class="panel-group">
         <div class="panel panel-default">
-            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
             <div class="panel-body">
-                <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-            </div>
-        </div>
-    </div>
-
-    <!-- <p>
-        = Html::a('Create Member', ['create'], ['class' => 'btn btn-success'])
-    </p> -->
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <!-- <div class="panel-heading">Panel with panel-default class</div> -->
-            <div class="panel-body">
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    //'filterModel' => $searchModel,
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-
-                        'first_name',
-                        'last_name',
-                        'email:email',
-                        // 'password',
-                        'active_date:dateTime',
-
-                        [
-                            'class' => 'yii\grid\ActionColumn',
-                            'buttonOptions'=>['class'=>'btn btn-default'],
-                            'template'=>'<div class="btn-group btn-group-sm text-center" role="group"> {view}  </div>', /*{update} {delete}*/
-                            //'options'=> ['style'=>'width:100px;'],
-                            'contentOptions'=>[
-                                'noWrap' => true
-                            ],
-                        ],
-                    ],
-                ]); ?>
+            <br>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ชื่อ</th>
+                            <th>นามสกุล</th>
+                            <th>อีเมล์</th>
+                            <th>วันที่เข้าใช้งานล่าสุด</th>
+                            <th>การจัดการ</th>
+                        </tr>
+                    </thead>
+                    <?php $i=1; ?>
+                    <?php foreach ($model as $key => $value) : ?>
+                        <tbody>
+                            <tr>
+                                <td><?= $value->first_name; ?></td>
+                                <td><?= $value->last_name; ?></td>
+                                <td><?= $value->email; ?></td>
+                                <?php
+                                    $time = strtotime($value->active_date);
+                                    $myFormatForView = date("m/d/y g:i A", $time);
+                                ?>
+                                <td><?= $myFormatForView; ?></td>
+                                <td>
+                                    <div class="btn-group btn-group-sm text-center" role="group">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $i; ?>"><span class="glyphicon glyphicon-trash"></span></button>
+                                        <div class="modal fade" id="<?= $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="exampleModalLabel">ต้องการลบรายการนี้หรือไม่?</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h1><?= $value->email; ?></h1>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                                                    <?= Html::a('ลบ', ['deletebyadmin', 'id' => "$value->email"], ['class' => 'btn btn-danger']) ?>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <?php $i++; ?>
+                    <?php endforeach ; ?>
+                </table>
             </div>
         </div>
     </div>

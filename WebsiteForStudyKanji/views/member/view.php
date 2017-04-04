@@ -13,7 +13,7 @@ $this->title = $model->email;
 <div class="member-view">
 
     <p>
-        <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>&nbsp;แก้ไข', ['update', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+<!--         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>&nbsp;แก้ไข', ['update', 'id' => $model->email], ['class' => 'btn btn-primary']) ?> -->
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span>&nbsp;ลบ</button>
         <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">

@@ -12,16 +12,16 @@ $this->title = 'เข้าสู่ระบบ (ผู้ดูและร�
 ?>
 
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <center><h1><?= Html::encode($this->title) ?></h1>
 
-    <p>โปรดกรอกข้อมูลต่อไปนี้เพื่อเข้าสู่ระบบ:</p>
+    <p>โปรดกรอกข้อมูลต่อไปนี้เพื่อเข้าสู่ระบบ:</p></center>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-4\">{input}</div>\n<div class=\"col-lg-4\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label'],
         ],
     ]); ?>
 
@@ -30,7 +30,7 @@ $this->title = 'เข้าสู่ระบบ (ผู้ดูและร�
         <?= $form->field($model, 'password')->passwordInput() ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
+            <div class="col-lg-offset-5 col-lg-7">
                 <?= Html::submitButton('เข้าสู่ระบบ', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
         </div>

@@ -52,9 +52,12 @@ class MemberController extends Controller
         $searchModel = new MemberSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $model = Member::find()->all();
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
         ]);
     }
 
@@ -147,12 +150,29 @@ class MemberController extends Controller
             return $this->render('../admin/wellcome');
         }
 
-        $model = Member::find()->all();
-        foreach ($model as $key => $value) {
-            if(($id==$value->email))
-            {
-                $model = $this->findModel($id);
+        $model_mem = Member::find()->all();
+        $model_PracTran = Practicetransaction::find()->all();
+        $model_bookmark = Bookmarktransaction::find()->all();
 
+        foreach ($model_mem as $key => $member) {
+            if(($id==$member->email))
+            {
+                foreach ($model_bookmark as $key => $bookmark) {
+                    if($member->email==$bookmark->email)
+                    {
+                        $model_bookmark = Bookmarktransaction::findOne($bookmark->id);
+                        $model_bookmark->delete();
+                    }
+                }
+                foreach ($model_PracTran as $key => $PracTran) {
+                    if($member->email==$PracTran->email)
+                    {
+                        $model_PracTran = Practicetransaction::findOne($PracTran->id);
+                        $model_PracTran->delete();
+                    }
+                }
+
+                $model = $this->findModel($id);
                 $model->delete();
             }
         }

@@ -10,10 +10,15 @@ $this->title = 'สมัครสมาชิกใหม่';
 ?>
 <div class="member-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <center><h1><?= Html::encode($this->title) ?></h1></center>
 
-    <?= $this->render('_form-register', [
-        'model' => $model,
-    ]) ?>
-
+	<div class="row">
+	    <div class="col-md-4"></div>
+	    <div class="col-md-4">
+		    <?= $this->render('_form-register', [
+		        'model' => $model,
+		    ]) ?>
+		</div>
+    <div class="col-md-4"></div>
+</div>
 </div>

@@ -2,7 +2,7 @@
 
 var correctCards = 0;
 var failCards = 0;
-var chapter = "<?= $chapter; ?>";
+// var chapter = "<?php $chapter; ?>";
 $( init );
 
 function init() {
@@ -110,8 +110,8 @@ function handleCardDrop( event, ui ) {
 
 }
 
-function getScore()
-{
-  	document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
+// function getScore(chapter)
+// {
+//   	document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
 
-}
+// }
