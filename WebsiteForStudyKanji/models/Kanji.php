@@ -34,7 +34,7 @@ class Kanji extends \yii\db\ActiveRecord
     {
         return [
             [['kanji_ch', 'kanji_no', 'kanji', 'meaning', 'jp_pron', 'cn_pron', 'line_num', 'ex_vocab', 'how_to'], 'required'],
-            [['line_num'], 'integer'],
+            [['line_num'], 'integer', 'min' => 1],
             [['ex_vocab'], 'string'],
             [['kanji_ch', 'kanji_no'], 'string', 'max' => 2],
             [['kanji'], 'string', 'max' => 1],

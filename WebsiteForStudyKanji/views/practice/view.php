@@ -15,6 +15,19 @@ $this->title = $model->question.', '.$model->meaning.', '.$model->pron;
 ?>
 <div class="practice-view">
 
+    <?php if ($practice_alert=='2'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>เพิ่มเรียบร้อย!</strong> ข้อมูลถูกเพิ่มเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
+    <?php if ($practice_alert=='3'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>แก้ไขเรียบร้อย!</strong> รายการที่คุณเลือกถูกแก้ไขข้อมูลเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
+
 <!--     <h1><?= Html::encode($this->title) ?></h1> -->
 
     <p>

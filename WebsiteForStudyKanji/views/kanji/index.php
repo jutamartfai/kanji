@@ -13,6 +13,13 @@ $this->title = 'การจัดการตัวอักษรคันจ�
 ?>
 <div class="kanji-index">
 
+    <?php if ($kanji_alert=='1'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>ลบเรียบร้อย!</strong> รายการที่คุณเลือกถูกลบเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
+
     <h1><?= Html::encode($this->title) ?></h1>
 
     <div class="panel-group">

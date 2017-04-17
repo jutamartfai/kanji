@@ -157,6 +157,7 @@ class AdminController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
+            'admin_alert' => '0',
         ]);
     }
 
@@ -205,6 +206,7 @@ class AdminController extends Controller
 
             return $this->render('index', [
                 'model' => $model,
+                'admin_alert' => '2',
             ]);
         } else {
             return $this->render('create', [
@@ -267,7 +269,12 @@ class AdminController extends Controller
             }
         }
 
-        return $this->redirect(['index']);
+        $model = Admin::find()->all();
+
+        return $this->render('index', [
+            'model' => $model,
+            'admin_alert' => '1',
+        ]);
     }
 
     /**

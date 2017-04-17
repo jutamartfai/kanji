@@ -58,6 +58,7 @@ class MemberController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
+            'mem_alert' => '0',
         ]);
     }
 
@@ -177,7 +178,10 @@ class MemberController extends Controller
             }
         }
 
-        return $this->redirect(['index']);
+        return $this->render('index', [
+            'mem_alert' => '1',
+            'model' => $model_mem,
+        ]);
     }
 
     /**
@@ -276,8 +280,8 @@ class MemberController extends Controller
 
         $email = $session['member_name'];
 
-        $pracTran = Practicetransaction::find()->where("email='$email'")->all();
-        $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->all();
+        $pracTran = Practicetransaction::find()->where("email='$email'")->orderBy(['do_date'=>SORT_DESC])->all();
+        $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->orderBy(['view_date'=>SORT_DESC])->all();
 
         $model_ch = Chapter::find()->all();
 
@@ -286,6 +290,7 @@ class MemberController extends Controller
             'pracTran' => $pracTran,
             'bookmarkTran' => $bookmarkTran,
             'model_ch' => $model_ch,
+            'profile_alert' => '0',
         ]);
     }
 
@@ -323,6 +328,7 @@ class MemberController extends Controller
             'pracTran' => $pracTran,
             'bookmarkTran' => $bookmarkTran,
             'model_ch' => $model_ch,
+            'profile_alert' => '2',
         ]);
 
         // return $this->refresh();
@@ -350,8 +356,20 @@ class MemberController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $email = $session['member_name'];
+
+            $pracTran = Practicetransaction::find()->where("email='$email'")->orderBy(['do_date'=>SORT_DESC])->all();
+            $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->orderBy(['view_date'=>SORT_DESC])->all();
+
+            $model_ch = Chapter::find()->all();
+
             return $this->render('Profile', [
                 'model' => $this->findModel($id),
+                'pracTran' => $pracTran,
+                'bookmarkTran' => $bookmarkTran,
+                'model_ch' => $model_ch,
+                'profile_alert' => '1',
             ]);
         } else {
             return $this->render('edit_profile', [
@@ -386,8 +404,20 @@ class MemberController extends Controller
             if(md5($current->password) == $currentPassword) {
                 $model->password = md5($model->password);
                 $model->save();
+
+                $email = $session['member_name'];
+
+                $pracTran = Practicetransaction::find()->where("email='$email'")->orderBy(['do_date'=>SORT_DESC])->all();
+                $bookmarkTran = Bookmarktransaction::find()->where("email='$email'")->orderBy(['view_date'=>SORT_DESC])->all();
+
+                $model_ch = Chapter::find()->all();
+
                 return $this->render('Profile', [
                     'model' => $model,
+                    'pracTran' => $pracTran,
+                    'bookmarkTran' => $bookmarkTran,
+                    'model_ch' => $model_ch,
+                    'profile_alert' => '1',
                 ]);
             }
         }
@@ -412,17 +442,28 @@ class MemberController extends Controller
         $session_model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->password = md5($model->password);
-            $model->active_date = date("Y-m-d H:i:s");
-            $model->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
-            $model->save();
-            $session_model->username = $model->email;
-            $session_model->password = $model->password;
+            $emailCh = $model->email;
+            if (Member::find()->where("email='$emailCh'")->one()) {
+                return $this->render('register', [
+                    'email_check' => '1',
+                    'model' => $model,
+                ]);
+            }
+            else
+            {
+                $model->password = md5($model->password);
+                $model->active_date = date("Y-m-d H:i:s");
+                $model->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
+                $model->save();
+                $session_model->username = $model->email;
+                $session_model->password = $model->password;
 
-            $session['member_name'] = $session_model->getName();
-            return $this->goHome();
+                $session['member_name'] = $session_model->getName();
+                return $this->goHome();
+            }
         } else {
             return $this->render('register', [
+                'email_check' => '0',
                 'model' => $model,
             ]);
         }

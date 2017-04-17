@@ -16,6 +16,18 @@ $this->title = $model->email;
         <div class="panel panel-default">
             <div class="panel-body">
 
+                <?php if ($profile_alert=='1'): ?>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>บันทึกเรียบร้อย!</strong> ข้อมูลใหม่ของคุณถูกบันทึกเรียบร้อยแล้ว
+                    </div>
+                <?php endif ?>
+                <?php if ($profile_alert=='2'): ?>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>ลบเรียบร้อย!</strong> บันทึกผลคะแนนที่คุณเลือกถูกลบเรียบร้อยแล้ว
+                    </div>
+                <?php endif ?>
                 <center><h1>โปรไฟล์ของ : <?= Html::encode($this->title) ?></h1></center>
 
                 <br>
@@ -23,7 +35,7 @@ $this->title = $model->email;
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <center><p>
-                            <?= Html::a('แก้ไขข้อมูลส่วนตัว', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a('แก้ไขชื่อ', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
                             <?= Html::a('แก้ไขรหัสผ่าน', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
                         </p></center><br>
 
@@ -52,25 +64,25 @@ $this->title = $model->email;
                 <table class="table table-hover table-bordered">
                     <thead>
                         <tr>
+                            <th>วันที่และเวลาเข้าชม</th>
                             <th>บทที่</th>
                             <th>ชื่อบทเรียน</th>
-                            <th>วันที่และเวลาเข้าชม</th>
                         </tr>
                     </thead>
                     <?php foreach ($bookmarkTran as $key => $value) : ?>
                         <tbody>
                             <tr>
+                                <?php
+                                    $time = strtotime($value->view_date);
+                                    $myFormatForView = date("m/d/y g:i A", $time);
+                                ?>
+                                <td><?= $myFormatForView; ?></td>
                                 <td><?= $value->kanji_ch; ?></td>
                                 <?php foreach ($model_ch as $key => $chapter) : ?>
                                 <?php if ($value->kanji_ch==$chapter->no): ?>
                                 <td><?= $chapter->name; ?></td>
                                 <?php endif ?>
                                 <?php endforeach ; ?>
-                                <?php
-                                    $time = strtotime($value->view_date);
-                                    $myFormatForView = date("m/d/y g:i A", $time);
-                                ?>
-                                <td><?= $myFormatForView; ?></td>
                             </tr>
                         </tbody>
                     <?php endforeach ; ?>

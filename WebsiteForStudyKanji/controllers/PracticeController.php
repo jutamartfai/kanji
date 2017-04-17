@@ -63,6 +63,7 @@ class PracticeController extends Controller
             'dataProvider' => $dataProvider,
             'model' => $model,
             'model_ch' => $model_ch,
+            'practice_alert' => '0',
         ]);
     }
 
@@ -142,7 +143,13 @@ class PracticeController extends Controller
             $model->pron = $model->upload($model,'pron');
             $model->save();
 
-            return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
+            // return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
+            return $this->render('view', [
+                'practice_ch' => $model->practice_ch,
+                'practice_no' => $model->practice_no,
+                'practice_alert' => '2',
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -228,7 +235,13 @@ class PracticeController extends Controller
             $model->pron = $model->upload($model,'pron');
             $model->save();
 
-            return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
+            // return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
+            return $this->render('view', [
+                'practice_ch' => $model->practice_ch,
+                'practice_no' => $model->practice_no,
+                'practice_alert' => '3',
+                'model' => $model,
+            ]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -269,7 +282,14 @@ class PracticeController extends Controller
             }
         }
 
-        return $this->redirect(['index']);
+        $model = Practice::find()->all();
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('index', [
+            'model' => $model,
+            'model_ch' => $model_ch,
+            'practice_alert' => '1',
+        ]);
     }
 
     /**

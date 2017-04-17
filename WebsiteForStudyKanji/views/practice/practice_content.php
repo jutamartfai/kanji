@@ -463,18 +463,27 @@ $this->params['breadcrumbs'][] = $this->title;
       <br><br>
       <div class="row">
             <div>
+              <center>*แบบทดสอบจะแบ่งเป็น 2 ส่วน คือ จับคู่คำอ่านและจับคู่ความหมาย <br>
+              ผู้เล่นจะต้องทำทั้ง 2 ส่วนให้ครบทุกข้อ ปุ่มยืนยันคำตอบเพื่อแสดงผลคะแนนจึงจะปรากฏขึ้นอยู่ในส่วนด้านล่างของหน้าแบบทดสอบนี้ <br>
+              หากต้องการเริ่มทำแบบทดสอบใหม่ให้กดที่ปุ่มเริ่มใหม่ที่ปรากฏอยู่ในส่วนด้านบนก่อนเริ่มทำแบบทดสอบนี้*</center>
+            </div>
+      </div>
+      <br><br>
+      <br><br>
+      <div class="row">
+            <div>
               <center><p><button class="btn btn-info" onclick="init()">เริ่มใหม่</button></p></center>
             </div>
-            </div>
+      </div>
 
       <div id="pronContent">
-        <center><h1>จับคู่คำอ่าน</h1></center>
+        <center><h3>จับคู่คำอ่าน</h3></center>
           <div id="pronAnswer"></div>
           <div id="pronQuestion"></div>
       </div>
 
       <div id="meaningContent">
-        <center><h1>จับคู่ความหมาย</h1></center>
+        <center><h3>จับคู่ความหมาย</h3></center>
           <div id="meaningAnswer"></div>
           <div id="meaningQuestion"></div>
       </div>
@@ -499,8 +508,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p>ต้องการเก็บผลคะแนนไว้หรือไม่?</p></center>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="init()">ไม่เก็บ</button>
-                        <button type="button" class="btn btn-primary" onclick="getScore()">เก็บ</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="init()">ยกเลิก</button>
+                        <button type="button" class="btn btn-primary" onclick="getScore()">บันทึก</button>
                     </div>
                   </div>
               </div>

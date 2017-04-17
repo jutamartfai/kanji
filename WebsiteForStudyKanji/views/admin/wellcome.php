@@ -12,9 +12,8 @@ $this->title = 'WELLCOME ADMIN';
 
 <div class="admin-index">
 
-    <center><h1><?= Html::encode($this->title) ?></h1>
-	<?= Html::encode($this->title) ?><br>
-	<?= Html::encode($this->title) ?><br>
-	<?= Html::encode($this->title) ?><br>
-	<?= Html::encode($this->title) ?></center>
+	<div class="jumbotron">
+		<center><h1><?= Html::encode($this->title) ?></h1></center>
+	</div>
+
 </div>

@@ -17,6 +17,19 @@ $this->title = $model->kanji;
 ?>
 <div class="kanji-view">
 
+    <?php if ($kanji_alert=='2'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>เพิ่มเรียบร้อย!</strong> ข้อมูลถูกเพิ่มเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
+    <?php if ($kanji_alert=='3'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>แก้ไขเรียบร้อย!</strong> รายการที่คุณเลือกถูกแก้ไขข้อมูลเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
+
 <!--     <h1><?= Html::encode($this->title) ?></h1> -->
 
     <br><br><p>
@@ -53,11 +66,11 @@ $this->title = $model->kanji;
             'line_num',
             'ex_vocab:ntext',
             'how_to:url',
-            [
-                'format' => 'raw',
-                'attribute'=>'how_to',
-                'value' => !empty($model->how_to) ? '<iframe class="embed-responsive-item" src="'.$model->how_to.'" frameborder="0" allowfullscreen></iframe>' : null,
-            ],
+            // [
+            //     'format' => 'raw',
+            //     'attribute'=>'how_to',
+            //     'value' => !empty($model->how_to) ? '<iframe class="embed-responsive-item" src="'.$model->how_to.'" frameborder="0" allowfullscreen></iframe>' : null,
+            // ],
         ],
     ]) ?>
 

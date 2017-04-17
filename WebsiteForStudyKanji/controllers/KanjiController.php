@@ -58,6 +58,7 @@ class KanjiController extends Controller
             'dataProvider' => $dataProvider,
             'model' => $model,
             'model_ch' => $model_ch,
+            'kanji_alert' => '0',
         ]);
     }
 
@@ -102,7 +103,12 @@ class KanjiController extends Controller
         $ch_kanji = kanji::find()->where("kanji_ch = $chapter")->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]);
+            return $this->render('view', [
+                'kanji_ch' => $model->kanji_ch,
+                'kanji_no' => $model->kanji_no,
+                'kanji_alert' => '2',
+                'model' => $model,
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -134,7 +140,12 @@ class KanjiController extends Controller
         $ch_kanji = kanji::find()->all();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'kanji_ch' => $model->kanji_ch, 'kanji_no' => $model->kanji_no]);
+            return $this->render('view', [
+                'kanji_ch' => $model->kanji_ch,
+                'kanji_no' => $model->kanji_no,
+                'kanji_alert' => '3',
+                'model' => $model,
+            ]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -172,7 +183,14 @@ class KanjiController extends Controller
 
         // $this->findModel($kanji_ch, $kanji_no)->delete();
 
-        return $this->redirect(['index']);
+        $model = Kanji::find()->all();
+        $model_ch = Chapter::find()->all();
+
+        return $this->render('index', [
+            'model' => $model,
+            'model_ch' => $model_ch,
+            'kanji_alert' => '1',
+        ]);
     }
 
     /**
