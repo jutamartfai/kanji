@@ -58,7 +58,7 @@ $this->title = 'การจัดการตัวอักษรคันจ�
                                                 <td><?= $value->meaning; ?></td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm text-center" role="group">
-                                                        <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], ['class' => 'btn btn-default']) ?>
+                                                        <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no, 'kanji_alert'=>'1'], ['class' => 'btn btn-default']) ?>
                                                         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'kanji_ch' => $value->kanji_ch, 'kanji_no' => $value->kanji_no], ['class' => 'btn btn-info']) ?>
                                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->kanji_ch.$value->kanji_no; ?>"><span class="glyphicon glyphicon-trash"></span></button>
                                                         <div class="modal fade" id="<?= $value->kanji_ch.$value->kanji_no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

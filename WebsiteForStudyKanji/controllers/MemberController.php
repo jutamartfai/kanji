@@ -52,7 +52,7 @@ class MemberController extends Controller
         $searchModel = new MemberSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $model = Member::find()->all();
+        $model = Member::find()->orderBy(['first_name' => SORT_ASC])->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

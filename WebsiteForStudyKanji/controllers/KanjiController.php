@@ -68,7 +68,7 @@ class KanjiController extends Controller
      * @param string $kanji_no
      * @return mixed
      */
-    public function actionView($kanji_ch, $kanji_no)
+    public function actionView($kanji_ch, $kanji_no,$kanji_alert)
     {
         $this->layout = 'template';
         $session = new Session;
@@ -80,6 +80,7 @@ class KanjiController extends Controller
 
         return $this->render('view', [
             'model' => $this->findModel($kanji_ch, $kanji_no),
+            'kanji_alert' => '0',
         ]);
     }
 

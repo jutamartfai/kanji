@@ -73,7 +73,7 @@ class PracticeController extends Controller
      * @param string $practice_no
      * @return mixed
      */
-    public function actionView($practice_ch, $practice_no)
+    public function actionView($practice_ch, $practice_no,$practice_alert)
     {
         $this->layout = 'template';
         $session = new Session;
@@ -85,6 +85,7 @@ class PracticeController extends Controller
 
         return $this->render('view', [
             'model' => $this->findModel($practice_ch, $practice_no),
+            'practice_alert' => '0',
         ]);
     }
 

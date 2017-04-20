@@ -60,7 +60,7 @@ $this->title = 'การจัดการแบบทดสอบ';
                                                 <td><?= $value->pron; ?><br><br><?= Html::img($value->getPhotoViewer3(),['style'=>'width:100px;','class'=>'img-rounded']); ?><br></td>
                                                 <td>
                                                     <div class="btn-group btn-group-sm text-center" role="group">
-                                                        <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-default']) ?>
+                                                        <?= Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['view', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no, 'practice_alert'=>'1'], ['class' => 'btn btn-default']) ?>
                                                         <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'practice_ch' => $value->practice_ch, 'practice_no' => $value->practice_no], ['class' => 'btn btn-info']) ?>
                                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->practice_ch.$value->practice_no; ?>"><span class="glyphicon glyphicon-trash"></span></button>
                                                         <div class="modal fade" id="<?= $value->practice_ch.$value->practice_no; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

@@ -151,7 +151,7 @@ class AdminController extends Controller
         $searchModel = new AdminSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $model = Admin::find()->all();
+        $model = Admin::find()->orderBy(['username' => SORT_ASC])->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,

@@ -19,7 +19,7 @@ $this->title = $model->email;
                 <?php if ($profile_alert=='1'): ?>
                     <div class="alert alert-success alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>บันทึกเรียบร้อย!</strong> ข้อมูลใหม่ของคุณถูกบันทึกเรียบร้อยแล้ว
+                        <strong>บันทึกเรียบร้อย!</strong> ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว
                     </div>
                 <?php endif ?>
                 <?php if ($profile_alert=='2'): ?>
