@@ -97,7 +97,7 @@ $session->open();
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <p>Copyright &copy; 560510611
-                    <?= Html::a('for admin', ['admin/wellcome']) ?></p>
+                    <?= Html::a('for admin', ['admin/manage']) ?></p>
                 </div>
             </div>
         </div>

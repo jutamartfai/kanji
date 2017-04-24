@@ -39,14 +39,19 @@ class MemberController extends Controller
      * Lists all Member models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionManage_member()
     {
         $this->layout = 'template';
         $session = new Session;
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            // return $this->render('../admin/manage', [
+            //     'login_alert' => '0',
+            // ]);
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $searchModel = new MemberSearch();
@@ -54,7 +59,7 @@ class MemberController extends Controller
 
         $model = Member::find()->orderBy(['first_name' => SORT_ASC])->all();
 
-        return $this->render('index', [
+        return $this->render('manage_member', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
@@ -74,7 +79,9 @@ class MemberController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         return $this->render('view', [
@@ -94,7 +101,9 @@ class MemberController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = new Member();
@@ -121,7 +130,9 @@ class MemberController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = $this->findModel($id);
@@ -137,7 +148,7 @@ class MemberController extends Controller
 
     /**
      * Deletes an existing Member model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * If deletion is successful, the browser will be redirected to the 'manage_member' page.
      * @param string $id
      * @return mixed
      */
@@ -148,7 +159,9 @@ class MemberController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model_mem = Member::find()->all();
@@ -178,7 +191,7 @@ class MemberController extends Controller
             }
         }
 
-        return $this->render('index', [
+        return $this->render('manage_member', [
             'mem_alert' => '1',
             'model' => $model_mem,
         ]);
@@ -214,7 +227,13 @@ class MemberController extends Controller
         $session->open();
 
         if (isset($session['member_name'])) {
-            return $this->goHome();
+            $model_ch = Chapter::find()->all();
+            $bookmark = new Bookmarktransaction();
+            return $this->render('../site/index', [
+                'model_ch' => $model_ch,
+                'bookmark' => $bookmark,
+                'login_alert' => '1',
+            ]);
         }
 
         $model = new LoginForm();
@@ -224,7 +243,13 @@ class MemberController extends Controller
             $member->active_date = date("Y-m-d H:i:s");
             $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
             $member->save();
-            return $this->goHome();
+            $model_ch = Chapter::find()->all();
+            $bookmark = new Bookmarktransaction();
+            return $this->render('../site/index', [
+                'model_ch' => $model_ch,
+                'bookmark' => $bookmark,
+                'login_alert' => '1',
+            ]);
         }
         return $this->render('login', [
             'model' => $model,
@@ -240,7 +265,13 @@ class MemberController extends Controller
     // {
     //     Yii::$app->user->logout();
 
-    //     return $this->goHome();
+    //     $model_ch = Chapter::find()->all();
+            // $bookmark = new Bookmarktransaction();
+            // return $this->render('../site/index', [
+            //     'model_ch' => $model_ch,
+            //     'bookmark' => $bookmark,
+            //     'login_alert' => '1',
+            // ]);
     // }
 
     public function actionGologout()
@@ -259,7 +290,13 @@ class MemberController extends Controller
         unset($session['member_name']);
         $session->close();
 
-        return $this->goHome();
+        $model_ch = Chapter::find()->all();
+        $bookmark = new Bookmarktransaction();
+        return $this->render('../site/index', [
+            'model_ch' => $model_ch,
+            'bookmark' => $bookmark,
+            'login_alert' => '2',
+        ]);
     }
 
     /**
@@ -435,7 +472,13 @@ class MemberController extends Controller
         $session->open();
 
         if (isset($session['member_name'])) {
-            return $this->goHome();
+            $model_ch = Chapter::find()->all();
+            $bookmark = new Bookmarktransaction();
+            return $this->render('../site/index', [
+                'model_ch' => $model_ch,
+                'bookmark' => $bookmark,
+                'login_alert' => '1',
+            ]);
         }
 
         $model = new Member();
@@ -459,7 +502,13 @@ class MemberController extends Controller
                 $session_model->password = $model->password;
 
                 $session['member_name'] = $session_model->getName();
-                return $this->goHome();
+                $model_ch = Chapter::find()->all();
+                $bookmark = new Bookmarktransaction();
+                return $this->render('../site/index', [
+                    'model_ch' => $model_ch,
+                    'bookmark' => $bookmark,
+                    'login_alert' => '1',
+                ]);
             }
         } else {
             return $this->render('register', [

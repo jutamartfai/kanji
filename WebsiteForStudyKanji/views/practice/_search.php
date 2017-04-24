@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="practice-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['manage_practice'],
         'method' => 'get',
     ]); ?>
 

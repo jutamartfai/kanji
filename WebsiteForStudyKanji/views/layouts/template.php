@@ -45,23 +45,23 @@ $session->open();
                     <span class="icon-bar"></span>
                 </button>
                 <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="<?= Url::to(['admin/index']) ?>">การจัดการเว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</a>
+                <a class="navbar-brand" href="<?= Url::to(['admin/manage']) ?>">การจัดการเว็บไซต์เพื่อการเรียนรู้ตัวอักษรคันจิ</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <?php if(isset($session['admin_name'])) { ?>
                         <li>
-                            <a href= "<?= Url::to(['kanji/index']) ?>">ตัวอักษรคันจิ</a>
+                            <a href= "<?= Url::to(['kanji/manage_kanji']) ?>">ตัวอักษรคันจิ</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['practice/index']) ?>">แบบทดสอบ</a>
+                            <a href="<?= Url::to(['practice/manage_practice']) ?>">แบบทดสอบ</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['member/index']) ?>">สมาชิก</a>
+                            <a href="<?= Url::to(['member/manage_member']) ?>">สมาชิก</a>
                         </li>
                         <li>
-                            <a href="<?= Url::to(['admin/index']) ?>">ผู้ดูแลระบบ</a>
+                            <a href="<?= Url::to(['admin/manage_admin']) ?>">ผู้ดูแลระบบ</a>
                         </li>
                         <li>
                             <a href="<?= Url::to(['/admin/gologout']) ?>">ออกจากระบบ(<?= $session['admin_name']; ?>)</a>

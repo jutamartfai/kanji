@@ -34,7 +34,7 @@ $this->title = 'เข้าสู่ระบบ';
                 <?= Html::submitButton('เข้าสู่ระบบ', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
             <div class="col-xs-6 col-sm-1">
-                <?= Html::a('สมัครสมาชิก', ['register'], ['class' => 'btn btn-info']) ?>
+                <?= Html::a('สมัครสมาชิก', ['member/register'], ['class' => 'btn btn-info']) ?>
             </div>
             <!-- <div class="col-xs-6 col-sm-1">
                 <?= Html::a('for admin', ['admin/wellcome'], ['class' => 'btn btn-info']) ?>

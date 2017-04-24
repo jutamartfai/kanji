@@ -37,14 +37,16 @@ class KanjiController extends Controller
      * Lists all Kanji models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionManage_kanji()
     {
         $this->layout = 'template';
         $session = new Session;
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $searchModel = new KanjiSearch();
@@ -53,7 +55,7 @@ class KanjiController extends Controller
         $model = Kanji::find()->all();
         $model_ch = Chapter::find()->all();
 
-        return $this->render('index', [
+        return $this->render('manage_kanji', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
@@ -75,7 +77,9 @@ class KanjiController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         return $this->render('view', [
@@ -96,7 +100,9 @@ class KanjiController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = new Kanji();
@@ -133,7 +139,9 @@ class KanjiController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = $this->findModel($kanji_ch, $kanji_no);
@@ -157,7 +165,7 @@ class KanjiController extends Controller
 
     /**
      * Deletes an existing Kanji model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * If deletion is successful, the browser will be redirected to the 'manage_kanji' page.
      * @param string $kanji_ch
      * @param string $kanji_no
      * @return mixed
@@ -169,7 +177,9 @@ class KanjiController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = Kanji::find()->all();
@@ -187,7 +197,7 @@ class KanjiController extends Controller
         $model = Kanji::find()->all();
         $model_ch = Chapter::find()->all();
 
-        return $this->render('index', [
+        return $this->render('manage_kanji', [
             'model' => $model,
             'model_ch' => $model_ch,
             'kanji_alert' => '1',

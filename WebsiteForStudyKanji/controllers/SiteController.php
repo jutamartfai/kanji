@@ -121,6 +121,7 @@ class SiteController extends Controller
         return $this->render('index', [
             'model_ch' => $model_ch,
             'bookmark' => $bookmark,
+            'login_alert' => '0',
         ]);
     }
 

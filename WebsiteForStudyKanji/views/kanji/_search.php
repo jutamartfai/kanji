@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 <div class="kanji-search">
 
     <?php $form = ActiveForm::begin([
-        'action' => ['index'],
+        'action' => ['manage_kanji'],
         'method' => 'get',
     ]); ?>
 

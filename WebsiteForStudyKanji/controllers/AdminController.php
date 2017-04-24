@@ -36,11 +36,11 @@ class AdminController extends Controller
     }
 
     /**
-     * wellcome action.
+     * manage action.
      *
      * @return string
      */
-    public function actionWellcome()
+    public function actionManage()
     {
         $this->layout = 'template';
         $session = new Session;
@@ -82,7 +82,10 @@ class AdminController extends Controller
             }
         }
 
-        return $this->render('wellcome');
+        //return $this->render('manage');
+        return $this->render('manage', [
+            'login_alert' => '0',
+        ]);
     }
     /**
      * Login action.
@@ -96,13 +99,17 @@ class AdminController extends Controller
         $session->open();
 
         if (isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = new AdminLoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $session['admin_name'] = $model->getUName();
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '1',
+            ]);
         }
         return $this->render('login', [
             'model' => $model,
@@ -130,7 +137,9 @@ class AdminController extends Controller
         unset($session['admin_name']);
         $session->close();
 
-        return $this->render('wellcome');
+        return $this->render('manage', [
+            'login_alert' => '2',
+        ]);
     }
 
 
@@ -138,14 +147,16 @@ class AdminController extends Controller
      * Lists all Admin models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionManage_admin()
     {
         $this->layout = 'template';
         $session = new Session;
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $searchModel = new AdminSearch();
@@ -153,7 +164,7 @@ class AdminController extends Controller
 
         $model = Admin::find()->orderBy(['username' => SORT_ASC])->all();
 
-        return $this->render('index', [
+        return $this->render('manage_admin', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
@@ -173,7 +184,9 @@ class AdminController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         return $this->render('view', [
@@ -193,7 +206,9 @@ class AdminController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = new Admin();
@@ -204,7 +219,7 @@ class AdminController extends Controller
 
             $model = Admin::find()->all();
 
-            return $this->render('index', [
+            return $this->render('manage_admin', [
                 'model' => $model,
                 'admin_alert' => '2',
             ]);
@@ -228,7 +243,9 @@ class AdminController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('wellcome');
+            return $this->render('manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = $this->findModel($id);
@@ -244,7 +261,7 @@ class AdminController extends Controller
 
     /**
      * Deletes an existing Kanji model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * If deletion is successful, the browser will be redirected to the 'manage_admin' page.
      * @param string $kanji_ch
      * @param string $kanji_no
      * @return mixed
@@ -256,7 +273,10 @@ class AdminController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            //return $this->render('../admin/manage');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = Admin::find()->all();
@@ -271,7 +291,7 @@ class AdminController extends Controller
 
         $model = Admin::find()->all();
 
-        return $this->render('index', [
+        return $this->render('manage_admin', [
             'model' => $model,
             'admin_alert' => '1',
         ]);

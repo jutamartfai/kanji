@@ -17,6 +17,7 @@ use yii\web\session;
 use app\models\Member;
 use app\models\LoginForm;
 use app\models\Practicetransaction;
+use app\models\Bookmarktransaction;
 
 /**
  * PracticeController implements the CRUD actions for Practice model.
@@ -42,14 +43,16 @@ class PracticeController extends Controller
      * Lists all Practice models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionManage_practice()
     {
         $this->layout = 'template';
         $session = new Session;
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $searchModel = new PracticeSearch();
@@ -58,7 +61,7 @@ class PracticeController extends Controller
         $model = Practice::find()->all();
         $model_ch = Chapter::find()->all();
 
-        return $this->render('index', [
+        return $this->render('manage_practice', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $model,
@@ -80,7 +83,9 @@ class PracticeController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         return $this->render('view', [
@@ -101,7 +106,9 @@ class PracticeController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = new Practice();
@@ -175,7 +182,9 @@ class PracticeController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = Practice::findOne(['practice_ch' => $practice_ch, 'practice_no' => $practice_no]);
@@ -206,7 +215,7 @@ class PracticeController extends Controller
                     $model->pron = "P" .$model_upload->file3->baseName . '.' . $model_upload->file3->extension;
                 }
                 $model->save();
-                return $this->redirect(['index']);
+                return $this->redirect(['manage_practice']);
                 //return $this->redirect(['view', 'practice_ch' => $model->practice_ch, 'practice_no' => $model->practice_no]);
             }
         } */
@@ -254,7 +263,7 @@ class PracticeController extends Controller
 
     /**
      * Deletes an existing Practice model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * If deletion is successful, the browser will be redirected to the 'manage_practice' page.
      * @param string $practice_ch
      * @param string $practice_no
      * @return mixed
@@ -266,7 +275,9 @@ class PracticeController extends Controller
         $session->open();
 
         if (!isset($session['admin_name'])) {
-            return $this->render('../admin/wellcome');
+            return $this->render('../admin/manage', [
+                'login_alert' => '0',
+            ]);
         }
 
         $model = Practice::find()->all();
@@ -286,7 +297,7 @@ class PracticeController extends Controller
         $model = Practice::find()->all();
         $model_ch = Chapter::find()->all();
 
-        return $this->render('index', [
+        return $this->render('manage_practice', [
             'model' => $model,
             'model_ch' => $model_ch,
             'practice_alert' => '1',
@@ -328,7 +339,14 @@ class PracticeController extends Controller
                 $member->active_date = date("Y-m-d H:i:s");
                 $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
                 $member->save();
-                return $this->goHome();
+                $model_ch = Chapter::find()->all();
+                $bookmark = new Bookmarktransaction();
+                return $this->render('sel_practice', [
+                    'model_ch' => $model_ch,
+                    'bookmark' => $bookmark,
+                    'login_alert' => '1',
+                    'saved_alert' => '0',
+                ]);
             }
             return $this->render('../member/login', [
             'model' => $model,
@@ -339,6 +357,8 @@ class PracticeController extends Controller
 
         return $this->render('sel_practice', [
             'model_ch' => $model_ch,
+            'login_alert' => '0',
+            'saved_alert' => '0',
         ]);
     }
 
@@ -356,7 +376,13 @@ class PracticeController extends Controller
                 $member->active_date = date("Y-m-d H:i:s");
                 $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
                 $member->save();
-                return $this->goHome();
+                $model_ch = Chapter::find()->all();
+                $bookmark = new Bookmarktransaction();
+                return $this->render('../site/index', [
+                    'model_ch' => $model_ch,
+                    'bookmark' => $bookmark,
+                    'login_alert' => '1',
+                ]);
             }
             return $this->render('../member/login', [
                 'model' => $model,
@@ -386,7 +412,13 @@ class PracticeController extends Controller
                 $member->active_date = date("Y-m-d H:i:s");
                 $member->expired_date = date('Y-m-d H:i:s', strtotime('+1 years'));
                 $member->save();
-                return $this->goHome();
+                $model_ch = Chapter::find()->all();
+                $bookmark = new Bookmarktransaction();
+                return $this->render('../site/index', [
+                    'model_ch' => $model_ch,
+                    'bookmark' => $bookmark,
+                    'login_alert' => '1',
+                ]);
             }
             return $this->render('../member/login', [
                 'model' => $model,
@@ -405,6 +437,8 @@ class PracticeController extends Controller
 
         return $this->render('sel_practice', [
             'model_ch' => $model_ch,
+            'login_alert' => '0',
+            'saved_alert' => '1',
         ]);
     }
 
