@@ -35,8 +35,8 @@ $this->title = $model->email;
                     <div class="col-md-2"></div>
                     <div class="col-md-8">
                         <center><p>
-                            <?= Html::a('แก้ไขชื่อ', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
-                            <?= Html::a('แก้ไขรหัสผ่าน', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;แก้ไขชื่อ', ['edit_profile', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;&nbsp;แก้ไขรหัสผ่าน', ['password', 'id' => $model->email], ['class' => 'btn btn-primary']) ?>
                         </p></center><br>
 
                         <?= DetailView::widget([
@@ -63,7 +63,7 @@ $this->title = $model->email;
                 <br><br><center><h1>ประวัติการเข้าชมบทเรียน</h1></center><br><br>
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="info">
                             <th>วันที่และเวลาเข้าชม</th>
                             <th>บทที่</th>
                             <th>ชื่อบทเรียน</th>
@@ -99,7 +99,7 @@ $this->title = $model->email;
                 <br><br><center><h1>ผลคะแนนจากการทำแบบทดสอบ</h1></center><br><br>
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="info">
                             <th>วันที่และเวลาเข้าทำแบบทดสอบ</th>
                             <th>บทที่</th>
                             <th>ชื่อบทเรียน</th>

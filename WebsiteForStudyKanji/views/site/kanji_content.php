@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="panel-group">
     <div class="panel panel-default">
         <div class="panel-body">
-        <br>
+<!--         <br> &nbsp;&nbsp;&nbsp;&nbsp;ตัวอักษรคันจิภายในบทเรียนนี้ : -->
         <h1><center><div class="btn-group" role="group">
             <?php foreach ($model as $key => $value) : ?>
             <a href="#<?= $value->kanji_no; ?>" class="btn btn-default"><?= $value->kanji; ?></a>
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach ($model as $key => $value) : ?>
                     <!-- <div id="<?= $value->kanji_no; ?>"> -->
                     <thead id="<?= $value->kanji_no; ?>">
-                        <tr>
+                        <tr class="info">
                             <th>ตัวอักษรคันจิ</th>
                             <th>ความหมาย</th>
                             <th>คำอ่านแบบญี่ปุ่น</th>
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <h5>วิดีโอวิธีการเขียน</h5>
                                 <center>
                                     <!-- <embed width="420" height="315" src="https://www.youtube.com/embed/eeYU0qcxUS8"> -->
-                                    <iframe width="560" height="315" src="<?= $value->how_to; ?>" frameborder="0" allowfullscreen></iframe>
+                                    <iframe width="448" height="252" src="<?= $value->how_to; ?>" frameborder="0" allowfullscreen></iframe>
                                 </center>
                             </td>
                         </tr>

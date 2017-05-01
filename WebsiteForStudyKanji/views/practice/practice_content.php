@@ -464,7 +464,8 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="row">
             <div>
               <center>*แบบทดสอบจะแบ่งเป็น 2 ส่วน คือ จับคู่คำอ่านและจับคู่ความหมาย <br>
-              ผู้เล่นจะต้องทำทั้ง 2 ส่วนให้ครบทุกข้อ ปุ่มยืนยันคำตอบเพื่อแสดงผลคะแนนจึงจะปรากฏขึ้นอยู่ในส่วนด้านล่างของหน้าแบบทดสอบนี้ <br>
+              ผู้เล่นจะต้องทำทั้ง 2 ส่วนให้ครบทุกข้อ โดยลากคำอ่านหรือความหมายของคำไปจับคู่วางบนตัวอักษรคันจิ <br>
+              ปุ่มยืนยันคำตอบเพื่อแสดงผลคะแนนจึงจะปรากฏขึ้นอยู่ในส่วนด้านล่างของหน้าแบบทดสอบนี้ <br>
               หากต้องการเริ่มทำแบบทดสอบใหม่ให้กดที่ปุ่มเริ่มใหม่ที่ปรากฏอยู่ในส่วนด้านบนก่อนเริ่มทำแบบทดสอบนี้*</center>
             </div>
       </div>
@@ -472,7 +473,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <br><br>
       <div class="row">
             <div>
-              <center><p><button class="btn btn-info" onclick="init()">เริ่มใหม่</button></p></center>
+              <center><p><button class="btn btn-info btn-lg" onclick="init()"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;&nbsp;เริ่มใหม่</button></p></center>
             </div>
       </div>
 
@@ -490,8 +491,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <br><br>
             <div class="row">
-                <div id="scoreBtn">
-                    <center><p><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#getScore">ยืนยันคำตอบ</button></p></center>
+                <div>
+                    <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#getScore"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยืนยันคำตอบ</button></p></center>
                 </div>
             </div>
           <div class="modal fade" id="getScore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -514,6 +515,32 @@ $this->params['breadcrumbs'][] = $this->title;
                   </div>
               </div>
             </div>
+            <div class="row">
+                <div>
+                    <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cancel" onclick="cancelBtn()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยกเลิก</button></p></center>
+                </div>
+            </div>
+          <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">คะแนนที่ได้</h4>
+                    </div>
+                    <div class="modal-body">
+                        <center><h1>จำนวนข้อที่ได้ทำ : <div id="totalScore2"></div>
+                        จำนวนข้อที่ถูกต้อง : <div id="correctScore2"></div>
+                        จำนวนข้อที่ผิด : <div id="failScore2"></div></h1>
+                        <p>ต้องการเก็บผลคะแนนไว้หรือไม่?</p></center>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="init()">ยกเลิก</button>
+                        <button type="button" class="btn btn-primary" onclick="getScore()">บันทึก</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <br><br><br><br>
         </div>
     </div>
 </div>

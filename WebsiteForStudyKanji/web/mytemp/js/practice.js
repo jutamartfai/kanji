@@ -9,6 +9,7 @@ function init() {
 
   	// Hide the success message
     $('#scoreBtn').hide();
+    $('#cancelBtn').show();
 
 	// Reset the game
     correctCards = 0;
@@ -100,13 +101,18 @@ function handleCardDrop( event, ui ) {
   	// If all the cards have been placed correctly then display a message
   	// and reset the cards for another go
 
-  	if ( failCards+correctCards == 40 ) {
+  	if ( failCards+correctCards == 2 ) {
         $('#scoreBtn').show();
+        $('#cancelBtn').hide();
 
         document.getElementById("correctScore").innerHTML = correctCards;
         document.getElementById("failScore").innerHTML = failCards;
         document.getElementById("totalScore").innerHTML = correctCards+failCards;
   	}
+
+		document.getElementById("correctScore2").innerHTML = correctCards;
+		document.getElementById("failScore2").innerHTML = failCards;
+		document.getElementById("totalScore2").innerHTML = correctCards+failCards;
 
 }
 
@@ -114,4 +120,11 @@ function handleCardDrop( event, ui ) {
 // {
 //   	document.location = 'index.php?r=practice/score&chapter='+chapter+'&correctScore='+correctCards+'&failScore='+failCards;
 
+// }
+
+// function cancelBtn()
+// {
+// 	document.getElementById("correctScore2").innerHTML = correctCards;
+// 	document.getElementById("failScore2").innerHTML = failCards;
+// 	document.getElementById("totalScore2").innerHTML = correctCards+failCards;
 // }

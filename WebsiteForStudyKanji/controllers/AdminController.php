@@ -249,14 +249,27 @@ class AdminController extends Controller
         }
 
         $model = $this->findModel($id);
+        $current = new Member();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->username]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        $currentPassword = $model->password;
+        if(Yii::$app->request->isPost){
+            $model->load(Yii::$app->request->post());
+            $current->load(Yii::$app->request->post());
+            if(md5($current->password) == $currentPassword) {
+                $model->password = md5($model->password);
+                $model->save();
+
+                $model = Admin::find()->orderBy(['username' => SORT_ASC])->all();
+                return $this->render('manage_admin', [
+                    'model' => $model,
+                    'admin_alert' => '3',
+                ]);
+            }
+            elseif (md5($current->password) != $currentPassword) {
+                return $this->render('update', ['model' => $model, 'current' => $current, 'admin_alert' => '1']);
+            }
         }
+        return $this->render('update', ['model' => $model, 'current' => $current, 'admin_alert' => '0']);
     }
 
     /**

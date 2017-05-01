@@ -33,7 +33,7 @@ class Member extends \yii\db\ActiveRecord
             [['email', 'password', 'first_name', 'last_name'], 'required'],
             //[['active_date', 'expired_date'], 'safe'],
             [['email', 'first_name', 'last_name'], 'string', 'max' => 50],
-            [['password'], 'string', 'max' => 255],
+            [['password'], 'string','min' => 4 , 'max' => 255],
             [['email'], 'email'],
         ];
     }

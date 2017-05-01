@@ -457,8 +457,11 @@ class MemberController extends Controller
                     'profile_alert' => '1',
                 ]);
             }
+            elseif (md5($current->password) != $currentPassword) {
+                return $this->render('password', ['model' => $model, 'current' => $current, 'password_alert' => '1']);
+            }
         }
-        return $this->render('password', ['model' => $model, 'current' => $current]);
+        return $this->render('password', ['model' => $model, 'current' => $current, 'password_alert' => '0']);
     }
 
 

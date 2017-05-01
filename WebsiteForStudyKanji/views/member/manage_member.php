@@ -27,7 +27,7 @@ $this->title = 'จัดการข้อมูลสมาชิก';
             <br>
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="info">
                             <th>ชื่อ</th>
                             <th>นามสกุล</th>
                             <th>อีเมล์</th>

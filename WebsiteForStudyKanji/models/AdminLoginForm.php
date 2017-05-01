@@ -59,7 +59,7 @@ class AdminLoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword(md5($this->password))) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'ชื่อผู้ใช้หรือรหัสผ่านของท่านไม่ถูกต้อง โปรดตรวจสอบความถูกต้องใหม่อีกครั้ง');
             }
         }
     }

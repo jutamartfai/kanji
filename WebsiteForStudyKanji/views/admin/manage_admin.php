@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AdminSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'การจัดการผู้ดูแลระบบ';
+$this->title = 'ข้อมูลผู้ดูแลระบบ';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-index">
@@ -24,6 +24,12 @@ $this->title = 'การจัดการผู้ดูแลระบบ';
             <strong>เพิ่มเรียบร้อย!</strong> ข้อมูลถูกเพิ่มเรียบร้อยแล้ว
         </div>
     <?php endif ?>
+    <?php if ($admin_alert=='3'): ?>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>บันทึกเรียบร้อย!</strong> ข้อมูลของคุณถูกบันทึกเรียบร้อยแล้ว
+        </div>
+    <?php endif ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -33,12 +39,12 @@ $this->title = 'การจัดการผู้ดูแลระบบ';
         <div class="panel panel-default">
             <div class="panel-body">
             <br>
-                <p>
+                <!-- <p>
                     <?= Html::a('<span class="glyphicon glyphicon-plus"></span>&nbsp;เพิ่มผู้ดูแลระบบ', ['create'], ['class' => 'btn btn-success']) ?>
-                </p>
+                </p> -->
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                        <tr class="info">
                             <th>ชื่อผู้ใช้</th>
                             <th>รหัสผ่าน</th>
                             <th>การจัดการ</th>
@@ -50,7 +56,8 @@ $this->title = 'การจัดการผู้ดูแลระบบ';
                                 <td><?= $value->username; ?></td>
                                 <td><?= $value->password; ?></td>
                                 <td>
-                                    <div class="btn-group btn-group-sm text-center" role="group">
+                                    <?= Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['update', 'id' => $value->username], ['class' => 'btn btn-info']) ?>
+                                    <!-- <div class="btn-group btn-group-sm text-center" role="group">
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#<?= $value->username; ?>"><span class="glyphicon glyphicon-trash"></span></button>
                                         <div class="modal fade" id="<?= $value->username; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                                             <div class="modal-dialog" role="document">
@@ -69,7 +76,7 @@ $this->title = 'การจัดการผู้ดูแลระบบ';
                                               </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </td>
                             </tr>
                         </tbody>

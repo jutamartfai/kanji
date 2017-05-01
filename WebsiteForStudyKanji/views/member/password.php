@@ -13,6 +13,13 @@ $this->title = 'แก้ไขรหัสผ่าน: ' . $model->email;
     <div class="col-md-4"></div>
     <div class="col-md-4">
 
+    <?php if ($password_alert=='1'): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>ผิดพลาด!</strong> รหัสผ่านที่คุณกรอกมีความผิดพลาด
+        </div>
+    <?php endif ?>
+
 		<?php $form = ActiveForm::begin(); ?>
 
 		<?= $form->field($model, 'email')->textInput(['maxlength' => true,'readonly'=>true]) ?>

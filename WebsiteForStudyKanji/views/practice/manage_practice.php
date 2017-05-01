@@ -44,7 +44,7 @@ $this->title = 'การจัดการแบบทดสอบ';
                         </p>
                             <table class="table table-hover table-bordered">
                                 <thead>
-                                    <tr>
+                                    <tr class="info">
                                         <th>คำถาม</th>
                                         <th>ความหมาย</th>
                                         <th>คำอ่านตัวอักษร</th>
