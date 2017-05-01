@@ -491,7 +491,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
       <br><br>
             <div class="row">
-                <div>
+                <div id="scoreBtn">
                     <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#getScore"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยืนยันคำตอบ</button></p></center>
                 </div>
             </div>
@@ -516,7 +516,7 @@ $this->params['breadcrumbs'][] = $this->title;
               </div>
             </div>
             <div class="row">
-                <div>
+                <div id="cancelBtn">
                     <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cancel" onclick="cancelBtn()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยกเลิก</button></p></center>
                 </div>
             </div>

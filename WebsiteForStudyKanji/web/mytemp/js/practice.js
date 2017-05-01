@@ -14,6 +14,16 @@ function init() {
 	// Reset the game
     correctCards = 0;
     failCards = 0;
+
+    document.getElementById("correctScore").innerHTML = correctCards;
+    document.getElementById("failScore").innerHTML = failCards;
+    document.getElementById("totalScore").innerHTML = correctCards+failCards;
+
+
+	document.getElementById("correctScore2").innerHTML = correctCards;
+	document.getElementById("failScore2").innerHTML = failCards;
+	document.getElementById("totalScore2").innerHTML = correctCards+failCards;
+
     $('#pronAnswer').html( '' );
     $('#pronQuestion').html( '' );
     $('#meaningAnswer').html( '' );
