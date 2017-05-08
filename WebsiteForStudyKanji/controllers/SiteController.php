@@ -5,7 +5,7 @@ namespace app\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\session;
+use yii\web\Session;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
@@ -121,7 +121,7 @@ class SiteController extends Controller
         return $this->render('index', [
             'model_ch' => $model_ch,
             'bookmark' => $bookmark,
-            'login_alert' => '0',
+            // 'login_alert' => '0',
         ]);
     }
 

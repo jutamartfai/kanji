@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use app\models\UploadForm;
 use yii\web\UploadedFile;
 
-use yii\web\session;
+use yii\web\Session;
 use app\models\Member;
 use app\models\LoginForm;
 use app\models\Practicetransaction;
@@ -344,7 +344,7 @@ class PracticeController extends Controller
                 return $this->render('sel_practice', [
                     'model_ch' => $model_ch,
                     'bookmark' => $bookmark,
-                    'login_alert' => '1',
+                    // 'login_alert' => '1',
                     'saved_alert' => '0',
                 ]);
             }
@@ -357,7 +357,7 @@ class PracticeController extends Controller
 
         return $this->render('sel_practice', [
             'model_ch' => $model_ch,
-            'login_alert' => '0',
+            // 'login_alert' => '0',
             'saved_alert' => '0',
         ]);
     }
@@ -378,11 +378,7 @@ class PracticeController extends Controller
                 $member->save();
                 $model_ch = Chapter::find()->all();
                 $bookmark = new Bookmarktransaction();
-                return $this->render('../site/index', [
-                    'model_ch' => $model_ch,
-                    'bookmark' => $bookmark,
-                    'login_alert' => '1',
-                ]);
+                return $this->goHome();
             }
             return $this->render('../member/login', [
                 'model' => $model,
@@ -414,11 +410,7 @@ class PracticeController extends Controller
                 $member->save();
                 $model_ch = Chapter::find()->all();
                 $bookmark = new Bookmarktransaction();
-                return $this->render('../site/index', [
-                    'model_ch' => $model_ch,
-                    'bookmark' => $bookmark,
-                    'login_alert' => '1',
-                ]);
+                return $this->goHome();
             }
             return $this->render('../member/login', [
                 'model' => $model,
@@ -430,14 +422,14 @@ class PracticeController extends Controller
         $bookmark->practice_ch = $chapter;
         $bookmark->do_date = date("Y-m-d H:i:s");
         $bookmark->expired_date = date('Y-m-d H:i:s', strtotime('+30 days'));
-        $bookmark->score = $correctScore;
+        $bookmark->score = $correctScore."/".($correctScore+$failScore);
         $bookmark->save();
 
         $model_ch = Chapter::find()->all();
 
         return $this->render('sel_practice', [
             'model_ch' => $model_ch,
-            'login_alert' => '0',
+            // 'login_alert' => '0',
             'saved_alert' => '1',
         ]);
     }

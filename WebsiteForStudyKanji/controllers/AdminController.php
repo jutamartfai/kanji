@@ -6,7 +6,7 @@ use Yii;
 use app\models\Admin;
 use app\models\AdminSearch;
 use app\models\AdminLoginForm;
-use yii\web\session;
+use yii\web\Session;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

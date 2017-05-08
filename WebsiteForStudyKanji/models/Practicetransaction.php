@@ -31,7 +31,7 @@ class PracticeTransaction extends \yii\db\ActiveRecord
         return [
             [['email', 'practice_ch', 'do_date'/*, 'score'*/, 'expired_date'], 'required'],
             // [['do_date', 'expired_date'], 'safe'],
-            [['score'], 'integer'],
+            [['score'], 'string', 'max' => 5],
             [['email'], 'string', 'max' => 50],
             [['practice_ch'], 'string', 'max' => 2],
         ];

@@ -10,7 +10,7 @@ use app\models\LoginForm;
 use app\models\Chapter;
 use app\models\Practicetransaction;
 use app\models\Bookmarktransaction;
-use yii\web\session;
+use yii\web\Session;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -229,11 +229,7 @@ class MemberController extends Controller
         if (isset($session['member_name'])) {
             $model_ch = Chapter::find()->all();
             $bookmark = new Bookmarktransaction();
-            return $this->render('../site/index', [
-                'model_ch' => $model_ch,
-                'bookmark' => $bookmark,
-                'login_alert' => '1',
-            ]);
+            return $this->goHome();
         }
 
         $model = new LoginForm();
@@ -245,11 +241,7 @@ class MemberController extends Controller
             $member->save();
             $model_ch = Chapter::find()->all();
             $bookmark = new Bookmarktransaction();
-            return $this->render('../site/index', [
-                'model_ch' => $model_ch,
-                'bookmark' => $bookmark,
-                'login_alert' => '1',
-            ]);
+            return $this->goHome();
         }
         return $this->render('login', [
             'model' => $model,
@@ -292,11 +284,7 @@ class MemberController extends Controller
 
         $model_ch = Chapter::find()->all();
         $bookmark = new Bookmarktransaction();
-        return $this->render('../site/index', [
-            'model_ch' => $model_ch,
-            'bookmark' => $bookmark,
-            'login_alert' => '2',
-        ]);
+        return $this->goHome();
     }
 
     /**
@@ -322,7 +310,7 @@ class MemberController extends Controller
 
         $model_ch = Chapter::find()->all();
 
-        return $this->render('Profile', [
+        return $this->render('profile', [
             'model' => $this->findModel($id),
             'pracTran' => $pracTran,
             'bookmarkTran' => $bookmarkTran,
@@ -477,11 +465,7 @@ class MemberController extends Controller
         if (isset($session['member_name'])) {
             $model_ch = Chapter::find()->all();
             $bookmark = new Bookmarktransaction();
-            return $this->render('../site/index', [
-                'model_ch' => $model_ch,
-                'bookmark' => $bookmark,
-                'login_alert' => '1',
-            ]);
+            return $this->goHome();
         }
 
         $model = new Member();
@@ -507,11 +491,7 @@ class MemberController extends Controller
                 $session['member_name'] = $session_model->getName();
                 $model_ch = Chapter::find()->all();
                 $bookmark = new Bookmarktransaction();
-                return $this->render('../site/index', [
-                    'model_ch' => $model_ch,
-                    'bookmark' => $bookmark,
-                    'login_alert' => '1',
-                ]);
+                return $this->goHome();
             }
         } else {
             return $this->render('register', [

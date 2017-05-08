@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'เข้าสู่ระบบ (ผู้ดูและระบบ)';
+$this->title = 'เข้าสู่ระบบ (ผู้ดูแลระบบ)';
 // $this->params['breadcrumbs'][] = $this->title;
 ?>
 

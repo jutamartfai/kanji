@@ -15,12 +15,6 @@ $this->title = 'แบบทดสอบตัวอักษรคันจิ'
 
 ?>
 
-<?php if ($login_alert=='1'): ?>
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>เข้าสู่ระบบสำเร็จ!</strong> ยินดีต้อนรับ <?= $session['member_name']; ?>
-    </div>
-<?php endif ?>
 <?php if ($saved_alert=='1'): ?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

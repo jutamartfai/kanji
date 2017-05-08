@@ -492,7 +492,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <br><br>
             <div class="row">
                 <div id="scoreBtn">
-                    <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#getScore"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยืนยันคำตอบ</button></p></center>
+                    <center><p><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#getScore"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยืนยันคำตอบ</button></p></center>
                 </div>
             </div>
           <div class="modal fade" id="getScore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
@@ -517,7 +517,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="row">
                 <div id="cancelBtn">
-                    <center><p><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cancel" onclick="cancelBtn()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;&nbsp;ยกเลิก</button></p></center>
+                    <center><p><button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#cancel" onclick="cancelBtn()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>&nbsp;&nbsp;ยกเลิก</button></p></center>
                 </div>
             </div>
           <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">

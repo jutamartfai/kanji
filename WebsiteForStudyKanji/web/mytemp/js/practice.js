@@ -111,7 +111,7 @@ function handleCardDrop( event, ui ) {
   	// If all the cards have been placed correctly then display a message
   	// and reset the cards for another go
 
-  	if ( failCards+correctCards == 2 ) {
+  	if ( failCards+correctCards == 40 ) {
         $('#scoreBtn').show();
         $('#cancelBtn').hide();
 
